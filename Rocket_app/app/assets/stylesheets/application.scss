@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
- 
+
+
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
@@ -22,7 +23,9 @@
  @import "header-3";
  @import "custom-forms-v2";
  @import "plugin-hover-buttons";
+
  //@import "layout";
+
  @import "settings";
  @import "extralayers";
  @import "bootstrap.min";
