@@ -13,15 +13,6 @@
  *= require_tree .
  *= require_self
  */
-<<<<<<< HEAD:Rocket_app/app/assets/stylesheets/application.scss
-
-@import "custom-forms-v2";
-@import "header-3";
-//@import "layout";
-@import "pages";
-@import "plugin-hover-buttons";
-@import "essentials";
-=======
  
 
  @import "bootstrap-sprockets";
@@ -31,8 +22,7 @@
  @import "header-3";
  @import "custom-forms-v2";
  @import "plugin-hover-buttons";
- @import "layout";
+ //@import "layout";
  @import "settings";
  @import "extralayers";
  @import "bootstrap.min";
->>>>>>> dd5c816a167669e8c3aa7e3af3cdc2ee7ab7a16e:Rocket_app/app/assets/stylesheets/application.scss
