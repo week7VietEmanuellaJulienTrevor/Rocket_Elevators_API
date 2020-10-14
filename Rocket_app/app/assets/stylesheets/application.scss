@@ -24,8 +24,12 @@
  @import "custom-forms-v2";
  @import "plugin-hover-buttons";
 
- //@import "layout";
+ //@import "layout.css";
 
  @import "settings";
  @import "extralayers";
- @import "bootstrap.min";
+ //@import "bootstrap.min";
+
+//to stop having the fontawsome 404
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
