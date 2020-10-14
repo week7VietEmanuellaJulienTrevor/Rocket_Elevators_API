@@ -33,32 +33,6 @@
 		<!-- wrapper -->
 		<div id="wrapper">
 
-			<!-- 
-				AVAILABLE HEADER CLASSES
-
-				Default nav height: 96px
-				.header-md 		= 70px nav height
-				.header-sm 		= 60px nav height
-
-				.b-0 		= remove bottom border (only with transparent use)
-				.transparent	= transparent header
-				.translucent	= translucent header
-				.sticky			= sticky header
-				.static			= static header
-				.dark			= dark header
-				.bottom			= header on bottom
-				
-				shadow-before-1 = shadow 1 header top
-				shadow-after-1 	= shadow 1 header bottom
-				shadow-before-2 = shadow 2 header top
-				shadow-after-2 	= shadow 2 header bottom
-				shadow-before-3 = shadow 3 header top
-				shadow-after-3 	= shadow 3 header bottom
-
-				.clearfix		= required for mobile menu, do not remove!
-
-				Example Usage:  class="clearfix sticky header-sm transparent b-0"
-			-->
 			<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
 
 				<!-- TOP NAV -->
@@ -138,45 +112,16 @@
 
 			</div>
 
-
-
 			<!-- REVOLUTION SLIDER -->
 			<div class="slider fullwidthbanner-container roundedcorners">
-				<!--
-					Navigation Styles:
-					
-						data-navigationStyle="" theme default navigation
-						
-						data-navigationStyle="preview1"
-						data-navigationStyle="preview2"
-						data-navigationStyle="preview3"
-						data-navigationStyle="preview4"
-						
-					Bottom Shadows
-						data-shadow="1"
-						data-shadow="2"
-						data-shadow="3"
-						
-					Slider Height (do not use on fullscreen mode)
-						data-height="300"
-						data-height="350"
-						data-height="400"
-						data-height="450"
-						data-height="500"
-						data-height="550"
-						data-height="600"
-						data-height="650"
-						data-height="700"
-						data-height="750"
-						data-height="800"
-				-->
+			
 				<div id="home" class="fullwidthbanner" data-height="700" data-shadow="0" data-navigationStyle="preview2">
 					<ul class="hide">
 					
 						<!-- SLIDE  -->
 						<li data-transition="parallaxtobottom slider" data-slotamount="7" data-masterspeed="600"  data-saveperformance="off"  data-title="About Us">
 							<!-- MAIN IMAGE -->
-							<img src="demo_files/images/mdl-blue-min.jpg"  alt="cover image"  data-lazyload="demo_files/images/mdl-blue-min.jpg" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+							<%= image_tag("demo_files/images/mdl-blue-min.jpg", :alt => "cover image" , :data => "demo_files/images/mdl-blue-min.jpg", :data => "center top", :data=> "cover", :data => "no-repeat")%>
 
 							<div class="tp-caption white_big skewfromleft tp-resizeme"
 								data-x="300"
@@ -260,7 +205,7 @@
 						<!-- SLIDE  -->
 						<li data-transition="parallaxtotop slider" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" data-title="Residential">
 							<!-- MAIN IMAGE -->
-							<img src="assets/images/rocketelevatorassets/AdobeStock_122227340.jpeg" alt="cover image"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+							<%= image_tag("rocketelevatorassets/AdobeStock_122227340.jpeg", :alt => "cover image" , :data => "demo_files/images/mdl-blue-min.jpg", :data => "center top", :data=> "cover", :data => "no-repeat")%>
 
 						
 							<div class="tp-caption font-roboto skewfromleft tp-resizeme"
@@ -316,8 +261,9 @@
 						<!-- SLIDE  -->
 						<li data-transition="parallaxtotop" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" data-title="Corporate">
 							<!-- MAIN IMAGE -->
-							<img src="assets/images/rocketelevatorassets/AdobeStock_146216308v2.jpeg" alt="cover image"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
+							<%= image_tag("rocketelevatorassets/AdobeStock_146216308v2.jpeg", :alt => "cover image" , :data => "demo_files/images/mdl-blue-min.jpg", :data => "center top", :data=> "cover", :data => "no-repeat")%>
+						
 							<div class="overlay dark-4"><!-- dark overlay [0 to 9 opacity] --></div>
 						
 							<div class="tp-caption font-roboto skewfromleft tp-resizeme"
@@ -387,8 +333,6 @@
 
 			</div>
 			<!-- /BUTTON CALLOUT -->
-
-
 			
 			<!-- Services -->
 			<section id="services">
@@ -422,11 +366,8 @@
 			</section>
 			<!-- /Services -->
 
-			
-
-
 			<!-- Parallax -->
-			<section class="parallax parallax-1" style="background-image: url('assets/images/rocketelevatorassets/AdobeStock_162479912.jpeg')">
+			<section class="parallax parallax-1" style = "background-image: url('rocketelevatorassets/AdobeStock_162479912.jpeg')">
 				<div class="overlay dark-5"><!-- dark overlay [1 to 9 opacity] --></div>
 
 				<div class="container text-center">
@@ -443,6 +384,7 @@
 				</div>
 			</section>
 			<!-- /Parallax -->
+			
 			<!-- PORTFOLIO -->
 			<section>
 				<div id="work" class="container">
@@ -495,7 +437,6 @@
 
 							</div><!-- /item -->
 
-
 							<div class="col-md-3 col-sm-3 mix corporate"><!-- item -->
 
 								<div class="item-box">
@@ -524,7 +465,6 @@
 								</div>
 
 							</div><!-- /item -->
-
 
 							<div class="col-md-3 col-sm-3 mix corporate"><!-- item -->
 
@@ -555,7 +495,6 @@
 
 							</div><!-- /item -->
 
-
 							<div class="col-md-3 col-sm-3 mix corporate"><!-- item -->
 
 								<div class="item-box">
@@ -573,7 +512,7 @@
 
 									    <%=image_tag("rocketelevatorassets/portfolio/glasselevator.png", class:"img-responsive", width:"600", height:"399", alt:"")%>
 									</figure>
-									<div class:"item-box-desc">
+									<div class="item-box-desc">
 										<h3>Unity Montreal HQ</h3>
 										<ul class="list-inline categories m-0">
 											<li><a href="#">Corporate</a></li>
@@ -583,7 +522,6 @@
 								</div>
 
 							</div><!-- /item -->
-
 							
 							<div class="col-md-3 col-sm-3 mix residential"><!-- item -->
 
@@ -614,7 +552,6 @@
 
 							</div><!-- /item -->
 
-
 							<div class="col-md-3 col-sm-3 mix awards"><!-- item -->
 
 								<div class="item-box">
@@ -630,7 +567,7 @@
 											</span>
 										</span>
 
-										<%image_tag("rocketelevatorassets/portfolio/b.png", class:"img-responsive", width:"600", height:"399", alt:"")%>
+										<%= image_tag("rocketelevatorassets/portfolio/b.png", alt: "", class: "img-responsive", :size => '600x399') %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -643,9 +580,6 @@
 								</div>
 
 							</div><!-- /item -->
-
-
-							
 
 							<div class="col-md-3 col-sm-3 mix awards"><!-- item -->
 
@@ -662,7 +596,8 @@
 											</span>
 										</span>
 
-                                        <%image_tag("rocketelevatorassets/portfolio/a.png", class:"img-responsive", width:"600", height:"399", alt:"")%>
+										<%= image_tag("rocketelevatorassets/portfolio/a.png", alt: "", class: "img-responsive", :size => '600x399') %>
+
 									</figure>
 
 									<div class="item-box-desc">
@@ -691,7 +626,8 @@
 											</span>
 										</span>
 
-									    <%image_tag("rocketelevatorassets/portfolio/highrise.png", class:"img-responsive center-block", width:"600", height:"399", alt:"") %>
+										<%= image_tag("rocketelevatorassets/portfolio/highrise.png", alt: "", class: "img-responsive center-block", :size => '600x399') %>
+
 									</figure>
 
 									<div class="item-box-desc">
@@ -720,8 +656,8 @@
 
 											</span>
 										</span>
+										<%= image_tag("rocketelevatorassets/portfolio/redelevator.png", alt: "", class: "img-responsive", :size => '600x399') %>
 
-										<%image_tag("rocketelevatorassets/portfolio/redelevator.png", class:"img-responsive", width:"600", height:"399", alt:"")%>
 									</figure>
 
 									<div class="item-box-desc">
@@ -749,9 +685,7 @@
 												</a>
 											</span>
 										</span>
-
-
-										<%image_tag("rocketelevatorassets/portfolio/ceilingelevator.png", class:"img-responsive", width:"600", height:"399", alt:"")%>
+										<%= image_tag("rocketelevatorassets/portfolio/ceilingelevator.png", alt: "", class: "img-responsive", :size => '600x399') %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -764,7 +698,6 @@
 								</div>
 
 							</div><!-- /item -->
-
 
 							<div class="col-md-3 col-sm-3 mix residential"><!-- item -->
 
@@ -781,7 +714,7 @@
 											</span>
 										</span>
 
-										<%image_tag("rocketelevatorassets/portfolio/cooldesignelevator.png", class:"img-responsive",  width:"600", height:"399", alt:"")%>
+										<%= image_tag("rocketelevatorassets/portfolio/cooldesignelevator.png", alt: "", class: "img-responsive", :size => '600x399') %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -794,7 +727,6 @@
 								</div>
 
 							</div><!-- /item -->
-
 													
 							<div class="col-md-3 col-sm-3 mix residential"><!-- item -->
 
@@ -810,8 +742,7 @@
 												</a>
 											</span>
 										</span>
-
-										<%image_tag("rocketelevatorassets/portfolio/coolresidential.png", class:"img-responsive",  width:"600", height:"399", alt:"")%>
+										<%= image_tag("rocketelevatorassets/portfolio/coolresidential.png", alt: "", class: "img-responsive", :size => '600x399') %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -823,7 +754,6 @@
 								</div>
 
 							</div><!-- /item -->
-
 
 						</div>
 
@@ -840,7 +770,7 @@
 					<div class="owl-carousel text-center owl-testimonial m-0" data-plugin-options='{"singleItem": true, "autoPlay": 3500, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
 						<div class="testimonial">
 							<figure>
-								<%image_tag("rocketelevatorassets/ceo-employee/ceo.jpg", class:"rounded", alt:"") %>
+								<% image_tag("rocketelevatorassets/ceo-employee/ceo.jpg", class: "rounded", alt: "") %>
 							</figure>
 							<div class="testimonial-content p-0">
 								<p class="lead">"I am very thankful to have been given the opportunity to lead the fantastic team behind one of North America's most promising and most innovative companies."</p>
@@ -852,9 +782,9 @@
 						</div>
 						<div class="testimonial">
 							<figure>
-								<%= image_tag("rocketelevatorassets/ceo-employee/employeeofthemonth.jpg", class:"rounded",  alt:"")%>
+								<%= image_tag("rocketelevatorassets/ceo-employee/employeeofthemonth.jpg", class: "rounded",  alt: "")%>
 							</figure>
-							<div class:"testimonial-content p-0">
+							<div class="testimonial-content p-0">
 								<p class="lead">"I am grateful to have been able to call RocketElevators my home for the past 4 years; it is the only place so far that has matched my enormous passion for technology."</p>
 								<cite>
 									Fabien H. Dimitrov
