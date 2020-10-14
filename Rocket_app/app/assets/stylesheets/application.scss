@@ -26,7 +26,13 @@
  @import "darkblue";
  @import "header-3";
  @import "plugin-hover-buttons";
+
  //@import "layout.css";
+
  @import "settings";
  @import "extralayers";
+ //@import "bootstrap.min";
 
+//to stop having the fontawsome 404
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
