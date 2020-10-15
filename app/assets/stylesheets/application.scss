@@ -26,7 +26,7 @@
 
  
  @import "bootstrap-sprockets";
- @import "bootstrap";
+ @import "../../plugins/bootstrap/**/";
  @import "font-awesome-sprockets";
  @import "font-awesome";
  @import "bootstrap-social";
@@ -43,3 +43,6 @@
 //to stop having the fontawsome 404
  @import "font-awesome-sprockets";
  @import "font-awesome";
+
+
+ @import "/"

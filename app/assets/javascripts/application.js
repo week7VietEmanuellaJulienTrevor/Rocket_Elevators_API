@@ -11,8 +11,11 @@
 // about supported directives.
 //
 
-//= require popper.min
+
 //= require jquery
+
+
+//= require popper.min
 //= require jquery_ujs
 //= require bootstrap
 //= require gmaps
@@ -25,3 +28,5 @@
 //= require_tree ./plugins/owl-carousel-2
 //= require_tree ./plugins/owl-carousel-2/assets
 
+
+//= require quote
