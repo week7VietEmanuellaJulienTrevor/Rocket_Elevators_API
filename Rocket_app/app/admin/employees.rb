@@ -6,17 +6,16 @@ ActiveAdmin.register Employee do
 
   index do
     selectable_column
-    id_column
     column :first_name
     column :last_name
     column :title
     column :email
-    actions
+    #actions
   end
 
   filter :first_name
   filter :last_name
   filter :title
   filter :email
-  
+
 end
