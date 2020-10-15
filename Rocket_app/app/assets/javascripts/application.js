@@ -24,4 +24,5 @@
 //= require_tree ./plugins/owl-carousel
 //= require_tree ./plugins/owl-carousel-2
 //= require_tree ./plugins/owl-carousel-2/assets
+//= require quote
 

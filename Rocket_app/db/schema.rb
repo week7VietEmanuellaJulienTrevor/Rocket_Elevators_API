@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_173430) do
+ActiveRecord::Schema.define(version: 2020_10_15_185548) do
 
   create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -42,14 +42,6 @@ ActiveRecord::Schema.define(version: 2020_10_15_173430) do
     t.integer "no_of_distinct_businesses"
     t.integer "max_occupants_per_floors"
     t.datetime "created_at", null: false
-  end
-
-  create_table "users", primary_key: "user_id", id: :integer, limit: 2, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email"
-    t.string "password"
-    t.datetime "registered_at"
-    t.datetime "updated_at"
-    t.index ["email"], name: "email", unique: true
   end
 
 end
