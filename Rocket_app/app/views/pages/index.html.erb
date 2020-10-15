@@ -29,7 +29,6 @@
 		</div>
 		<!-- /SLIDE TOP -->
 
-
 		<!-- wrapper -->
 		<div id="wrapper">
 
@@ -207,7 +206,6 @@
 							<!-- MAIN IMAGE -->
 							<%= image_tag("rocketelevatorassets/AdobeStock_122227340.jpeg", :alt => "cover image" , :data => "demo_files/images/mdl-blue-min.jpg", :data => "center top", :data=> "cover", :data => "no-repeat")%>
 
-						
 							<div class="tp-caption font-roboto skewfromleft tp-resizeme"
 								data-x="50"
 								data-y="100" 
@@ -254,7 +252,7 @@
 								data-endelementdelay="0.1"
 								data-endspeed="500"
 								style="z-index: 4;">
-									<a class="btn btn-warning btn-lg slider-btn" href="residential.html">LEARN MORE &nbsp; <i class="fa fa-angle-right"></i></a>
+								<a class="btn btn-warning btn-lg slider-btn" href="residential.html">LEARN MORE &nbsp; <i class="fa fa-angle-right"></i></a>
 							</div>
 						</li>
 
@@ -316,8 +314,6 @@
 							</div>
 						</li>
 					
-
-
 					</ul>
 
 				</div>
@@ -367,7 +363,8 @@
 			<!-- /Services -->
 
 			<!-- Parallax -->
-			<section class="parallax parallax-1" style = "background-image: url('rocketelevatorassets/AdobeStock_162479912.jpeg')">
+			<section class="parallax parallax-1", style = "background-image: url('rocketelevatorassets/AdobeStock_162479912.jpeg')">
+				
 				<div class="overlay dark-5"><!-- dark overlay [1 to 9 opacity] --></div>
 
 				<div class="container text-center">
@@ -756,7 +753,6 @@
 							</div><!-- /item -->
 
 						</div>
-
 				</div>
 			</section>
 			<!-- Staff -->
@@ -806,25 +802,6 @@
 						<h2>Recent News</h2>
 					</div>
 
-					<!-- 
-						controlls-over		= navigation buttons over the image 
-						buttons-autohide 	= navigation buttons visible on mouse hover only
-						
-						data-plugin-options:
-							"singleItem": true
-							"autoPlay": true (or ms. eg: 4000)
-							"navigation": true
-							"pagination": true
-							"items": "4"
-
-						owl-carousel item paddings
-							.owl-padding-0
-							.owl-padding-3
-							.owl-padding-6
-							.owl-padding-10
-							.owl-padding-15
-							.owl-padding-20
-					-->
 					<div class="owl-carousel owl-padding-10 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items":"3", "autoPlay": 4000, "navigation": true, "pagination": false}'>
 						<div class="img-hover">
 							<a target="_blank" href="https://www.ctvnews.ca/health/coronavirus/new-normal-elevators-moving-touchless-mobile-and-sideways-1.5045643">
@@ -1025,9 +1002,6 @@
 			</section>
 			<!-- /Clients -->
 
-
-
-
 			<!-- CONTACT -->
 			<section id="contact">
 				<div class="container">
@@ -1038,7 +1012,6 @@
 						<hr />
 					</header>
 
-
 					<div class="row">
 
 						<!-- FORM -->
@@ -1046,37 +1019,11 @@
 
 							<h3>Fill out this form if you have any <strong><em>questions</em></strong> or <strong><em>concerns</em></strong>.</h3>
 
-							
-							<!--
-								MESSAGES
-								
-									How it works?
-									The form data is posted to php/contact.php where the fields are verified!
-									php.contact.php will redirect back here and will add a hash to the end of the URL:
-										#alert_success 		= email sent
-										#alert_failed		= email not sent - internal server error (404 error or SMTP problem)
-										#alert_mandatory	= email not sent - required fields empty
-										Hashes are handled by assets/js/contact.js
-
-									Form data: required to be an array. Example:
-										contact[email][required]  WHERE: [email] = field name, [required] = only if this field is required (PHP will check this)
-										Also, add `required` to input fields if is a mandatory field. 
-										Example: <input required type="email" value="" class="form-control" name="contact[email][required]">
-
-									PLEASE NOTE: IF YOU WANT TO ADD OR REMOVE FIELDS (EXCEPT CAPTCHA), JUST EDIT THE HTML CODE, NO NEED TO EDIT php/contact.php or javascript
-												 ALL FIELDS ARE DETECTED DINAMICALY BY THE PHP
-
-									WARNING! Do not change the `email` and `name`!
-												contact[name][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
-												contact[email][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
-							-->
-
 							<!-- Alert Success -->
 							<div id="alert_success" class="alert alert-success mb-30">
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 								<strong>Thank You!</strong> Your message successfully sent!
 							</div><!-- /Alert Success -->
-
 
 							<!-- Alert Failed -->
 							<div id="alert_failed" class="alert alert-danger mb-30">
@@ -1084,13 +1031,11 @@
 								<strong>[SMTP] Error!</strong> Internal server error!
 							</div><!-- /Alert Failed -->
 
-
 							<!-- Alert Mandatory -->
 							<div id="alert_mandatory" class="alert alert-danger mb-30">
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 								<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
 							</div><!-- /Alert Mandatory -->
-
 
 							<form method="post" enctype="multipart/form-data">
 								<fieldset>
@@ -1168,26 +1113,11 @@
 						</div>
 						<!-- /FORM -->
 
-
 						<!-- INFO -->
 						<div class="col-md-4 col-sm-4">
 
 							<h2>Visit Us</h2>
 
-							<!-- 
-							Available heights
-								h-100
-								h-150
-								h-200
-								h-250
-								h-300
-								h-350
-								h-400
-								h-450
-								h-500
-								h-550
-								h-600
-							-->
 							<div id="map2" class="h-400">
 								<iframe width="589" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=589&amp;height=400&amp;hl=en&amp;q=4468%20Wellington%20St,%20Verdun,%20Quebec%20H4G%201W5%20Montreal+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
 							</div>
@@ -1209,11 +1139,9 @@
 			</section>
 			<!-- /CONTACT -->
 
-		
 			<!-- FOOTER -->
 			<footer id="footer">
 				<div class="container">
-
 
 					<div class="row">
 
@@ -1248,12 +1176,10 @@
 							</form>
 							<!-- /Newsletter Form -->
 
-
 						</div>
 						<!-- /col #2 -->
 
 					</div>
-
 
 				</div>
 
@@ -1277,10 +1203,4 @@
 		<!-- SCROLL TO TOP -->
 		<a href="#" id="toTop"></a>
 
-
-		<!-- PRELOADER -->
-		<div id="preloader">
-			<div class="inner">
-				<span class="loader"></span>
-			</div>
-		</div><!-- /PRELOADER -->
+		
