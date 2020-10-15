@@ -69,5 +69,6 @@ gem 'bootstrap-social-rails'
 
 gem 'activeadmin'
 gem 'devise'
-gem 'jquery-rails', '~> 4.4'
+#gem 'jquery-rails', '~> 4.4'
 gem 'owlcarousel-rails', '~> 2.2', '>= 2.2.3.5'
+gem 'jquery-rails'

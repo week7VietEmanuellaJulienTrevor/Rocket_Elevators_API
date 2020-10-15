@@ -19,9 +19,9 @@ jQuery(document).ready(function() {
 			navigationType		= "bullet",
 			navigationArrows	= "solo",
 			navigationVOffset	= 10;
-
+			
 		// Shadow
-		_shadow = jQuery(".fullwidthbanner").attr('data-shadow') || 0;
+		var _shadow = jQuery(".fullwidthbanner").attr('data-shadow') || 0;
 
 		// Small Thumbnails
 		if(jQuery(".fullwidthbanner").hasClass('thumb-small')) {
