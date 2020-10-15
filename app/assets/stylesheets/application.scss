@@ -12,6 +12,17 @@
  *
  *= require_tree .
  *= require_self
+
+
+ *= require_settings
+ *= require_bootstap.min
+ *= require_custom-form-v2
+ *= require_darkblue
+ *= require_essentials
+ *= require_extralayers
+ *= require_header-3
+ *= require_plugins=hover-buttons
+ *= require_layout
  */
 
 
@@ -38,13 +49,20 @@
 //to stop having the fontawsome 404
  @import "font-awesome-sprockets";
  @import "font-awesome";
+ @import "font/*";
+
 
  //import css files
  @import "layout";
  @import "essentials";
  @import "./*";
 
- //
+ //ùRocket app file manual migration
 
+ @import "plugins/*";
+ @import "plugins/**/*";
+
+
+//
 @import "active_admin"
 
