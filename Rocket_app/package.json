@@ -2,9 +2,10 @@
   "name": "Rocket_app",
   "private": true,
   "dependencies": {
-    "jquery": "3.5.1",
-    "bootstrap": "4.5.2",
+    "bootstrap": "4.3.1",
+    "jquery": "^3.5.1",
     "popper": "1.0.1",
+    "popper.js": "^1.16.1",
     "turbolinks": "5.2.0"
   }
 }

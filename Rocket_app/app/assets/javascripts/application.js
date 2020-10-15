@@ -13,7 +13,9 @@
 
 //= require rails-ujs
 //= require bootstrap
+
 //= require jquery
+
 
 //= require_tree ./plugins/jquery
 //= require_tree ./view
