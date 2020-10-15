@@ -67,5 +67,6 @@ gem 'font-awesome-sass', '~> 4.3.0'
 gem 'jquery-ui-rails'
 gem 'bootstrap-social-rails'
 
-gem 'jquery-rails', '~> 4.4'
+#gem 'jquery-rails', '~> 4.4'
 gem 'owlcarousel-rails', '~> 2.2', '>= 2.2.3.5'
+gem 'jquery-rails'

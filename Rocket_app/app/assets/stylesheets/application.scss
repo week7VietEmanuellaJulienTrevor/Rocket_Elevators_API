@@ -12,21 +12,31 @@
  *
  *= require_tree .
  *= require_self
+ *= require_settings
+ *= require_bootstap.min
+ *= require_custom-form-v2
+ *= require_darkblue
+ *= require_essentials
+ *= require_extralayers
+ *= require_header-3
+ *= require_plugins=hover-buttons
+ *= require_layout
+
  */
 
+ 
  @import "bootstrap-sprockets";
  @import "bootstrap";
- //@import "font-awesome-sprockets";
- //@import "font-awesome";
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
  @import "bootstrap-social";
  @import "pages";
- //@import "layout";
  @import "essentials";
  @import "custom-forms-v2";
  @import "darkblue";
  @import "header-3";
  @import "plugin-hover-buttons";
- //@import "layout.css";
  @import "settings";
  @import "extralayers";
+ @import "layout";
 
