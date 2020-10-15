@@ -82,3 +82,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'owlcarousel-rails', '~> 2.2', '>= 2.2.3.5'
 gem 'popper_js', '~> 1.16'
+
+#try new gems for countdown
+
+gem 'jquery-countdown-rails', '~> 2.0', '>= 2.0.2'

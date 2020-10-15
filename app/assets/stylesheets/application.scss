@@ -19,7 +19,7 @@
  @import "bootstrap";
  @import "bootstrap-social";
  @import "pages";
- @import "essentials.css";
+ @import "essentials";
  @import "custom-forms-v2";
  @import "darkblue";
  @import "header-3";
@@ -31,15 +31,20 @@
  @import "owl.pack";
  @import "owl.theme";
  @import "owl.transitions";
- @import "./*";
+
+ 
+
 
 //to stop having the fontawsome 404
  @import "font-awesome-sprockets";
  @import "font-awesome";
 
- //import layout
+ //import css files
  @import "layout";
  @import "essentials";
  @import "./*";
 
+ //
+
+@import "active_admin"
 
