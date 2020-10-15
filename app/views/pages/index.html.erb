@@ -1,57 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-		<meta charset="utf-8" />
-		<title>RocketElevators</title>
-		<meta name="description" content="RocketElevators - Elevate Safety, Speed and Style" />
-		<meta name="Author" content="Fabien Dimitrov [artificialsoda.github.io]" />
-
-		<!-- mobile settings -->
-		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
-		<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-
-		<link rel="icon" href="https://cdn.discordapp.com/attachments/750751696128311304/751172521709011095/LOGO_702x702.png">
-		<!-- WEB FONTS : use %7C instead of | (pipe) -->
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
-
-		<!-- CORE CSS -->
-		<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-		<!-- REVOLUTION SLIDER -->
-		<link href="assets/plugins/slider.revolution/css/extralayers.css" rel="stylesheet" type="text/css" />
-		<link href="assets/plugins/slider.revolution/css/settings.css" rel="stylesheet" type="text/css" />
-
-		<!-- THEME CSS -->
-		<link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
-		<link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
-
-		<!-- PAGE LEVEL SCRIPTS -->
-		<link href="assets/css/header-3.css" rel="stylesheet" type="text/css" />
-		<link href="assets/css/color_scheme/darkblue.css" rel="stylesheet" type="text/css" id="color_scheme" />
-	</head>
-
-	
-	<!--
-		AVAILABLE BODY CLASSES:
-		
-		smoothscroll 			= create a browser smooth scroll
-		enable-animation		= enable WOW animations
-
-		bg-grey					= grey background
-		grain-grey				= grey grain background
-		grain-blue				= blue grain background
-		grain-green				= green grain background
-		grain-blue				= blue grain background
-		grain-orange			= orange grain background
-		grain-yellow			= yellow grain background
-		
-		boxed 					= boxed layout
-		pattern1 ... patern11	= pattern background
-		menu-vertical-hide		= hidden, open on click
-
-	-->
-	<body class="smoothscroll enable-animation">
 
 		<!-- SLIDE TOP -->
 		<div id="slidetop">
@@ -83,36 +29,9 @@
 		</div>
 		<!-- /SLIDE TOP -->
 
-
 		<!-- wrapper -->
 		<div id="wrapper">
 
-			<!-- 
-				AVAILABLE HEADER CLASSES
-
-				Default nav height: 96px
-				.header-md 		= 70px nav height
-				.header-sm 		= 60px nav height
-
-				.b-0 		= remove bottom border (only with transparent use)
-				.transparent	= transparent header
-				.translucent	= translucent header
-				.sticky			= sticky header
-				.static			= static header
-				.dark			= dark header
-				.bottom			= header on bottom
-				
-				shadow-before-1 = shadow 1 header top
-				shadow-after-1 	= shadow 1 header bottom
-				shadow-before-2 = shadow 2 header top
-				shadow-after-2 	= shadow 2 header bottom
-				shadow-before-3 = shadow 3 header top
-				shadow-after-3 	= shadow 3 header bottom
-
-				.clearfix		= required for mobile menu, do not remove!
-
-				Example Usage:  class="clearfix sticky header-sm transparent b-0"
-			-->
 			<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
 
 				<!-- TOP NAV -->
@@ -126,7 +45,8 @@
 
 						<!-- Logo -->
 						<a class="logo float-left scrollTo" href="#top">
-							<img src="assets/images/rocketelevatorassets/R2.png" alt="" />
+                            <%= image_tag("rocketelevatorassets/R2.png")%>
+
 						</a>
 
 						<!-- 
@@ -191,45 +111,16 @@
 
 			</div>
 
-
-
 			<!-- REVOLUTION SLIDER -->
 			<div class="slider fullwidthbanner-container roundedcorners">
-				<!--
-					Navigation Styles:
-					
-						data-navigationStyle="" theme default navigation
-						
-						data-navigationStyle="preview1"
-						data-navigationStyle="preview2"
-						data-navigationStyle="preview3"
-						data-navigationStyle="preview4"
-						
-					Bottom Shadows
-						data-shadow="1"
-						data-shadow="2"
-						data-shadow="3"
-						
-					Slider Height (do not use on fullscreen mode)
-						data-height="300"
-						data-height="350"
-						data-height="400"
-						data-height="450"
-						data-height="500"
-						data-height="550"
-						data-height="600"
-						data-height="650"
-						data-height="700"
-						data-height="750"
-						data-height="800"
-				-->
+			
 				<div id="home" class="fullwidthbanner" data-height="700" data-shadow="0" data-navigationStyle="preview2">
 					<ul class="hide">
 					
 						<!-- SLIDE  -->
 						<li data-transition="parallaxtobottom slider" data-slotamount="7" data-masterspeed="600"  data-saveperformance="off"  data-title="About Us">
 							<!-- MAIN IMAGE -->
-							<img src="demo_files/images/mdl-blue-min.jpg"  alt="cover image"  data-lazyload="demo_files/images/mdl-blue-min.jpg" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+							<%= image_tag("demo_files/images/mdl-blue-min.jpg", :alt => "cover image" , :data => "demo_files/images/mdl-blue-min.jpg", :data => "center top", :data=> "cover", :data => "no-repeat")%>
 
 							<div class="tp-caption white_big skewfromleft tp-resizeme"
 								data-x="300"
@@ -278,7 +169,7 @@
 								data-endelementdelay="0.1"
 								data-endspeed="300"
 								style="z-index: 4;">
-									<img src="demo_files/images/thematics/construction/worker-min.png" alt="">
+									<%= image_tag("demo_files/images/thematics/construction/worker-min.png", alt:"")%>
 							</div>
 							<div class="tp-caption skewfromleft tp-resizeme"
 								data-x="300"
@@ -313,9 +204,8 @@
 						<!-- SLIDE  -->
 						<li data-transition="parallaxtotop slider" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" data-title="Residential">
 							<!-- MAIN IMAGE -->
-							<img src="assets/images/rocketelevatorassets/AdobeStock_122227340.jpeg" alt="cover image"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+							<%= image_tag("rocketelevatorassets/AdobeStock_122227340.jpeg", :alt => "cover image" , :data => "demo_files/images/mdl-blue-min.jpg", :data => "center top", :data=> "cover", :data => "no-repeat")%>
 
-						
 							<div class="tp-caption font-roboto skewfromleft tp-resizeme"
 								data-x="50"
 								data-y="100" 
@@ -362,15 +252,16 @@
 								data-endelementdelay="0.1"
 								data-endspeed="500"
 								style="z-index: 4;">
-									<a class="btn btn-warning btn-lg slider-btn" href="residential.html">LEARN MORE &nbsp; <i class="fa fa-angle-right"></i></a>
+								<a class="btn btn-warning btn-lg slider-btn" href="residential.html">LEARN MORE &nbsp; <i class="fa fa-angle-right"></i></a>
 							</div>
 						</li>
 
 						<!-- SLIDE  -->
 						<li data-transition="parallaxtotop" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" data-title="Corporate">
 							<!-- MAIN IMAGE -->
-							<img src="assets/images/rocketelevatorassets/AdobeStock_146216308v2.jpeg" alt="cover image"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
+							<%= image_tag("rocketelevatorassets/AdobeStock_146216308v2.jpeg", :alt => "cover image" , :data => "demo_files/images/mdl-blue-min.jpg", :data => "center top", :data=> "cover", :data => "no-repeat")%>
+						
 							<div class="overlay dark-4"><!-- dark overlay [0 to 9 opacity] --></div>
 						
 							<div class="tp-caption font-roboto skewfromleft tp-resizeme"
@@ -423,8 +314,6 @@
 							</div>
 						</li>
 					
-
-
 					</ul>
 
 				</div>
@@ -440,8 +329,6 @@
 
 			</div>
 			<!-- /BUTTON CALLOUT -->
-
-
 			
 			<!-- Services -->
 			<section id="services">
@@ -450,14 +337,14 @@
 					<div class="row">
 						<div class="col-sm-4">
 						
-							<img class="img-fluid" style="cursor: pointer" src="assets/images/rocketelevatorassets/1stribbon-1.jpg" alt="img" />
+							<%= image_tag("rocketelevatorassets/1stribbon-1.jpg",class:"img-fluid", style:"cursor: pointer", alt:"img") %>
 							<h3 class="mt-10">99%+ Client Satisfaction</h3>
 							<p>We're by far one of the <strong>best</strong> in Canada. We are holders of numerous awards and have completed many major projects.</p> <!-- several major projects under our belt.</p> -->
 							<a href="#portfolio" class="btn btn-default">TAKE A LOOK</a>
 						</div>
 
 						<div class="col-sm-4">
-							<img class="img-fluid" style="cursor: pointer" src="assets/images/rocketelevatorassets/1stribbon-2.jpg" alt="img" />
+							<%= image_tag("rocketelevatorassets/1stribbon-2.jpg", class:"img-fluid", style:"cursor: pointer", alt:"img") %>
 							</a>
 							<h3 class="mt-10">Residential&#8482; Work</h3>
 							<p>Make your tenants happy with our aesthetically-pleasing <strong>top quality</strong> elevators. We'll do what's right for you and your budget.</p>
@@ -465,7 +352,7 @@
 						</div>
 
 						<div class="col-sm-4">
-							<img class="img-fluid" style="cursor: pointer" src="assets/images/rocketelevatorassets/1stribbon-3.jpg" alt="img" />
+							<%= image_tag("rocketelevatorassets/1stribbon-3.jpg", class:"img-fluid", style:"cursor: pointer", alt:"img") %>
 							<h3 class="mt-10">Corporate&#8482; Work</h3>
 							<p>Elevate your company, whether big or small, to the <strong>next level</strong> with our cutting-edge innovative elevator technology.</p>
 							<a href="corporate.html" class="btn btn-default">LEARN MORE</a>
@@ -475,11 +362,9 @@
 			</section>
 			<!-- /Services -->
 
-			
-
-
 			<!-- Parallax -->
-			<section class="parallax parallax-1" style="background-image: url('assets/images/rocketelevatorassets/AdobeStock_162479912.jpeg')">
+			<section class="parallax parallax-1", style = "background-image: url('rocketelevatorassets/AdobeStock_162479912.jpeg')">
+				
 				<div class="overlay dark-5"><!-- dark overlay [1 to 9 opacity] --></div>
 
 				<div class="container text-center">
@@ -496,6 +381,7 @@
 				</div>
 			</section>
 			<!-- /Parallax -->
+			
 			<!-- PORTFOLIO -->
 			<section>
 				<div id="work" class="container">
@@ -534,7 +420,7 @@
 											</span>
 										</span>
 
-										<img class="img-responsive" src="assets/images/rocketelevatorassets/portfolio/cntower2.jpg" width="600" height="399" alt="">
+										<%= image_tag("rocketelevatorassets/portfolio/cntower2.jpg", class:"img-responsive",  width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -547,7 +433,6 @@
 								</div>
 
 							</div><!-- /item -->
-
 
 							<div class="col-md-3 col-sm-3 mix corporate"><!-- item -->
 
@@ -564,7 +449,7 @@
 											</span>
 										</span>
 
-										<img class="img-responsive" src="assets/images/rocketelevatorassets/portfolio/futuristicbuilding.jpg" width="600" height="399" alt="">
+										<%= image_tag("rocketelevatorassets/portfolio/futuristicbuilding.jpg", class:"img-responsive", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -577,7 +462,6 @@
 								</div>
 
 							</div><!-- /item -->
-
 
 							<div class="col-md-3 col-sm-3 mix corporate"><!-- item -->
 
@@ -594,7 +478,7 @@
 											</span>
 										</span>
 
-										<img class="img-responsive" src="assets/images/rocketelevatorassets/portfolio/city.jpg" width="600" height="399" alt="">
+										<%= image_tag("rocketelevatorassets/portfolio/city.jpg",  class:"img-responsive", width:"600", height:"399", alt:"") %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -607,7 +491,6 @@
 								</div>
 
 							</div><!-- /item -->
-
 
 							<div class="col-md-3 col-sm-3 mix corporate"><!-- item -->
 
@@ -624,7 +507,7 @@
 											</span>
 										</span>
 
-										<img class="img-responsive" src="assets/images/rocketelevatorassets/portfolio/glasselevator.png" width="600" height="399" alt="">
+									    <%=image_tag("rocketelevatorassets/portfolio/glasselevator.png", class:"img-responsive", width:"600", height:"399", alt:"")%>
 									</figure>
 									<div class="item-box-desc">
 										<h3>Unity Montreal HQ</h3>
@@ -636,7 +519,6 @@
 								</div>
 
 							</div><!-- /item -->
-
 							
 							<div class="col-md-3 col-sm-3 mix residential"><!-- item -->
 
@@ -653,7 +535,7 @@
 											</span>
 										</span>
 
-										<img class="img-responsive" src="assets/images/rocketelevatorassets/portfolio/elevatorgeneric4.jpeg " width="600" height="399" alt="">
+										<%= image_tag("rocketelevatorassets/portfolio/elevatorgeneric4.jpeg", class:"img-responsive", width:"600", height:"399", alt:"")%>
 									</figure>
 
 									<div class="item-box-desc">
@@ -666,7 +548,6 @@
 								</div>
 
 							</div><!-- /item -->
-
 
 							<div class="col-md-3 col-sm-3 mix awards"><!-- item -->
 
@@ -683,7 +564,7 @@
 											</span>
 										</span>
 
-										<img class="img-responsive" src="assets/images/rocketelevatorassets/portfolio/b.png" width="600" height="399" alt="">
+										<%= image_tag("rocketelevatorassets/portfolio/b.png", alt: "", class: "img-responsive", :size => '600x399') %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -696,9 +577,6 @@
 								</div>
 
 							</div><!-- /item -->
-
-
-							
 
 							<div class="col-md-3 col-sm-3 mix awards"><!-- item -->
 
@@ -715,7 +593,8 @@
 											</span>
 										</span>
 
-										<img class="img-responsive" src="assets/images/rocketelevatorassets/portfolio/a.png" width="600" height="399" alt="">
+										<%= image_tag("rocketelevatorassets/portfolio/a.png", alt: "", class: "img-responsive", :size => '600x399') %>
+
 									</figure>
 
 									<div class="item-box-desc">
@@ -744,7 +623,8 @@
 											</span>
 										</span>
 
-										<img class="img-responsive center-block" src="assets/images/rocketelevatorassets/portfolio/highrise.png" width="600" height="399" alt="">
+										<%= image_tag("rocketelevatorassets/portfolio/highrise.png", alt: "", class: "img-responsive center-block", :size => '600x399') %>
+
 									</figure>
 
 									<div class="item-box-desc">
@@ -773,8 +653,8 @@
 
 											</span>
 										</span>
+										<%= image_tag("rocketelevatorassets/portfolio/redelevator.png", alt: "", class: "img-responsive", :size => '600x399') %>
 
-										<img class="img-responsive" src="assets/images/rocketelevatorassets/portfolio/redelevator.png" width="600" height="399" alt="">
 									</figure>
 
 									<div class="item-box-desc">
@@ -802,8 +682,7 @@
 												</a>
 											</span>
 										</span>
-
-										<img class="img-responsive" src="assets/images/rocketelevatorassets/portfolio/ceilingelevator.png" width="600" height="399" alt="">
+										<%= image_tag("rocketelevatorassets/portfolio/ceilingelevator.png", alt: "", class: "img-responsive", :size => '600x399') %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -816,7 +695,6 @@
 								</div>
 
 							</div><!-- /item -->
-
 
 							<div class="col-md-3 col-sm-3 mix residential"><!-- item -->
 
@@ -833,7 +711,7 @@
 											</span>
 										</span>
 
-										<img class="img-responsive" src="assets/images/rocketelevatorassets/portfolio/cooldesignelevator.png" width="600" height="399" alt="">
+										<%= image_tag("rocketelevatorassets/portfolio/cooldesignelevator.png", alt: "", class: "img-responsive", :size => '600x399') %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -846,7 +724,6 @@
 								</div>
 
 							</div><!-- /item -->
-
 													
 							<div class="col-md-3 col-sm-3 mix residential"><!-- item -->
 
@@ -862,8 +739,7 @@
 												</a>
 											</span>
 										</span>
-
-										<img class="img-responsive" src="assets/images/rocketelevatorassets/portfolio/coolresidential.png" width="600" height="399" alt="">
+										<%= image_tag("rocketelevatorassets/portfolio/coolresidential.png", alt: "", class: "img-responsive", :size => '600x399') %>
 									</figure>
 
 									<div class="item-box-desc">
@@ -876,9 +752,7 @@
 
 							</div><!-- /item -->
 
-
 						</div>
-
 				</div>
 			</section>
 			<!-- Staff -->
@@ -892,7 +766,7 @@
 					<div class="owl-carousel text-center owl-testimonial m-0" data-plugin-options='{"singleItem": true, "autoPlay": 3500, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
 						<div class="testimonial">
 							<figure>
-								<img class="rounded" src="assets/images/rocketelevatorassets/ceo-employee/ceo.jpg" alt="" />
+								<% image_tag("rocketelevatorassets/ceo-employee/ceo.jpg", class: "rounded", alt: "") %>
 							</figure>
 							<div class="testimonial-content p-0">
 								<p class="lead">"I am very thankful to have been given the opportunity to lead the fantastic team behind one of North America's most promising and most innovative companies."</p>
@@ -904,7 +778,7 @@
 						</div>
 						<div class="testimonial">
 							<figure>
-								<img class="rounded" src="assets/images/rocketelevatorassets/ceo-employee/employeeofthemonth.jpg" alt="" />
+								<%= image_tag("rocketelevatorassets/ceo-employee/employeeofthemonth.jpg", class: "rounded",  alt: "")%>
 							</figure>
 							<div class="testimonial-content p-0">
 								<p class="lead">"I am grateful to have been able to call RocketElevators my home for the past 4 years; it is the only place so far that has matched my enormous passion for technology."</p>
@@ -928,29 +802,10 @@
 						<h2>Recent News</h2>
 					</div>
 
-					<!-- 
-						controlls-over		= navigation buttons over the image 
-						buttons-autohide 	= navigation buttons visible on mouse hover only
-						
-						data-plugin-options:
-							"singleItem": true
-							"autoPlay": true (or ms. eg: 4000)
-							"navigation": true
-							"pagination": true
-							"items": "4"
-
-						owl-carousel item paddings
-							.owl-padding-0
-							.owl-padding-3
-							.owl-padding-6
-							.owl-padding-10
-							.owl-padding-15
-							.owl-padding-20
-					-->
 					<div class="owl-carousel owl-padding-10 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items":"3", "autoPlay": 4000, "navigation": true, "pagination": false}'>
 						<div class="img-hover">
 							<a target="_blank" href="https://www.ctvnews.ca/health/coronavirus/new-normal-elevators-moving-touchless-mobile-and-sideways-1.5045643">
-								<img class="img-responsive" src="assets/images/rocketelevatorassets/news/cov-l.jpg" alt="" width="100%" height="240px">
+								<%=image_tag("rocketelevatorassets/news/cov-l.jpg", class:"img-responsive",  alt:"", width:"100%", height:"240px")%>
 							</a>
 							<h4 class="text-left mt-20"><a target="_blank" href="https://www.ctvnews.ca/health/coronavirus/new-normal-elevators-moving-touchless-mobile-and-sideways-1.5045643">IMPACTS OF COVID-19</a></h4>
 							<p class="text-left">How will the elevator industry be affected by the recent COVID-19 pandemic?</p>
@@ -969,7 +824,7 @@
 						</div>
 						<div class="img-hover">
 							<a target="_blank" href="https://www.retirementliving.com/home-elevators">
-								<img class="img-responsive" src="assets/images/rocketelevatorassets/news/elevatorgeneric4.jpeg" alt="" width="100%" height="100%">
+								<%=image_tag("rocketelevatorassets/news/elevatorgeneric4.jpeg", class:"img-responsive", alt:"", width:"100%", height:"100%")%>
 							</a>
 							<h4 class="text-left mt-20"><a target="_blank" href="https://www.retirementliving.com/home-elevators">AFFORDABLE OPTIONS FOR ELEVATORS</a></h4>
 							<p class="text-left">Here's an extensive list of affordable options for elevator installation.</p>
@@ -988,7 +843,7 @@
 						</div>
 						<div class="img-hover">
 							<a target="_blank" href="https://delta-elevator.com/news">
-								<img class="img-responsive" src="assets/images/rocketelevatorassets/news/maintenance.jpeg" alt="" width="100%" height="100%">
+								<%=image_tag("rocketelevatorassets/news/maintenance.jpeg", class:"img-responsive",  alt:"", width:"100%", height:"100%")%>
 							</a>
 
 							<h4 class="text-left mt-20"><a target="_blank" href="https://delta-elevator.com/news">TIPS FOR ELEVATOR MAINTENANCE</a></h4>
@@ -1008,7 +863,7 @@
 						</div>
 						<div class="img-hover">
 							<a target="_blank" href="https://www.schindler.com/us/internet/en/about-us/media-north-america/press-releases.html">
-								<img class="img-responsive" src="assets/images/rocketelevatorassets/news/stock2.jpg" alt="" width="100%" height="100%">
+								<%=image_tag("rocketelevatorassets/news/stock2.jpg", class:"img-responsive", alt:"", width:"100%", height:"100%")%>
 							</a>
 
 							<h4 class="text-left mt-20"><a target="_blank" href="https://www.schindler.com/us/internet/en/about-us/media-north-america/press-releases.html">THIS YEAR'S WINS AND LOSSES</a></h4>
@@ -1028,7 +883,7 @@
 						</div>
 						<div class="img-hover">
 							<a target="_blank" href="https://www.sheridanlifts.com/blog/how-an-elevator-car-is-constructed/">
-								<img class="img-responsive" src="assets/images/rocketelevatorassets/news/elevatorhand.jpeg" alt="" width="100%" height="100%">
+								<%=image_tag("rocketelevatorassets/news/elevatorhand.jpeg", class:"img-responsive", alt:"", width:"100%", height:"100%")%>
 							</a>
 
 							<h4 class="text-left mt-20"><a target="_blank" href="https://www.sheridanlifts.com/blog/how-an-elevator-car-is-constructed/">ELLIES 2020 WINNER ANNOUNCED</a></h4>
@@ -1048,7 +903,7 @@
 						</div>
 						<div class="img-hover">
 							<a target="_blank" href="https://www.encyclopedia.com/science-and-technology/technology/technology-terms-and-concepts/elevator">
-								<img class="img-responsive" src="assets/images/rocketelevatorassets/news/metallurgy2.jpg" alt="" width="100%" height="100%"> 
+								<%=image_tag("rocketelevatorassets/news/metallurgy2.jpg", class:"img-responsive", alt:"", width:"100%", height:"100%")%> 
 							</a>
 
 							<h4 class="text-left mt-20"><a target="_blank" href="https://www.encyclopedia.com/science-and-technology/technology/technology-terms-and-concepts/elevator">NEW RULES AND REGULATIONS</a></h4>
@@ -1083,62 +938,62 @@
 					<ul class="row clients-dotted list-inline">
 						<li class="col-md-3 col-sm-3 col-6">
 							<a target="_blank" href="https://www.google.ca">
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/clients/google.png" alt="client"/>
+								<%=image_tag("rocketelevatorassets/clients/google.png", alt:"client", class:"img-fluid" )%>
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a target="_blank" href="https://www.instagram.com">
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/clients/instagramv3.png" alt="client" />
+								<%=image_tag("rocketelevatorassets/clients/instagramv3.png", class:"img-fluid", alt:"client") %>
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a target="_blank" href="https://www.groupeadonis.ca">
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/clients/adovi.png" alt="client" />
+								<%=image_tag("rocketelevatorassets/clients/adovi.png", class:"img-fluid", alt:"client") %>
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a target="_blank" href="https://www.youtube.ca">
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/clients/youtube.png" alt="client" />
+								<%=image_tag("rocketelevatorassets/clients/youtube.png", class:"img-fluid",  alt:"client")%>
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a target="_blank" href="https://www.twitter.com">
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/clients/twitter.png" alt="client" />
+								<%=image_tag("rocketelevatorassets/clients/twitter.png", class:"img-fluid", alt:"client") %>
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a target="_blank" href="https://www.sony.ca">
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/clients/sony.png" alt="client" />
+								<%=image_tag("rocketelevatorassets/clients/sony.png", class:"img-fluid",  alt:"client") %>
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a target="_blank" href="https://www.adidas.ca">
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/clients/adidas.png" alt="client" />
+								<%=image_tag("rocketelevatorassets/clients/adidas.png", class:"img-fluid", alt:"client") %>
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a target="_blank" href="https://www.discord.com">
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/clients/discord.png" alt="client" />
+								<%=image_tag("rocketelevatorassets/clients/discord.png", class:"img-fluid", alt:"client") %>
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a target="_blank" href="https://www.ubisoft.com/en-ca">
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/clients/ubisoft.png" alt="client" />
+								<%=image_tag("rocketelevatorassets/clients/ubisoft.png", class:"img-fluid", alt:"client") %>
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a target="_blank" href="https://www.blizzard.com">
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/clients/blizzard.png" alt="client" />
+								<%=image_tag("rocketelevatorassets/clients/blizzard.png", alt:"client", class:"img-fluid") %>
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a target="_blank" href="https://www.bmo.com">
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/clients/bmo.png" alt="client" />
+								<%=image_tag("rocketelevatorassets/clients/bmo.png", class:"img-fluid", alt:"client") %>
 							</a>
 						</li>
 						<li class="col-md-3 col-sm-3 col-6">
 							<a target="_blank" href="https://www.fungo.ca">
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/clients/fungo2.png" alt="client" />
+								<%=image_tag("rocketelevatorassets/clients/fungo2.png", class:"img-fluid", alt:"client") %>
 							</a>
 						</li>
 					</ul>
@@ -1146,9 +1001,6 @@
 				</div>
 			</section>
 			<!-- /Clients -->
-
-
-
 
 			<!-- CONTACT -->
 			<section id="contact">
@@ -1160,7 +1012,6 @@
 						<hr />
 					</header>
 
-
 					<div class="row">
 
 						<!-- FORM -->
@@ -1168,37 +1019,11 @@
 
 							<h3>Fill out this form if you have any <strong><em>questions</em></strong> or <strong><em>concerns</em></strong>.</h3>
 
-							
-							<!--
-								MESSAGES
-								
-									How it works?
-									The form data is posted to php/contact.php where the fields are verified!
-									php.contact.php will redirect back here and will add a hash to the end of the URL:
-										#alert_success 		= email sent
-										#alert_failed		= email not sent - internal server error (404 error or SMTP problem)
-										#alert_mandatory	= email not sent - required fields empty
-										Hashes are handled by assets/js/contact.js
-
-									Form data: required to be an array. Example:
-										contact[email][required]  WHERE: [email] = field name, [required] = only if this field is required (PHP will check this)
-										Also, add `required` to input fields if is a mandatory field. 
-										Example: <input required type="email" value="" class="form-control" name="contact[email][required]">
-
-									PLEASE NOTE: IF YOU WANT TO ADD OR REMOVE FIELDS (EXCEPT CAPTCHA), JUST EDIT THE HTML CODE, NO NEED TO EDIT php/contact.php or javascript
-												 ALL FIELDS ARE DETECTED DINAMICALY BY THE PHP
-
-									WARNING! Do not change the `email` and `name`!
-												contact[name][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
-												contact[email][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
-							-->
-
 							<!-- Alert Success -->
 							<div id="alert_success" class="alert alert-success mb-30">
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 								<strong>Thank You!</strong> Your message successfully sent!
 							</div><!-- /Alert Success -->
-
 
 							<!-- Alert Failed -->
 							<div id="alert_failed" class="alert alert-danger mb-30">
@@ -1206,13 +1031,11 @@
 								<strong>[SMTP] Error!</strong> Internal server error!
 							</div><!-- /Alert Failed -->
 
-
 							<!-- Alert Mandatory -->
 							<div id="alert_mandatory" class="alert alert-danger mb-30">
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 								<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
 							</div><!-- /Alert Mandatory -->
-
 
 							<form method="post" enctype="multipart/form-data">
 								<fieldset>
@@ -1290,26 +1113,11 @@
 						</div>
 						<!-- /FORM -->
 
-
 						<!-- INFO -->
 						<div class="col-md-4 col-sm-4">
 
 							<h2>Visit Us</h2>
 
-							<!-- 
-							Available heights
-								h-100
-								h-150
-								h-200
-								h-250
-								h-300
-								h-350
-								h-400
-								h-450
-								h-500
-								h-550
-								h-600
-							-->
 							<div id="map2" class="h-400">
 								<iframe width="589" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=589&amp;height=400&amp;hl=en&amp;q=4468%20Wellington%20St,%20Verdun,%20Quebec%20H4G%201W5%20Montreal+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
 							</div>
@@ -1331,11 +1139,9 @@
 			</section>
 			<!-- /CONTACT -->
 
-		
 			<!-- FOOTER -->
 			<footer id="footer">
 				<div class="container">
-
 
 					<div class="row">
 
@@ -1370,12 +1176,10 @@
 							</form>
 							<!-- /Newsletter Form -->
 
-
 						</div>
 						<!-- /col #2 -->
 
 					</div>
-
 
 				</div>
 
@@ -1399,36 +1203,4 @@
 		<!-- SCROLL TO TOP -->
 		<a href="#" id="toTop"></a>
 
-
-		<!-- PRELOADER -->
-		<div id="preloader">
-			<div class="inner">
-				<span class="loader"></span>
-			</div>
-		</div><!-- /PRELOADER -->
-
-
-		<!-- JAVASCRIPT FILES -->
-		<script>var plugin_path = 'assets/plugins/';</script>
-		<script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
-
-		<script src="assets/js/scripts.js"></script>
 		
-
-		<!-- REVOLUTION SLIDER -->
-		<script src="assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js"></script>
-		<script src="assets/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js"></script>
-		<script src="assets/js/view/demo.revolution_slider.js"></script>
-
-		<!-- PAGELEVEL SCRIPTS -->
-		<script src="assets/js/contact.js"></script>
-
-		<!-- 
-		GMAP.JS 
-		http://hpneo.github.io/gmaps/
-		-->
-		<script src="http://maps.google.com/maps/api/js?key=AIzaSyCqCn84CgZN6o1Xc3P4dM657HIxkX3jzPY"></script>
-		<script src="assets/plugins/gmaps.js"></script>
-
-	</body>
-</html>
