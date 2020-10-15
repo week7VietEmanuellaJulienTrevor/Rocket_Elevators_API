@@ -69,11 +69,5 @@ gem 'bootstrap-social-rails'
 
 gem 'activeadmin'
 gem 'devise'
-<<<<<<< HEAD
 gem 'jquery-rails'
 gem 'owlcarousel-rails', '~> 2.2', '>= 2.2.3.5'
-=======
-#gem 'jquery-rails', '~> 4.4'
-gem 'owlcarousel-rails', '~> 2.2', '>= 2.2.3.5'
-gem 'jquery-rails'
->>>>>>> 52aab08d9f0063ad2b8f98942c1839fe6d47c33c
