@@ -55,24 +55,18 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-<<<<<<< HEAD:Rocket_app/Gemfile.lock
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
-=======
     arbre (1.3.0)
       activesupport (>= 3.0.0, < 6.1)
       ruby2_keywords (>= 0.0.2, < 1.0)
->>>>>>> fb4226ad754a056ef597ce620091632a51d6ccd2:Gemfile.lock
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
     autoprefixer-rails (10.0.1.0)
       execjs
-<<<<<<< HEAD:Rocket_app/Gemfile.lock
     bcrypt_pbkdf (1.0.1)
-=======
     bcrypt (3.1.16)
->>>>>>> fb4226ad754a056ef597ce620091632a51d6ccd2:Gemfile.lock
     bindex (0.8.1)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
@@ -118,16 +112,13 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
-<<<<<<< HEAD:Rocket_app/Gemfile.lock
     ed25519 (1.2.4)
-=======
     devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
->>>>>>> fb4226ad754a056ef597ce620091632a51d6ccd2:Gemfile.lock
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.13.1)
@@ -310,11 +301,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD:Rocket_app/Gemfile.lock
   bcrypt_pbkdf (>= 1.0, < 2.0)
-=======
   activeadmin
->>>>>>> fb4226ad754a056ef597ce620091632a51d6ccd2:Gemfile.lock
   bootsnap (>= 1.1.0)
   bootstrap-sass (~> 3.3.4)
   bootstrap-social-rails
@@ -326,12 +314,9 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
-<<<<<<< HEAD:Rocket_app/Gemfile.lock
   ed25519 (>= 1.2, < 2.0)
-=======
   devise
   font-awesome-rails (~> 4.7, >= 4.7.0.5)
->>>>>>> fb4226ad754a056ef597ce620091632a51d6ccd2:Gemfile.lock
   font-awesome-sass (~> 4.3.0)
   jbuilder (~> 2.5)
   jquery-rails
