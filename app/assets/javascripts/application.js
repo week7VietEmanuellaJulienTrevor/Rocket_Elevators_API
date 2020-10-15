@@ -11,17 +11,25 @@
 // about supported directives.
 //
 
-//= require popper.min
 //= require jquery
 //= require jquery_ujs
+//= require popper
 //= require bootstrap
-//= require gmaps
-//= require bootstrap.min
-//= require_directory ./plugins
-//= require_tree ./view
-//= require_tree ./plugins/slider.revolution
-//= require_tree ./plugins/bootstrap
-//= require_tree ./plugins/owl-carousel
-//= require_tree ./plugins/owl-carousel-2
-//= require_tree ./plugins/owl-carousel-2/assets
+//= require pages/demo.revolution_slider
+//= require pages/jquery.themepunch.revolution.min
+//= require pages/jquery.themepunch.tools.min
+//= require pages/jquery.mixitup.min
+//= require pages/owl.carousel
+//= require quote
+//= require pages/jquery.themepunch.enablelog
+//= require pages/smoothscroll
+//= require pages/jquery.nav.min
+//= require pages/scripts
+
+//= require turbolinks
+
+
+
+
+
 

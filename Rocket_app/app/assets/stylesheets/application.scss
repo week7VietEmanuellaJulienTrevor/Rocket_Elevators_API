@@ -12,28 +12,36 @@
  *
  *= require_tree .
  *= require_self
- */
+ *= require_settings
+ *= require_bootstap.min
+ *= require_custom-form-v2
+ *= require_darkblue
+ *= require_essentials
+ *= require_extralayers
+ *= require_header-3
+ *= require_plugins=hover-buttons
+ *= require_layout
 
+ */
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
- @import "bootstrap-social";
- @import "pages";
- @import "essentials.css";
- @import "custom-forms-v2";
- @import "darkblue";
- @import "header-3";
- @import "plugin-hover-buttons";
- @import "settings";
- @import "extralayers";
- @import "layout";
- @import "owl.carousel";
- @import "owl.pack";
- @import "owl.theme";
- @import "owl.transitions";
- @import "./*";
-
-//to stop having the fontawsome 404
  @import "font-awesome-sprockets";
  @import "font-awesome";
+ @import "bootstrap-social";
+
+ @import "essentials";
+ @import "custom-forms-v2";
+ @import "darkblue";
+ @import "font/*";
+ @import "active_admin";
+
+ @import "plugin-hover-buttons";
+ @import "extralayers";
+ @import "plugins/*";
+ @import "plugins/**/*";
+ @import "settings";
+ @import "pages";
+ @import "header-3";
+ @import "layout";
 
