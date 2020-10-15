@@ -58,26 +58,12 @@ ActiveRecord::Schema.define(version: 2020_10_15_193731) do
     t.integer "no_of_distinct_businesses"
     t.integer "max_occupants_per_floors"
     t.datetime "created_at", null: false
-<<<<<<< HEAD:db/schema.rb
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "title"
-    t.string "email"
-    t.string "password"
-    t.string "token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-=======
     t.integer "num_elevators"
     t.string "product_grade"
     t.integer "elevator_cost"
     t.integer "installation_cost"
     t.integer "total_cost"
->>>>>>> 2b50e618a9755e7e7349a71d1e748f806c4ae047:Rocket_app/db/schema.rb
   end
 
 end

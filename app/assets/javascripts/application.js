@@ -27,14 +27,6 @@
 
 //= require gmaps
 //= require bootstrap.min
-//= require_directory ./plugins
-//= require_tree ./view
-//= require_tree ./plugins/slider.revolution
-//= require_tree ./plugins/bootstrap
-//= require_tree ./plugins/owl-carousel
-//= require_tree ./plugins/owl-carousel-2
-//= require_tree ./plugins/owl-carousel-2/assets
-
 
 
 
