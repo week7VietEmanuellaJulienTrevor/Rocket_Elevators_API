@@ -160,9 +160,9 @@ $(document).ready(function(){
                 function(data)
                 {
                     $("#num-shafts").val(data.totalElevators);
-                    $("#elevator-price").val("$" + data.elevatorPrice.toFixed(2));
-                    $("#installation-price").val("$" + data.installationPrice.toFixed(2));
-                    $("#total-estimate").val("$" + data.totalEstimate.toFixed(2));
+                    $("#elevator-price").val("$" + data.elevatorPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+                    $("#installation-price").val("$" + data.installationPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+                    $("#total-estimate").val("$" + data.totalEstimate.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
                 } 
             );
         }
@@ -180,9 +180,9 @@ $(document).ready(function(){
             function(data)
             {
                 $("#num-shafts").val(data.totalElevators);
-                $("#elevator-price").val("$" + data.elevatorPrice.toFixed(2));
-                $("#installation-price").val("$" + data.installationPrice.toFixed(2));
-                $("#total-estimate").val("$" + data.totalEstimate.toFixed(2));
+                $("#elevator-price").val("$" + data.elevatorPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+                $("#installation-price").val("$" + data.installationPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+                $("#total-estimate").val("$" + data.totalEstimate.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
             } 
         );
         }
@@ -201,9 +201,9 @@ $(document).ready(function(){
                 function(data)
                 {
                     $("#num-shafts").val(data.totalElevators);
-                    $("#elevator-price").val("$" + data.elevatorPrice.toFixed(2));
-                    $("#installation-price").val("$" + data.installationPrice.toFixed(2));
-                    $("#total-estimate").val("$" + data.totalEstimate.toFixed(2));
+                    $("#elevator-price").val("$" + data.elevatorPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+                    $("#installation-price").val("$" + data.installationPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+                    $("#total-estimate").val("$" + data.totalEstimate.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
                 } 
             );
         }

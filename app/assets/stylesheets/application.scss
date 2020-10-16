@@ -43,21 +43,12 @@
  @import "owl.theme";
  @import "owl.transitions";
 
+ @import "./*";
  
-
-
 //to stop having the fontawsome 404
  @import "font-awesome-sprockets";
  @import "font-awesome";
 
 
- //import css files
- @import "layout";
- @import "essentials";
- @import "./*";
-
-
-
-
 //
-@import "active_admin";
+ @import "active_admin";
