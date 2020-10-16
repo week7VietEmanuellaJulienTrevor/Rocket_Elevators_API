@@ -14,21 +14,22 @@
 //= require jquery
 //= require jquery_ujs
 
+//= require pages/jquery.nav.min
+
+//= require bootstrap
+//= require bootstrap-sprockets
+//= require bootstrap.min
+
 
 //= require popper.min
 //= require popper
 
-//= require bootstrap-sprockets
-
-//= require bootstrap
-
-
+//= require turbolinks
 
 
 //= require gmaps
-//= require bootstrap.min
 
-
+//= require_tree .
 
 
 
@@ -39,15 +40,12 @@
 //= require pages/jquery.themepunch.tools.min
 //= require pages/jquery.mixitup.min
 //= require pages/owl.carousel
-//= require quote
 //= require pages/jquery.themepunch.enablelog
 //= require pages/smoothscroll
-//= require pages/jquery.nav.min
 //= require pages/scripts
-//= require turbolinks
 
-//= require_tree .
 
+//= require quote
 
 
 
