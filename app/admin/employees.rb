@@ -10,7 +10,7 @@ ActiveAdmin.register Employee do
     column :last_name
     column :title
     column :email
-    #actions
+    actions
   end
 
   filter :first_name

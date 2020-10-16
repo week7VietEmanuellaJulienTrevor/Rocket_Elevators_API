@@ -8,7 +8,4 @@ class PagesController < ApplicationController
 
     def corporate
     end
-
-    def quote
-    end
 end
