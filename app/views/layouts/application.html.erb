@@ -2,19 +2,17 @@
 <html>
   <head>
     <title>RocketApp</title>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+    <meta charset="utf-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= favicon_link_tag 'LOGO_702x702.png'%>
 
-    <meta charset="utf-8">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     
     <% if params[:controller].include?('active_admin') %>
-      <%= stylesheet_link_tag    'active_admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag 'active_admin', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'active_admin', 'data-turbolinks-track': 'reload' %>
     <% end %>
 
