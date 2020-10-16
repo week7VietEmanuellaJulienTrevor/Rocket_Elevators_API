@@ -14,23 +14,23 @@
 //= require jquery
 //= require jquery_ujs
 
-
-//= require popper.min
-//= require popper
-
-//= require bootstrap-sprockets
-
 //= require bootstrap
 
 
-
-
-//= require gmaps
-//= require bootstrap.min
+//= require popper
 
 
 
 
+//= require pages/demo.revolution_slider
+
+
+//= require pages/owl.carousel
+//= require quote
+//= require pages/smoothscroll
+//= require pages/scripts
+
+//= require turbolinks
 
 
 
@@ -44,12 +44,6 @@
 //= require pages/smoothscroll
 //= require pages/jquery.nav.min
 //= require pages/scripts
-
-//= require turbolinks
-
-//= require_tree .
-
-
 
 
 

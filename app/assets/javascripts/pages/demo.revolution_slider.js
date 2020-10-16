@@ -198,7 +198,7 @@ jQuery(document).ready(function() {
 					hideCaptionAtLimit:768,
 					hideAllCaptionAtLilmit:0,
 					startWithSlide:0,
-					fullScreenOffsetContainer: jQuery("#header").hasClass('transparent') || jQuery("#header").hasClass('translucent') ? null : "#header"	
+					fullScreenOffsetContainer: jQuery("#head").hasClass('transparent') || jQuery("#head").hasClass('translucent') ? null : "#head"	
 				});
 
 			}

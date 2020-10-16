@@ -115,15 +115,15 @@ function loadScript(e, t) {
 }
 function _slider_full() {
   (_headerHeight = 0),
-    jQuery("#header").hasClass("transparent") ||
-    jQuery("#header").hasClass("translucent")
+    jQuery("#head").hasClass("transparent") ||
+    jQuery("#head").hasClass("translucent")
       ? (_headerHeight = 0)
-      : ((_headerHeight = jQuery("#header").outerHeight() || 0),
+      : ((_headerHeight = jQuery("#head").outerHeight() || 0),
         jQuery("#topBar").length > 0 &&
           ((_topBarHeight = jQuery("#topBar").outerHeight() || 0),
           (_headerHeight += _topBarHeight))),
     (_screenHeight = jQuery(window).height() - _headerHeight),
-    jQuery("#header").hasClass("static") &&
+    jQuery("#head").hasClass("static") &&
       (_screenHeight = jQuery(window).height()),
     jQuery("#slider").hasClass("halfheight") &&
       jQuery("#slider.halfheight").height(_screenHeight / 2),
@@ -139,7 +139,7 @@ function _slider_full() {
 }
 function _topNav() {
   (window.scrollTop = 0), (window._cmScroll = 0);
-  var e = jQuery("#header");
+  var e = jQuery("#head");
   jQuery(window).scroll(function () {
     jQuery(document).scrollTop() > 100
       ? jQuery("#toTop").is(":hidden") && jQuery("#toTop").show()
@@ -154,30 +154,30 @@ function _topNav() {
         t || jQuery(this).parents("li").addClass("resp-active");
     }),
     jQuery("li.search i.fa").click(function () {
-      jQuery("#header .search-box").is(":visible")
-        ? jQuery("#header .search-box").fadeOut(300)
+      jQuery("#head .search-box").is(":visible")
+        ? jQuery("#head .search-box").fadeOut(300)
         : (jQuery(".search-box").fadeIn(300),
-          jQuery("#header .search-box form input").focus(),
-          jQuery("#header li.quick-cart div.quick-cart-box").is(":visible") &&
-            jQuery("#header li.quick-cart div.quick-cart-box").fadeOut(300));
+          jQuery("#head .search-box form input").focus(),
+          jQuery("#head li.quick-cart div.quick-cart-box").is(":visible") &&
+            jQuery("#head li.quick-cart div.quick-cart-box").fadeOut(300));
     }),
-    0 != jQuery("#header li.search i.fa").size() &&
-      (jQuery("#header .search-box, #header li.search i.fa").on(
+    0 != jQuery("#head li.search i.fa").size() &&
+      (jQuery("#head .search-box, #head li.search i.fa").on(
         "click",
         function (e) {
           e.stopPropagation();
         }
       ),
       jQuery("body").on("click", function () {
-        jQuery("#header li.search .search-box").is(":visible") &&
-          jQuery("#header .search-box").fadeOut(300);
+        jQuery("#head li.search .search-box").is(":visible") &&
+          jQuery("#head .search-box").fadeOut(300);
       })),
     jQuery(document).bind("click", function () {
-      jQuery("#header li.search .search-box").is(":visible") &&
-        jQuery("#header .search-box").fadeOut(300);
+      jQuery("#head li.search .search-box").is(":visible") &&
+        jQuery("#head .search-box").fadeOut(300);
     }),
     jQuery("#closeSearch").bind("click", function (e) {
-      e.preventDefault(), jQuery("#header .search-box").fadeOut(300);
+      e.preventDefault(), jQuery("#head .search-box").fadeOut(300);
     }),
     jQuery("button#page-menu-mobile").bind("click", function () {
       jQuery(this).next("ul").slideToggle(150);
@@ -207,7 +207,7 @@ function _topNav() {
         jQuery(this).addClass("active"),
         jQuery(t).length > 0 &&
           ((_padding_top = 0),
-          jQuery("#header").hasClass("sticky") &&
+          jQuery("#head").hasClass("sticky") &&
             ((_padding_top = jQuery(t).css("padding-top")),
             (_padding_top = _padding_top.replace("px", ""))),
           jQuery("html,body").animate(
@@ -252,11 +252,11 @@ function _topNav() {
         jQuery(window).scroll(function () {
           jQuery(document).scrollTop() > window.homeHeight
             ? !0 === window.isOnTop &&
-              (jQuery("#header").addClass("fixed"),
+              (jQuery("#head").addClass("fixed"),
               e.removeClass("dropup"),
               (window.isOnTop = !1))
             : !1 === window.isOnTop &&
-              (jQuery("#header").removeClass("fixed"),
+              (jQuery("#head").removeClass("fixed"),
               e.addClass("dropup"),
               (window.isOnTop = !0));
         }),
@@ -452,10 +452,10 @@ function _topNav() {
   jQuery("#topBar").length > 0 && jQuery("#topNav ul").addClass("has-topBar"),
     jQuery(window).scroll(function () {
       window.width < 769 &&
-        (jQuery("#header li.quick-cart div.quick-cart-box").is(":visible") &&
-          jQuery("#header li.quick-cart div.quick-cart-box").fadeOut(0),
-        jQuery("#header li.search .search-box").is(":visible") &&
-          jQuery("#header .search-box").fadeOut(0));
+        (jQuery("#head li.quick-cart div.quick-cart-box").is(":visible") &&
+          jQuery("#head li.quick-cart div.quick-cart-box").fadeOut(0),
+        jQuery("#head li.search .search-box").is(":visible") &&
+          jQuery("#head .search-box").fadeOut(0));
     });
 }
 function _megaNavHorizontal() {
@@ -477,52 +477,52 @@ function _megaNavHorizontal() {
           jQuery("div", t).toggleClass("main-nav-open");
       });
   }
-  var n = jQuery("#header>.container").width() - 278,
-    r = jQuery("#header nav.main-nav").height();
+  var n = jQuery("#head>.container").width() - 278,
+    r = jQuery("#head nav.main-nav").height();
   function i() {
     jQuery("#main-nav-overlay").remove(),
-      jQuery("#header nav.main-nav").addClass("min-nav-active"),
+      jQuery("#head nav.main-nav").addClass("min-nav-active"),
       jQuery("body").append('<div id="main-nav-overlay"></div>'),
-      jQuery("#header button.nav-toggle-close").bind("click", function () {
-        jQuery("#header nav.main-nav").removeClass("min-nav-active");
+      jQuery("#head button.nav-toggle-close").bind("click", function () {
+        jQuery("#head nav.main-nav").removeClass("min-nav-active");
       }),
-      jQuery("#main-nav-overlay, #header").mouseover(function () {
+      jQuery("#main-nav-overlay, #head").mouseover(function () {
         a();
       });
   }
   function a() {
     jQuery("#main-nav-overlay").remove(),
-      jQuery("#header nav.main-nav").removeClass("min-nav-active");
+      jQuery("#head nav.main-nav").removeClass("min-nav-active");
   }
-  jQuery("#header nav.main-nav>div>ul>li>.main-nav-submenu").css({
+  jQuery("#head nav.main-nav>div>ul>li>.main-nav-submenu").css({
     "min-height": r + "px",
   }),
     jQuery(
-      "#header nav.main-nav>div>ul>li.main-nav-expanded>.main-nav-submenu"
+      "#head nav.main-nav>div>ul>li.main-nav-expanded>.main-nav-submenu"
     ).css({ width: n + "px" }),
-    jQuery("#header nav.main-nav>div>ul>li").bind("click", function (e) {
+    jQuery("#head nav.main-nav>div>ul>li").bind("click", function (e) {
       var t = jQuery(this);
       jQuery("div", t).hasClass("main-nav-open") ||
-        jQuery("#header nav.main-nav>div>ul>li>.main-nav-submenu").removeClass(
+        jQuery("#head nav.main-nav>div>ul>li>.main-nav-submenu").removeClass(
           "main-nav-open"
         ),
         jQuery("div", t).toggleClass("main-nav-open");
     }),
     window.width > 767
-      ? jQuery("#header button.nav-toggle").mouseover(function (e) {
+      ? jQuery("#head button.nav-toggle").mouseover(function (e) {
           e.preventDefault(), i();
         })
-      : jQuery("#header button.nav-toggle").bind("click", function (e) {
+      : jQuery("#head button.nav-toggle").bind("click", function (e) {
           e.preventDefault(), i();
         }),
     jQuery("body").on(
       "click",
-      "#header button.nav-toggle, #header nav.main-nav",
+      "#head button.nav-toggle, #head nav.main-nav",
       function (e) {
         e.stopPropagation();
       }
     ),
-    jQuery("#header button.nav-toggle, #header nav.main-nav").mouseover(
+    jQuery("#head button.nav-toggle, #head nav.main-nav").mouseover(
       function (e) {
         e.stopPropagation();
       }

@@ -15,3 +15,4 @@ Rails.application.routes.draw do
   post 'create' => 'quotes#create'
 
 end
+
