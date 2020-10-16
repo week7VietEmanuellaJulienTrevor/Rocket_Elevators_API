@@ -88,3 +88,5 @@ gem 'popper_js', '~> 1.9', '>= 1.9.9'
 #try new gems for countdown
 
 gem 'jquery-countdown-rails', '~> 2.0', '>= 2.0.2'
+
+
