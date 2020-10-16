@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
     def index
+        p params[:controller]
     end
     
     def residential

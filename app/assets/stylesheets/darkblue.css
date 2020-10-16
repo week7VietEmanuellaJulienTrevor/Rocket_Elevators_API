@@ -97,8 +97,8 @@
 	.btn-primary:focus,
 	.pagination>.active>a,
 	.pagination>.active>a:hover,
-	#head li.quick-cart .quick-cart-box a.btn,
-	#head li.quick-cart .quick-cart-box a.btn:hover, /* used by dark & transparent header */
+	#header li.quick-cart .quick-cart-box a.btn,
+	#header li.quick-cart .quick-cart-box a.btn:hover, /* used by dark & transparent header */
 	#topMain.nav-pills>li.active>a>span.theme-color ,
 	.ei-slider-thumbs li.ei-slider-element,			/* elastic slider active indicator */
 	.flex-control-paging li a.flex-active,				/* flex slider bullets */
