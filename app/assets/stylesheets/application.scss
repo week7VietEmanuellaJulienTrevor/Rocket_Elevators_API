@@ -15,7 +15,6 @@
 
 
  *= require_settings
- *= require_bootstrap.min
  *= require_custom-form-v2
  *= require_darkblue
  *= require_essentials
@@ -27,7 +26,6 @@
 
 
  @import "bootstrap-sprockets";
- @import "bootstrap";
  @import "bootstrap-social";
  @import "pages";
  @import "essentials";
@@ -46,7 +44,9 @@
  
 
 
- 
+
 //to stop having the fontawsome 404
  @import "font-awesome-sprockets";
  @import "font-awesome";
+
+ @import "./bootstrap/"
