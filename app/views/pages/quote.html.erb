@@ -271,33 +271,18 @@
                         <h3 class="text-center fw-400">Fill out this form about your project.</h3>
                         <fieldset>
                             <div class="row justify-content-center mb-10">
-							<%= form_for @quote, url: { action: "create" } do |f| %>
                                 <div class="col-md-6 ml-20 mr-20">
                                     <label for="building">BUILDING TYPE</label>
 								</div>
 								<div>
-                                    <%# <select id="building-type" class="form-control pointer" name="building">
+                                    <select id="building-type" class="form-control pointer" name="building">
                                         <option value="Residential">Residential</option>
                                         <option value="Corporate">Corporate</option>
                                         <option value="Commercial">Commercial</option>
                                         <option value="Hybrid">Hybrid</option>
-                                    </select> %>
-									<div>
-										<%= label_tag 'residential', 'Residential' %>
-										<%= check_box_tag 'quote[building_type][]', 'Residential', checked('Residential'), id: 'residential' %>
-
-										<%= label_tag 'corporate', 'Corporate' %>
-										<%= check_box_tag 'quote[building_type][]', 'Corporate', checked('Corporate'), id: 'corporate' %>
-
-										<%= label_tag 'commercial', 'Commercial' %>
-										<%= check_box_tag 'quote[building_type][]', 'Commercial', checked('Commercial'), id: 'commercial' %>
-
-										<%= label_tag 'hybrid', 'Hybrid' %>
-										<%= check_box_tag 'quote[building_type][]', 'Hybrid', checked('Hybrid'), id: 'hybrid' %>
-									</div>
+                                    </select>
                                 </div>
                             </div>
-							<%= f.submit %>
                             <div id="building-confirm-btn" class="row justify-content-center text-center">
                                 <div class="col-md-6 ml-20 mr-20">
                                     <button type="button" style="width: 100%" class="btn btn-primary"><i class="fa fa-check"></i>CONFIRM</button>
@@ -305,11 +290,8 @@
                             </div>
                             <div id="q1" class="row justify-content-center" style="display: none;">
                                     <div class="col-md-6 ml-20 mr-20">
-                                        <%# <label id="q1-label" for="question-1"></label>
-                                        <input required type="number" value="" min="0" max="100000" oninput="validity.valid||(value='');" class="form-control" name="question-1" id="question-1"> %>
-										<%# <%= f.label "Number of appartments" %><br> %>
-										<%= f.label :q1Label %>
-										<%= f.text_field :no_of_appartments %>
+                                        <label id="q1-label" for="question-1"></label>
+                                        <input required type="number" value="" min="0" max="100000" oninput="validity.valid||(value='');" class="form-control" name="question-1" id="question-1">
                                     </div>
                             </div>
 
@@ -475,61 +457,6 @@
 
 		<!-- SCROLL TO TOP -->
 		<a href="#" id="toTop"></a>
-
-<h1>QUOTE REQUEST FORM</h1>
-<h2>BUILDING TYPE</h2>
-
-
-<%= form_for @quote, url: { action: "create" } do |f| %>
-
-	<div>
-		<%= label_tag 'residential', 'Residential' %>
-		<%= check_box_tag 'quote[building_type][]', 'Residential', checked('Residential'), id: 'residential' %>
-
-		<%= label_tag 'corporate', 'Corporate' %>
-		<%= check_box_tag 'quote[building_type][]', 'Corporate', checked('Corporate'), id: 'corporate' %>
-
-		<%= label_tag 'commercial', 'Commercial' %>
-		<%= check_box_tag 'quote[building_type][]', 'Commercial', checked('Commercial'), id: 'commercial' %>
-
-		<%= label_tag 'hybrid', 'Hybrid' %>
-		<%= check_box_tag 'quote[building_type][]', 'Hybrid', checked('Hybrid'), id: 'hybrid' %>
-	</div>
-
-	<div>
-		<%= f.label "Number of appartments" %><br>
-		<%= f.text_field :no_of_appartments %>
-	</div>
-	<div>
-		<%= f.label "Number of floors" %><br>
-		<%= f.text_field :no_of_floors %>
-	</div>
-	<div>
-		<%= f.label "Number of basements" %><br>
-		<%= f.text_field :no_of_basements %>
-	</div>
-	<div>
-		<%= f.label "Number of elevators cages" %><br>
-		<%= f.text_field :no_of_elevators_cages %>
-	</div>
-	<div>
-		<%= f.label "Number of parking spaces" %><br>
-		<%= f.text_field :no_of_parking_spaces %>
-	</div>
-	<div>
-		<%= f.label "Number of tenant companies" %><br>
-		<%= f.text_field :no_of_tenant_companies %>
-	</div>
-	<div>
-		<%= f.label "Number of distinct businesses" %><br>
-		<%= f.text_field :no_of_distinct_businesses %>
-	</div>
-	<div>
-		<%= f.label "Max occupants per floors" %><br>
-		<%= f.text_field :max_occupants_per_floors %>
-	</div>
-	<%= f.submit %>
-<% end %>
 
 
 
