@@ -31,33 +31,6 @@
 		<!-- wrapper -->
 		<div id="wrapper">
 
-			<!-- 
-				AVAILABLE HEADER CLASSES
-
-				Default nav height: 96px
-				.header-md 		= 70px nav height
-				.header-sm 		= 60px nav height
-
-				.b-0 		= remove bottom border (only with transparent use)
-				.transparent	= transparent header
-				.translucent	= translucent header
-				.sticky			= sticky header
-				.static			= static header
-				.dark			= dark header
-				.bottom			= header on bottom
-				
-				shadow-before-1 = shadow 1 header top
-				shadow-after-1 	= shadow 1 header bottom
-				shadow-before-2 = shadow 2 header top
-				shadow-after-2 	= shadow 2 header bottom
-				shadow-before-3 = shadow 3 header top
-				shadow-after-3 	= shadow 3 header bottom
-
-				.clearfix		= required for mobile menu, do not remove!
-
-				Example Usage:  class="clearfix sticky header-sm transparent b-0"
-			-->
-
 			<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
 
 				<!-- TOP NAV -->
@@ -71,24 +44,13 @@
 
 						<!-- Logo -->
 						<a class="logo float-left" href="index.html">
-							<img src="assets/images/rocketelevatorassets/R2.png" alt="" />
+
+							<%=image_tag("rocketelevatorassets/R2.png", alt:"client") %>
 						</a>
 
-						<!-- 
-							Top Nav 
-							
-							AVAILABLE CLASSES:
-							submenu-dark = dark sub menu
-						-->
 						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
 							<nav class="nav-main">
 
-								<!-- 
-									.nav-onepage
-									Required for onepage navigation links
-									
-									Add .external for an external link!
-								-->
 								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
 									<li class="active"><!-- HOME -->
 										<a href="index.html">
@@ -136,42 +98,13 @@
 
 			<!-- REVOLUTION SLIDER -->
 			<section id="slider" class="fullwidthbanner-container roundedcorners">
-				<!--
-					Navigation Styles:
-					
-						data-navigationStyle="" theme default navigation
-						
-						data-navigationStyle="preview1"
-						data-navigationStyle="preview2"
-						data-navigationStyle="preview3"
-						data-navigationStyle="preview4"
-						
-					Bottom Shadows
-						data-shadow="1"
-						data-shadow="2"
-						data-shadow="3"
-						
-					Slider Height (do not use on fullscreen mode)
-						data-height="300"
-						data-height="350"
-						data-height="400"
-						data-height="450"
-						data-height="500"
-						data-height="550"
-						data-height="600"
-						data-height="650"
-						data-height="700"
-						data-height="750"
-						data-height="800"
-				-->
+				
 				<div class="fullscreenbanner" data-navigationStyle="preview2">
 					<ul class="hide">
 
 						<!-- SLIDE -->
 						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="About">
-
-							<img src="assets/images/rocketelevatorassets/residential/modernapartments.jpg" data-lazyload="assets/images/rocketelevatorassets/residential/modernapartments.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-
+							<%= image_tag("rocketelevatorassets/residential/modernapartments.jpg", :alt => "cover image" , :data => "rocketelevatorassets/residential/modernapartments.jpg", :data => "center center", :data=> "cover", :data => "no-repeat")%>
 							<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
 
 							<div class="tp-caption customin ltl tp-resizeme text_white"
@@ -239,14 +172,11 @@
 							    <p class="slider-text" style="line-height: 40px">From affordable options to high-end luxurious options, you ultimately decide what's best for you and your budget.</p>
 						</div>
 
-
 						</li>
 
 						<!-- SLIDE  -->
 						<li data-transition="random" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="How It Works">
-
-							<img src="assets/images/rocketelevatorassets/residential/elevators.jpeg" data-lazyload="assets/images/rocketelevatorassets/residential/elevators.jpeg" alt="" data-bgfit="cover" data-bgposition="center bottom" data-bgrepeat="no-repeat" />
-
+							<%= image_tag("rocketelevatorassets/residential/elevators.jpg", :alt => "cover image" , :data => "rocketelevatorassets/residential/elevators.jpg", :data => "center center", :data=> "cover", :data => "no-repeat")%>
 							<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
 
 							<div class="tp-caption customin ltl tp-resizeme text_white"
@@ -352,7 +282,7 @@
 								<span class="image-hover-icon image-hover-dark">
 									<i></i>
 								</span>
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/corporate/1.jpg" alt="img" />
+								<%= image_tag("rocketelevatorassets/corporate/1.jpg", class:"img-fluid", alt:"img") %>
 							</a>
 
 							<h3 class="mt-10">Building Type</h3>
@@ -364,7 +294,7 @@
 								<span class="image-hover-icon image-hover-dark">
 									<i></i>
 								</span>
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/corporate/2.jpg" alt="img" />
+								<%= image_tag("rocketelevatorassets/corporate/2.jpg", class:"img-fluid", alt:"img") %>
 							</a>
 							<h3 class="mt-10">Building Specifics</h3>
 							<p>We may ask you to specify certain aspects depending on the building type: number of apartments, floors and basements in the building.</p>
@@ -375,7 +305,7 @@
 								<span class="image-hover-icon image-hover-dark">
 									<i></i>
 								</span>
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/corporate/3.jpg" alt="img" />
+								<%= image_tag("rocketelevatorassets/corporate/3.jpg", class:"img-fluid", alt:"img") %>
 							</a>
 							<h3 class="mt-10">Cost Calculation</h3>
 							<p>Our software will calculate, in real time, the estimated cost of the project depending on your specifications.</p>
@@ -390,11 +320,8 @@
 			</section>
 			<!-- /Welcome -->
 
-
-
-
 			<!-- PARALLAX -->
-			<section class="parallax parallax-2 section-xs" style="background-image: url('demo_files/images/vision-min.jpg');">
+			<section class="parallax parallax-2 section-xs" style="background-image: url('/assets/rocketelevatorassets/vision-min.jpg');">
 				<div class="overlay dark-4"><!-- dark overlay [0 to 9 opacity] --></div>
 
 				<div class="container">
@@ -439,7 +366,6 @@
 						<h2 class="col-sm-10 offset-sm-1 fw-400 mb-0">WHAT YOU GET WITH US</h2>
 					</div>
 
-
 					<div class="row mt-50">
 
 						<div class="col-sm-6 col-md-4 col-lg-4">
@@ -452,7 +378,6 @@
 								<p class="text-muted">We'll provide you with a fully comprehensive 3D digital preview sketch of the to-be final product, which you'll be able to view and keep forever. </p>
 							</div>
 						</div>
-
 						
 						<div class="col-sm-6 col-md-4 col-lg-4">
 
@@ -529,20 +454,6 @@
 						<div class="col-md-8 col-sm-8">
 							<h2>Visit Us</h2>
 
-							<!-- 
-							Available heights
-								h-100
-								h-150
-								h-200
-								h-250
-								h-300
-								h-350
-								h-400
-								h-450
-								h-500
-								h-550
-								h-600
-							-->
 							<div id="map2" class="h-400">
 								<iframe width="589" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=589&amp;height=400&amp;hl=en&amp;q=4468%20Wellington%20St,%20Verdun,%20Quebec%20H4G%201W5%20Montreal+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> 
 							</div>
@@ -581,7 +492,6 @@
 								We'll make it right because we truly care about our esteemed clients.
 							</p>
 						</div><!-- /left text -->
-
 						
 						<!-- right btn -->
 						<div class="col-md-2 col-sm-6 text-right"style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">
@@ -603,7 +513,6 @@
 			<!-- FOOTER -->
 			<footer id="footer">
 				<div class="container">
-
 
 					<div class="row">
 
@@ -638,12 +547,9 @@
 							</form>
 							<!-- /Newsletter Form -->
 
-
 						</div>
 						<!-- /col #2 -->
-
 					</div>
-
 
 				</div>
 
@@ -663,7 +569,6 @@
 
 		</div>
 		<!-- /wrapper -->
-
 
 		<!-- SCROLL TO TOP -->
 		<a href="#" id="toTop"></a>
