@@ -1,6 +1,5 @@
 	<!-- SLIDE TOP -->
 		<div id="slidetop">
-
 			<div class="container">
 				
 				<div class="row">
@@ -30,33 +29,6 @@
 
 		<!-- wrapper -->
 		<div id="wrapper">
-
-			<!-- 
-				AVAILABLE HEADER CLASSES
-
-				Default nav height: 96px
-				.header-md 		= 70px nav height
-				.header-sm 		= 60px nav height
-
-				.b-0 		= remove bottom border (only with transparent use)
-				.transparent	= transparent header
-				.translucent	= translucent header
-				.sticky			= sticky header
-				.static			= static header
-				.dark			= dark header
-				.bottom			= header on bottom
-				
-				shadow-before-1 = shadow 1 header top
-				shadow-after-1 	= shadow 1 header bottom
-				shadow-before-2 = shadow 2 header top
-				shadow-after-2 	= shadow 2 header bottom
-				shadow-before-3 = shadow 3 header top
-				shadow-after-3 	= shadow 3 header bottom
-
-				.clearfix		= required for mobile menu, do not remove!
-
-				Example Usage:  class="clearfix sticky header-sm transparent b-0"
-			-->
 		
 			<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
 
@@ -71,24 +43,11 @@
 
 						<!-- Logo -->
 						<a class="logo float-left" href="index.html">
-							<img src="assets/images/rocketelevatorassets/R2.png" alt="" />
+							<%=image_tag("rocketelevatorassets/R2.png", alt:"client") %>
 						</a>
 
-						<!-- 
-							Top Nav 
-							
-							AVAILABLE CLASSES:
-							submenu-dark = dark sub menu
-						-->
 						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
 							<nav class="nav-main">
-
-								<!-- 
-									.nav-onepage
-									Required for onepage navigation links
-									
-									Add .external for an external link!
-								-->
 								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
 									<li class="active"><!-- HOME -->
 										<a href="index.html">
@@ -137,42 +96,14 @@
 
 			<!-- REVOLUTION SLIDER -->
 			<section id="slider" class="fullwidthbanner-container roundedcorners">
-				<!--
-					Navigation Styles:
-					
-						data-navigationStyle="" theme default navigation
-						
-						data-navigationStyle="preview1"
-						data-navigationStyle="preview2"
-						data-navigationStyle="preview3"
-						data-navigationStyle="preview4"
-						
-					Bottom Shadows
-						data-shadow="1"
-						data-shadow="2"
-						data-shadow="3"
-						
-					Slider Height (do not use on fullscreen mode)
-						data-height="300"
-						data-height="350"
-						data-height="400"
-						data-height="450"
-						data-height="500"
-						data-height="550"
-						data-height="600"
-						data-height="650"
-						data-height="700"
-						data-height="750"
-						data-height="800"
-				-->
+			
 				<div class="fullscreenbanner" data-navigationStyle="preview2">
 					<ul class="hide">
 
 						<!-- SLIDE  -->
 						<li data-transition="parallaxtotop" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="About">
 
-							<img src="assets/images/rocketelevatorassets/corporate/skyline.jpg" data-lazyload="assets/images/rocketelevatorassets/corporate/skyline.jpg" alt="" data-bgfit="cover" data-bgposition="center bottom" data-bgrepeat="no-repeat" />
-
+							<%= image_tag("rocketelevatorassets/corporate/skyline.jpg", :alt => "cover image" , :data => "rocketelevatorassets/corporate/skyline.jpg", :data => "center bottom", :data=> "cover", :data => "no-repeat")%>
 							<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
 
 							<div class="tp-caption customin ltl tp-resizeme text_white"
@@ -242,9 +173,7 @@
 
 						<!-- SLIDE -->
 						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="How It Works">
-
-							<img src="assets/images/rocketelevatorassets/corporate/elevator.jpeg" data-lazyload="assets/images/rocketelevatorassets/corporate/elevator.jpeg" alt="video" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-
+							<%= image_tag("rocketelevatorassets/corporate/elevator.jpg", :alt => "cover image" , :data => "rocketelevatorassets/corporate/elevator.jpg", :data => "center center", :data=> "cover", :data => "no-repeat")%>
 							<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
 
 							<div class="tp-caption customin ltl tp-resizeme text_white"
@@ -336,8 +265,6 @@
 			</section>
 			<!-- /REVOLUTION SLIDER -->
 
-
-
 			<!-- Welcome -->
 			<section>
 				<div class="container">
@@ -349,11 +276,11 @@
 
 					<div class="row mt-50">
 						<div class="col-sm-4">
-							<a class="image-hover lightbox" href="assets/images/rocketelevatorassets/corporate/1.jpg" data-plugin-options='{"type":"iframe"}'>
+							<a class="image-hover lightbox" href="rocketelevatorassets/corporate/1.jpg" data-plugin-options='{"type":"iframe"}'>
 								<span class="image-hover-icon image-hover-dark">
 									<i></i>
 								</span>
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/corporate/1.jpg" alt="img" />
+								<%= image_tag("rocketelevatorassets/corporate/1.jpg", class:"img-fluid", alt:"img") %>
 							</a>
 
 							<h3 class="mt-10">Building Type</h3>
@@ -361,22 +288,23 @@
 						</div>
 
 						<div class="col-sm-4">
-							<a class="image-hover lightbox" href="assets/images/rocketelevatorassets/corporate/2.jpg" data-plugin-options='{"type":"iframe"}'>
+							<a class="image-hover lightbox" href="rocketelevatorassets/corporate/2.jpg" data-plugin-options='{"type":"iframe"}'>
 								<span class="image-hover-icon image-hover-dark">
 									<i></i>
 								</span>
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/corporate/2.jpg" alt="img" />
+
+								<%= image_tag("rocketelevatorassets/corporate/2.jpg", alt:"img") %>
 							</a>
 							<h3 class="mt-10">Building Specifics</h3>
 							<p>We may ask you to specify certain aspects depending on the building type, such as number of floors or occupants.</p>
 						</div>
 
 						<div class="col-sm-4">
-							<a class="image-hover lightbox" href="assets/images/rocketelevatorassets/corporate/3.jpg" data-plugin-options='{"type":"iframe"}'>
+							<a class="image-hover lightbox" href="rocketelevatorassets/corporate/3.jpg" data-plugin-options='{"type":"iframe"}'>
 								<span class="image-hover-icon image-hover-dark">
 									<i></i>
 								</span>
-								<img class="img-fluid" src="assets/images/rocketelevatorassets/corporate/3.jpg" alt="img" />
+								<%= image_tag("rocketelevatorassets/corporate/3.jpg", alt:"img") %>
 							</a>
 							<h3 class="mt-10">Cost Calculation</h3>
 							<p>Our software will calculate, in real time, the estimated cost of the project depending on your specifications.</p>
@@ -399,7 +327,6 @@
 						<h2 class="col-sm-10 offset-sm-1 fw-400 mb-0">WHAT YOU GET WITH US</h2>
 					</div>
 
-
 					<div class="row mt-50">
 
 						<div class="col-sm-6 col-md-4 col-lg-4">
@@ -413,7 +340,6 @@
 							</div>
 						</div>
 
-						
 						<div class="col-sm-6 col-md-4 col-lg-4">
 
 							<div class="box-icon box-icon-left">
@@ -479,10 +405,8 @@
 			</section>
 			<!-- /Services -->
 
-
-
 			<!-- PARALLAX -->
-			<section class="parallax parallax-2 pb-0" style="background-image: url('demo_files/images/wall.jpg');">
+			<section class="parallax parallax-2 pb-0" style="background-image: url('/assets/rocketelevatorassets/wall.jpg');">
 				<div class="overlay dark-4"><!-- dark overlay [0 to 9 opacity] --></div>
 
 				<div class="container">
@@ -492,16 +416,13 @@
 						<p class="font-lato fw-300 lead mt-0">We've already helped dozens of other corporate clients of varying sizes - let us help you next.</p>
 					</div>
 
-
 					<div class="mt-80 text-center">
-						<img class="img-fluid wow fadeInUp" data-wow-delay="0.1s" src="assets/images/rocketelevatorassets/corporate/overview.png"/>
+						<img class="img-fluid wow fadeInUp" data-wow-delay="0.1s" src="/rocketelevatorassets/corporate/overview.png"/>
 					</div>
 				</div>
 
 			</section>
 			<!-- /PARALLAX -->
-
-
 
 			<!-- Info -->
 			<section>
@@ -512,20 +433,6 @@
 						<div class="col-md-8 col-sm-8">
 							<h2>Visit Us</h2>
 
-							<!-- 
-							Available heights
-								h-100
-								h-150
-								h-200
-								h-250
-								h-300
-								h-350
-								h-400
-								h-450
-								h-500
-								h-550
-								h-600
-							-->
 							<div id="map2" class="h-400">
 								<iframe width="589" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=589&amp;height=400&amp;hl=en&amp;q=4468%20Wellington%20St,%20Verdun,%20Quebec%20H4G%201W5%20Montreal+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> 
 							</div>
@@ -565,7 +472,6 @@
 							</p>
 						</div><!-- /left text -->
 
-						
 						<!-- right btn -->
 						<div class="col-md-2 col-sm-6 text-right"style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">
 							<a class="btn btn-default btn-lg altquotebtn-v2" href="#">GET A QUOTE &nbsp; <i class="fa fa-angle-right"></i></a>
@@ -586,7 +492,6 @@
 			<!-- FOOTER -->
 			<footer id="footer">
 				<div class="container">
-
 
 					<div class="row">
 
@@ -647,3 +552,4 @@
 
 		<!-- SCROLL TO TOP -->
 		<a href="#" id="toTop"></a>
+

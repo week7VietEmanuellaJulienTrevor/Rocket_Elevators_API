@@ -44,11 +44,9 @@
 //= require pages/smoothscroll
 //= require pages/jquery.nav.min
 //= require pages/scripts
-
 //= require turbolinks
 
 //= require_tree .
-
 
 
 
