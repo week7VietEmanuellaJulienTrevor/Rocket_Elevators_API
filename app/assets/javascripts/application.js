@@ -11,29 +11,15 @@
 // about supported directives.
 //
 
+
 //= require jquery
 //= require jquery_ujs
-
-
-//= require popper.min
-//= require popper
-
-//= require bootstrap-sprockets
-
 //= require bootstrap
-
-
-
-
-//= require gmaps
+//= require bootstrap-sprockets
 //= require bootstrap.min
-
-
-
-
-
-
-
+//= require popper
+//= require popper.min
+//= require gmaps
 //= require pages/demo.revolution_slider
 //= require pages/jquery.themepunch.revolution.min
 //= require pages/jquery.themepunch.tools.min
@@ -44,9 +30,21 @@
 //= require pages/smoothscroll
 //= require pages/jquery.nav.min
 //= require pages/scripts
-//= require turbolinks
 
+//= require turbolinks
 //= require_tree .
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
