@@ -10,12 +10,12 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+
  *= require_self
 
 
  *= require_settings
- *= require_bootstap.min
+ *= require_bootstrap.min
  *= require_custom-form-v2
  *= require_darkblue
  *= require_essentials
@@ -42,22 +42,14 @@
  @import "owl.pack";
  @import "owl.theme";
  @import "owl.transitions";
+<<<<<<< HEAD
 
  
 
 
+=======
+ 
+>>>>>>> 2756b659a589756c0748a68391ee4ea01fcc965c
 //to stop having the fontawsome 404
  @import "font-awesome-sprockets";
  @import "font-awesome";
-
-
- //import css files
- @import "layout";
- @import "essentials";
- @import "./*";
-
-
-
-
-//
-@import "active_admin";
