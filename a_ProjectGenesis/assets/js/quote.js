@@ -208,24 +208,120 @@ $(document).ready(function(){
 
     var submitForm = $("#product-lines-form");
     
-    submitForm.submit((e) => $.ajax({
-        type: "POST",
-        url: "/create",
-        data:  { 
-            quote: { 
-                no_of_appartments: $("#question-1").val(), 
-                no_of_floors: $("#question-2").val(), 
-                no_of_basements: $("#question-3").val()
-            }
-        },
-        success(data) {
-            alert(data.id);
-            return false;
-        },
-        error(data) {
-            return false;
-        },
-    }))
-    e.preventDefault();
-    
-});
+    if (buildingType === "Residential")
+    {
+        submitForm.submit((e) => 
+        $.ajax({
+            type: "POST",
+            url: "/create",
+            data:  { 
+                quote: { 
+                    no_of_appartments: input1, 
+                    no_of_floors: input2, 
+                    no_of_basements: input3,
+                    product_grade: "Residential",
+                    no_of_elevators: totalElevators,
+                    elevator_cost: elevatorsCost,
+                    installation_cost: installationCost,
+                    total_cost: totalCost
+
+                }
+            },
+            success(data) {
+                alert(data.id);
+                return false;
+            },
+            error(data) {
+                return false;
+            },
+        }))
+    }
+    else if (buildingType === "Commercial")
+    {
+        submitForm.submit((e) => 
+        $.ajax({
+            type: "POST",
+            url: "/create",
+            data:  { 
+                quote: { 
+                    no_of_businesses: input1, 
+                    no_of_floors: input2, 
+                    no_of_basements: input3,
+                    no_of_parking_spaces: input4,
+                    no_of_elevators_cages: input5,
+                    product_grade: "Commercial",
+                    no_of_elevators: totalElevators,
+                    elevator_cost: elevatorsCost,
+                    installation_cost: installationCost,
+                    total_cost: totalCost
+                }
+            },
+            success(data) {
+                alert(data.id);
+                return false;
+            },
+            error(data) {
+                return false;
+            },
+        }))
+    }
+    else if (buildingType === "Corporate")
+    {
+        submitForm.submit((e) => 
+        $.ajax({
+            type: "POST",
+            url: "/create",
+            data:  { 
+                quote: { 
+                    no_of_tenant_companies: input1, 
+                    no_of_floors: input2, 
+                    no_of_basements: input3,
+                    no_of_parking_spaces: input4,
+                    max_occupants_per_floor: input5,
+                    product_grade: "Corporate",
+                    no_of_elevators: totalElevators,
+                    elevator_cost: elevatorsCost,
+                    installation_cost: installationCost,
+                    total_cost: totalCost
+                }
+            },
+            success(data) {
+                alert(data.id);
+                return false;
+            },
+            error(data) {
+                return false;
+            },
+        }))
+    }
+    else if (buildingType === "Hybrid")
+    {
+        submitForm.submit((e) => 
+        $.ajax({
+            type: "POST",
+            url: "/create",
+            data:  { 
+                quote: { 
+                    no_of_distinct_businesses: input1, 
+                    no_of_floors: input2, 
+                    no_of_basements: input3,
+                    no_of_parking_spaces: input4,
+                    max_occupants_per_floor: input5,
+                    no_of_daily_hours_of_activity: input6,
+                    product_grade: "Hybrid",
+                    no_of_elevators: totalElevators,
+                    elevator_cost: elevatorsCost,
+                    installation_cost: installationCost,
+                    total_cost: totalCost
+                }
+            },
+            success(data) {
+                alert(data.id);
+                return false;
+            },
+            error(data) {
+                return false;
+            },
+        }))
+    }
+

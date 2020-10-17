@@ -16,13 +16,12 @@ class QuotesController < ApplicationController
             format.json {render json: @quote}
         end
     end
-  
-    def edit
-    end
 
     def create 
         @quote = Quote.new(params[:quote])
+
         respond_to do |format|
+            @quote.update!(quote_params)
             if @quote.save 
                 format.html { redirect_to @quote, notice: "Save process completed!" }
                 format.json { render json: @quote, status: :created, location: @quote }
@@ -87,22 +86,21 @@ class QuotesController < ApplicationController
 
     # Allowed parameters
     def quote_params
-    params.permit(:building_type,
-                    :no_of_appartments, 
-                    :no_of_floors, 
-                    :no_of_basements, 
-                    :no_of_elevators_cages, 
-                    :no_of_parking_spaces,
-                    :no_of_tenant_companies,
-                    :no_of_distinct_businesses,
-                    :max_occupants_per_floor,
-                    :created_at,
-                    :num_elevators,
-                    :product_grade,
-                    :elevator_cost,
-                    :installation_cost,
-                    :total_cost
-    )
-    # params.require(:quote).permit()
+        params.permit(:building_type,
+                        :no_of_appartments, 
+                        :no_of_floors, 
+                        :no_of_basements, 
+                        :no_of_elevators_cages, 
+                        :no_of_parking_spaces,
+                        :no_of_tenant_companies,
+                        :no_of_distinct_businesses,
+                        :max_occupants_per_floor,
+                        :num_elevators,
+                        :product_grade,
+                        :elevator_cost,
+                        :installation_cost,
+                        :total_cost
+        )
     end
-  end
+        # params.require(:quote).permit()
+end
