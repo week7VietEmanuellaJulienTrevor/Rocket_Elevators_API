@@ -18,9 +18,26 @@
  *= require_bootstrap-sprockets
 
 
+<<<<<<< HEAD
  */
 
 
+=======
+ *= require_settings
+ *= require_bootstrap.min
+ *= require_custom-form-v2
+ *= require_darkblue
+ *= require_essentials
+ *= require_extralayers
+ *= require_header-3
+ *= require_plugins=hover-buttons
+ *= require_layout
+ */
+
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+>>>>>>> parent of 78de55b...  Add font folders, everywhere
  @import "bootstrap-social";
  @import "bootstrap-sprockets";
  @import "pages";
