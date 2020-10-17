@@ -26,4 +26,8 @@
 //= require pages/jquery.nav.min
 //= require pages/scripts
 
+<<<<<<< HEAD
 //= require turbolinks
+=======
+//= require turbolinks
+>>>>>>> parent of 78de55b...  Add font folders, everywhere
