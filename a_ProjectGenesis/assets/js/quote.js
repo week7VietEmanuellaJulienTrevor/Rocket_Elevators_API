@@ -206,11 +206,26 @@ $(document).ready(function(){
         }
     }, 500);
 
-    var submitBtn = $("#submit-quote-btn");
-    submitBtn.click(() => $.ajax({
+    var submitForm = $("#product-lines-form");
+    
+    submitForm.submit((e) => $.ajax({
         type: "POST",
         url: "/create",
-        
-
-    })
-  });
+        data:  { 
+            quote: { 
+                no_of_appartments: $("#question-1").val(), 
+                no_of_floors: $("#question-2").val(), 
+                no_of_basements: $("#question-3").val()
+            }
+        },
+        success(data) {
+            alert(data.id);
+            return false;
+        },
+        error(data) {
+            return false;
+        },
+    }))
+    e.preventDefault();
+    
+});

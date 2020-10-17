@@ -3,19 +3,39 @@ class QuotesController < ApplicationController
     before_action :set_quote, only: [:show, :edit, :update, :destroy]
   
     def index
-      @quotes = Quote.all
+        @quotes = Quote.all
     end
 
     def show
     end
   
     def new
-      @quote = Quote.new
-      @quote.save
+        @quote = Quote.new
+        respond_to do |format|
+            format.html #quotes.html.erb
+            format.json {render json: @quote}
+        end
     end
   
     def edit
     end
+
+    def create 
+        @quote = Quote.new(params[:quote])
+        respond_to do |format|
+            if @quote.save 
+                format.html { redirect_to @quote, notice: "Save process completed!" }
+                format.json { render json: @quote, status: :created, location: @quote }
+            else
+                format.html { 
+                    flash.now[:notice]="Save proccess coudn't be completed!" 
+                    render :new 
+                }
+                format.json { render json: @quote.errors, status: :unprocessable_entity}
+            end
+        end
+    end
+    
   
     # def create
     #   @quote = Quote.new(quote_params)
