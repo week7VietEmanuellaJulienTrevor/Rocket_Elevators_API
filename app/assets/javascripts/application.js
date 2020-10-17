@@ -13,25 +13,8 @@
 
 //= require jquery
 //= require jquery_ujs
-
-//= require bootstrap
-
-
 //= require popper
-
-
-//= require pages/demo.revolution_slider
-
-
-//= require pages/owl.carousel
-//= require quote
-//= require pages/smoothscroll
-//= require pages/scripts
-
-//= require turbolinks
-
-
-
+//= require bootstrap
 //= require pages/demo.revolution_slider
 //= require pages/jquery.themepunch.revolution.min
 //= require pages/jquery.themepunch.tools.min
@@ -43,8 +26,4 @@
 //= require pages/jquery.nav.min
 //= require pages/scripts
 
-
-//= require_tree ./slider.revolution/
-
-
-
+//= require turbolinks
