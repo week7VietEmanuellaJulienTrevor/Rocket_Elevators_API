@@ -20,8 +20,6 @@
 //= require popper
 
 
-
-
 //= require pages/demo.revolution_slider
 
 
