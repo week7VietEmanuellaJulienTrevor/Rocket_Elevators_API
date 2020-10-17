@@ -3,4 +3,5 @@
 //= link_directory ../stylesheets .css
 
 //= link_tree ../stylesheets/fonts
+//= link_tree ../stylesheets/font
 

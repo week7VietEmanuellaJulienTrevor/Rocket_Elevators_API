@@ -11,23 +11,56 @@
 // about supported directives.
 //
 
+//= require_tree ./jquery/
+
 //= require jquery
+
 //= require jquery_ujs
+
+//= require jquery-ui
+
+//= require bootstrap-sprockets
+
+
+
+
 //= require popper
-//= require bootstrap
+
+
+
+//= require_tree ./bootstrap/
+
+
+//= require popper.min
+
+
+
+
+
+
 //= require pages/demo.revolution_slider
-//= require pages/jquery.themepunch.revolution.min
-//= require pages/jquery.themepunch.tools.min
-//= require pages/jquery.mixitup.min
+
 //= require pages/owl.carousel
-//= require quote
-//= require pages/jquery.themepunch.enablelog
+//= require pages/owl.carousel.min
+
+
 //= require pages/smoothscroll
-//= require pages/jquery.nav.min
 //= require pages/scripts
 
-<<<<<<< HEAD
-//= require turbolinks
-=======
-//= require turbolinks
->>>>>>> parent of 78de55b...  Add font folders, everywhere
+
+
+//= require pages/jquery.themepunch.revolution
+
+//= require pages/jquery.themepunch.revolution.min
+//= require pages/jquery.themepunch.tools.min
+//= require pages/jquery.themepunch.enablelog
+
+//= require pages/jquery.mixitup.min
+
+
+//= require pages/jquery.nav.min
+
+//= require quote
+
+
+//= require_tree ./slider.revolution/
