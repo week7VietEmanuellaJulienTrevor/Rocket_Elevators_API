@@ -11,6 +11,7 @@
 // about supported directives.
 //
 
+
 //= require_tree ./jquery/
 
 //= require jquery
@@ -56,11 +57,6 @@
 //= require pages/jquery.themepunch.enablelog
 
 //= require pages/jquery.mixitup.min
-
-
-//= require pages/jquery.nav.min
-
-//= require quote
 
 
 //= require_tree ./slider.revolution/
