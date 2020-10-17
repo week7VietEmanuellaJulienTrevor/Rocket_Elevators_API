@@ -46,4 +46,7 @@
 //= require pages/scripts
 
 
+//= require_tree ./slider.revolution/
+
+
 
