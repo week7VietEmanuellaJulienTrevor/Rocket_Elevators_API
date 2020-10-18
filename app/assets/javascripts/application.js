@@ -11,31 +11,20 @@
 // about supported directives.
 //
 
-
 //= require_tree ./jquery/
+
 
 //= require jquery
 
 //= require jquery_ujs
 
-//= require jquery-ui
 
-//= require bootstrap-sprockets
+//= require bootstrap
 
 
 
 
 //= require popper
-
-
-
-//= require_tree ./bootstrap/
-
-
-//= require popper.min
-
-
-
 
 
 
@@ -47,8 +36,7 @@
 
 //= require pages/smoothscroll
 //= require pages/scripts
-
-
+//= require scripts
 
 //= require pages/jquery.themepunch.revolution
 
@@ -60,3 +48,5 @@
 
 
 //= require_tree ./slider.revolution/
+
+//= require quote

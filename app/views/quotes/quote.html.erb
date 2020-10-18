@@ -28,7 +28,6 @@
 		</div>
 		<!-- /SLIDE TOP -->
 
-		<!-- wrapper -->
 		<div id="wrapper">
 
 			<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
@@ -44,7 +43,7 @@
 
 						<!-- Logo -->
 						<a class="logo float-left" href="index.html">
-							<img src="assets/images/rocketelevatorassets/R2.png" alt="" />
+							<%= image_tag "rocketelevatorassets/R2.png", alt:"" %>
 						</a>
 
 						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
@@ -195,7 +194,7 @@
                 <!-- MAIN FORM -->
                 <div class="col-md-7 col-sm-7 mt-80">
                     <form action="" id="quote-form" method="post" enctype="multipart/form-data">
-                        <h3 class="ml-20 fw-400 ">Fill out this form about your project.</h3>
+                        <h3 class="text-center fw-400 ">Fill out this form about your project.</h3>
                         <fieldset>
                             <div class="row justify-content-center mb-10">
                                 <div class="col-md-6 ml-20 mr-20">
@@ -261,7 +260,7 @@
                 </div>
 
                 <div id="results" class="col-md-5 col-sm-5 mt-80" style="display: none;">
-                    <h2 class="fw-600 ml-20 mr-20">Cost Assessment</h2>
+                    <h2 class="fw-600 text-center mr-20">Cost Assessment</h2>
                     <!-- NUM ELEVATOR SHAFTS FORM (READONLY) -->
                     <form id="num-shafts-form" method="post" enctype="multipart/form-data">
                         <fieldset>
@@ -273,11 +272,11 @@
                             </div> 
                         </fieldset>
                     </form>
-                    <h3 class="ml-20 fw-400">Choose a product line grade.</h3>
+                    <h3 class="text-center fw-400">Choose a product line grade.</h3>
                     <!-- PRICES FORM (READONLY) -->
                     <form id="product-lines-form" method="post" action="/create" enctype="multipart/form-data">
                         <fieldset>
-                            <div class="row justify-content-center ml-20">
+                            <div class="row justify-content-center ">
                                 <div class="radiodiv">
                                     <input type="radio" id="standard" name="product-line" value="standard" checked>
                                     <label class="radio-label"for="standard">Standard</label><br>
