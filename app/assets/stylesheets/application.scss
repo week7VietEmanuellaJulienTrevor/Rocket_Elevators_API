@@ -23,13 +23,11 @@
 
  */
 
- @import "bootstrap";
  @import "bootstrap-social";
  @import "darkblue";
-
  
-
-
+ @import "./bootstrap/*";
+ @import "custom-forms-v2.css";
  
 //to stop having the fontawsome 404
  @import "font-awesome-sprockets";
