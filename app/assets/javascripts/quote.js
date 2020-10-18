@@ -25,6 +25,8 @@ $(document).ready(function(){
     var elevatorsCost = 0;
     var installationCost = 0;
     var totalCost = 0;
+    
+    var quote;
 
     /* Do this after client has clicked on the Confirm button ***/
     var confirmBtn = $("#building-confirm-btn");
@@ -164,10 +166,6 @@ $(document).ready(function(){
 
             totalElevators = numElevatorsPerFloor * numColumns; 
 
-            console.log("START - \n" + avgApartmentsPerFloor);
-            console.log(numElevatorsPerFloor);
-            console.log(numColumns);
-            console.log("FINAL - " + numColumns);
         }
         else if (buildingType === "Commercial")
         {
@@ -212,7 +210,7 @@ $(document).ready(function(){
             maxOccupantsPerFloor = $("#question-5").val(); 
             hoursOfActivity = null;
            
-            var totalOccupants = numOccupantsPerFloor * numFloors;
+            var totalOccupants = maxOccupantsPerFloor * numFloors;
             var numElevators = Math.ceil(totalOccupants / 1000);
             var numColumns = Math.ceil(numFloors / 20); 
             
@@ -241,7 +239,7 @@ $(document).ready(function(){
             maxOccupantsPerFloor = $("#question-5").val(); 
             hoursOfActivity = $("#question-6").val();
           
-            var totalOccupants = numOccupantsPerFloor * numFloors;
+            var totalOccupants = maxOccupantsPerFloor * numFloors;
             var numElevators = Math.ceil(totalOccupants / 1000);
             var numColumns = Math.ceil(numFloors / 20); 
             
@@ -278,26 +276,32 @@ $(document).ready(function(){
             totalCost = elevatorsCost + installationCost;
             $("#total-estimate").val("$" + totalCost.toFixed(2));
         }
+
+        // Save Quote object form for AJAX
+         quote = {
+            building_type: buildingType, 
+            no_of_appartments: numApartments,
+            no_of_floors: numFloors,
+            no_of_basements: numBasements,
+            no_of_elevators_cages: numCages,
+            no_of_parking_spaces: numParkingSpaces,
+            no_of_tenant_companies: numTenantCompanies,
+            no_of_distinct_businesses: numBusinesses,
+            no_of_daily_hours_of_activity: hoursOfActivity,
+            no_of_elevators: totalElevators,
+            product_grade: productGrade,
+            no_of_elevators: totalElevators,
+            elevator_cost: elevatorsCost,
+            installation_cost: installationCost,
+            total_cost: totalCost
+        }
+    
+        
+
     }, 500);
 
-    // Send AJAX POST containing quote data to Quotes table in mySQL database
-    var quote = {
 
-        no_of_appartments: numApartments,
-        no_of_floors: numFloors,
-        no_of_basements: numBasements,
-        no_of_elevators_cages: numCages,
-        no_of_parking_spaces: numParkingSpaces,
-        no_of_tenant_companies: numTenantCompanies,
-        no_of_distinct_businesses: numBusinesses,
-        no_of_daily_hours_of_activity: hoursOfActivity,
-        no_of_elevators: totalElevators,
-        product_grade: productGrade,
-        no_of_elevators: totalElevators,
-        elevator_cost: elevatorsCost,
-        installation_cost: installationCost,
-        total_cost: totalCost
-    }
+    // Send AJAX POST containing quote data to Quotes table in mySQL database
     
     
     var submitForm = $("#product-lines-form");
@@ -308,6 +312,8 @@ $(document).ready(function(){
             data: quote,
             dataType: 'json',  
         })
+        console.log("AJAX SENT");
+        console.log(quote);
         e.preventDefault();
     })
 })
