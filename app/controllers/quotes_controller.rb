@@ -104,5 +104,6 @@ class QuotesController < ApplicationController
                     :total_cost
     )
     # params.require(:quote).permit()
+
     end
-  end
+end
