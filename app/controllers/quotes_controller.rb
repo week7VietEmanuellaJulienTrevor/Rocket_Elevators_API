@@ -95,7 +95,7 @@ class QuotesController < ApplicationController
                         :no_of_tenant_companies,
                         :no_of_distinct_businesses,
                         :max_occupants_per_floor,
-                        :num_elevators,
+                        :no_of_elevators,
                         :product_grade,
                         :elevator_cost,
                         :installation_cost,
