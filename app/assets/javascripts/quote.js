@@ -164,7 +164,11 @@ $(document).ready(function(){
             var numElevatorsPerFloor = Math.ceil(avgApartmentsPerFloor / 6);
             var numColumns = Math.ceil(numFloors / 20);
 
-            totalElevators = numElevatorsPerFloor * numColumns; 
+            if (numColumns != 0)
+                totalElevators = numElevatorsPerFloor * numColumns; 
+            else 
+                totalElevators = 0;
+
 
         }
         else if (buildingType === "Commercial")
@@ -214,7 +218,10 @@ $(document).ready(function(){
             var numElevators = Math.ceil(totalOccupants / 1000);
             var numColumns = Math.ceil(numFloors / 20); 
             
-            totalElevators = Math.ceil(numElevators / numColumns) * numColumns;
+            if (numColumns != 0)
+                totalElevators = Math.ceil(numElevators / numColumns) * numColumns;
+            else 
+                totalElevators = 0;
         }
         else if (buildingType === "Hybrid")
         {
@@ -243,7 +250,10 @@ $(document).ready(function(){
             var numElevators = Math.ceil(totalOccupants / 1000);
             var numColumns = Math.ceil(numFloors / 20); 
             
-            totalElevators = Math.ceil(numElevators / numColumns) * numColumns;
+            if (numColumns != 0)
+                totalElevators = Math.ceil(numElevators / numColumns) * numColumns;
+            else 
+                totalElevators = 0;
         }
         
         // Prevents NaN errors from displaying on the console when the estimate hasnt been calculated yet
