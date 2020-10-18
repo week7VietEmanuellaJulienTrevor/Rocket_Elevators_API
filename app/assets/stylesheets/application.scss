@@ -20,31 +20,13 @@
 
  *= require_bootstrap-sprockets
 
- *= require_bootstrap
 
  */
 
  @import "bootstrap";
  @import "bootstrap-social";
- @import "bootstrap-sprockets";
- @import "pages";
- @import "owl.pack";
- @import "owl.theme";
- @import "owl.transitions";
- @import "essentials";
- @import "custom-forms-v2";
  @import "darkblue";
- @import "header-3";
- @import "plugin-hover-buttons";
- @import "settings";
- @import "extralayers";
- @import "layout";
- @import "owl.carousel";
 
- @import "toastr/*"; 
- @import "mdl/*";
- @import "slider.revolution/*";
- @import "fonts/*";
  
 
 

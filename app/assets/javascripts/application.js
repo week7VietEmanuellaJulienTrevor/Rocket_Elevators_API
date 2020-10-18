@@ -13,7 +13,6 @@
 
 //= require_tree ./jquery/
 
-
 //= require jquery
 
 //= require jquery_ujs
@@ -35,14 +34,8 @@
 
 
 //= require pages/smoothscroll
-//= require pages/scripts
 //= require scripts
 
-//= require pages/jquery.themepunch.revolution
-
-//= require pages/jquery.themepunch.revolution.min
-//= require pages/jquery.themepunch.tools.min
-//= require pages/jquery.themepunch.enablelog
 
 //= require pages/jquery.mixitup.min
 
