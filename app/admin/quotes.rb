@@ -11,7 +11,7 @@ ActiveAdmin.register Quote do
     selectable_column
     column :created_at
     column :building_type
-    column :num_elevators
+    column :no_of_elevators
     column :product_grade
     column :elevator_cost
     column :installation_cost

@@ -262,17 +262,17 @@ $(document).ready(function(){
         
         // Get product line choice and calculate cost
         productGrade = $("input[name='product-line']:checked").val();
-        if (productGrade === "standard")
+        if (productGrade === "Standard")
         {
             elevatorsCost = totalElevators * 7565;
             installationCost = elevatorsCost * 0.1;
         }
-        else if (productGrade === "premium") 
+        else if (productGrade === "Premium") 
         {
             elevatorsCost = totalElevators * 12345;
             installationCost = elevatorsCost * 0.13;
         }
-        else if (productGrade === "excelium")
+        else if (productGrade === "Excelium")
         {
             elevatorsCost = totalElevators * 15400;
             installationCost = elevatorsCost * 0.16;
@@ -301,9 +301,9 @@ $(document).ready(function(){
             no_of_elevators: totalElevators,
             product_grade: productGrade,
             no_of_elevators: totalElevators,
-            elevator_cost: elevatorsCost,
-            installation_cost: installationCost,
-            total_cost: totalCost
+            elevator_cost: "$" + elevatorsCost.toFixed(2),
+            installation_cost: "$" + installationCost.toFixed(2),
+            total_cost: "$" + totalCost.toFixed(2)
         }
     
         
