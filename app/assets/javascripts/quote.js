@@ -9,8 +9,23 @@
 $(document).ready(function(){
     
 
-    var buildingType = "";      // Building type
-      
+    // Fields that are sent to the Quote table in the mySQL database
+    var buildingType;
+    var numApartments;
+    var numFloors;
+    var numBasements;
+    var numCages;
+    var numParkingSpaces;
+    var numTenantCompanies;
+    var numBusinesses;
+    var maxOccupantsPerFloor;
+    var hoursOfActivity;
+    var productGrade;
+    var totalElevators = 0;
+    var elevatorsCost = 0;
+    var installationCost = 0;
+    var totalCost = 0;
+
     /* Do this after client has clicked on the Confirm button ***/
     var confirmBtn = $("#building-confirm-btn");
     confirmBtn.click(function(){
@@ -62,42 +77,44 @@ $(document).ready(function(){
         
         var numDivsToShow = 0; // Change label values based on building type
 
-        switch(building)
+        if (building === "Residential")
         {
-            case "Residential":
-                numDivsToShow = 3;
-                q1Label.text("The number of apartments in the building");
-                q2Label.text("The number of floors contained in the building (including basements)");
-                q3Label.text("The number of basements contained in the building");
-                break;
-            
-            case "Commercial":
-                numDivsToShow = 5;
-                q1Label.text("The number of distinct businesses");
-                q2Label.text("The number of floors contained in the building (including basements)");
-                q3Label.text("The number of basements contained in the building");
-                q4Label.text("The number of parking space available");
-                q5Label.text("The number of elevators cages to be deployed");
-                break;
+            numDivsToShow = 3;
 
-            case "Corporate":
-                numDivsToShow = 5;
-                q1Label.text("The number of separate tenant companies");
-                q2Label.text("The number of floors contained in the building (including basements)");
-                q3Label.text("The number of basements contained in the building");
-                q4Label.text("The number of parking space available");
-                q5Label.text("The maximum number of occupants per floor");
-                break;
+            q1Label.text("The number of apartments in the building");
+            q2Label.text("The number of floors contained in the building");
+            q3Label.text("The number of basements contained in the building");
+        }
+         
+        else if (building === "Commercial")
+        {
+            numDivsToShow = 5;
+            q1Label.text("The number of distinct businesses");
+            q2Label.text("The number of floors contained in the building");
+            q3Label.text("The number of basements contained in the building");
+            q4Label.text("The number of parking space available");
+            q5Label.text("The number of elevators cages to be deployed");
+        }
 
-            case "Hybrid":
-                numDivsToShow = 6;
-                q1Label.text("The number of distinct businesses");
-                q2Label.text("The number of floors contained in the building (including basements)");
-                q3Label.text("The number of basements contained in the building");
-                q4Label.text("The number of parking space available");
-                q5Label.text("The maximum number of occupants per floor");
-                q6Label.text("The number of hours of activity of the building per day");
-                break;
+        else if (building === "Corporate")
+        {
+            numDivsToShow = 5;
+            q1Label.text("The number of separate tenant companies");
+            q2Label.text("The number of floors contained in the building");
+            q3Label.text("The number of basements contained in the building");
+            q4Label.text("The number of parking space available");
+            q5Label.text("The maximum number of occupants per floor");
+        }
+
+        else {
+            numDivsToShow = 6;
+            q1Label.text("The number of distinct businesses");
+            q2Label.text("The number of floors contained in the building");
+            q3Label.text("The number of basements contained in the building");
+            q4Label.text("The number of parking space available");
+            q5Label.text("The maximum number of occupants per floor");
+            q6Label.text("The number of hours of activity of the building per day");
+        
         }
 
         // Show/hide input divs based on building type
@@ -118,94 +135,179 @@ $(document).ready(function(){
 
     })
 
-    // Execute when an input field is changed 
-    $("input").on("change keyup", () => {
-
-        var unitBasePrice = 0;
-        var installFee = 0;
-
-        // Get product line choice and assign elevator prices based on it
-        var productLine = $("input[name='product-line']:checked").val();
-        switch(productLine) 
-        {
-            case "standard":
-                unitBasePrice = 7565;
-                installFee = 0.1;
-                break;
-
-            case "premium":
-                unitBasePrice = 12345;
-                installFee = 0.13;
-                break;
-            
-            case "excelium":
-                unitBasePrice = 15400;
-                installFee = 0.16;
-                break;
-        }
-        
+    // Runs every 0.5 seconds
+    window.setInterval (function () {
         if (buildingType === "Residential")
         {
-            // Make HTTP POST request to server with client input
-            $.post(" https://safe-depths-50027.herokuapp.com/residential",
-                {   
-                    numApartments: parseInt($("#question-1").val()),
-                    numFloors: parseInt($("#question-2").val()),
-                    numBasements: parseInt($("#question-3").val()),
-                    unitBasePrice: unitBasePrice,
-                    installFee: installFee
-                },
-                
-                // Update quote readonly fields if POST request succeeds
-                function(data)
-                {
-                    $("#num-shafts").val(data.totalElevators);
-                    $("#elevator-price").val("$" + data.elevatorPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
-                    $("#installation-price").val("$" + data.installationPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
-                    $("#total-estimate").val("$" + data.totalEstimate.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
-                } 
-            );
+            /* 
+            If the type of building is Residential, divide the number of apartments 
+            by the number of floors (excluding the number of basements) to obtain 
+            an average of apartments per floor. There is 1 elevator for every 6 apartments per floor.
+            If the apartment has more than 20 stories, it is necessary to provide an additional
+            column of elevators and thus double the number of elevator shafts. 
+            A new column is therefore added to each new group of 20 stories.
+            */
+
+            numApartments = $("#question-1").val();
+            numFloors = $("#question-2").val();
+            numBasements = $("#question-3").val();
+            numCages = null;
+            numParkingSpaces = null;
+            numTenantCompanies = null;
+            numBusinesses = null;
+            maxOccupantsPerFloor = null;
+            hoursOfActivity = null;
+            
+            var avgApartmentsPerFloor = Math.ceil(numApartments / (numFloors - numBasements));
+            var numElevatorsPerFloor = Math.ceil(avgApartmentsPerFloor / 6);
+            var numColumns = Math.ceil(numFloors / 20);
+
+            totalElevators = numElevatorsPerFloor * numColumns; 
+
+            console.log("START - \n" + avgApartmentsPerFloor);
+            console.log(numElevatorsPerFloor);
+            console.log(numColumns);
+            console.log("FINAL - " + numColumns);
         }
         else if (buildingType === "Commercial")
         {
-            // Make HTTP POST request to server with client input
-            $.post(" https://safe-depths-50027.herokuapp.com/commercial",
-            {   
-                numCages: parseInt($("#question-5").val()),
-                unitBasePrice: unitBasePrice,
-                installFee: installFee
-            },
+            /*
+            If the type of building is Commercial, the number of elevator shafts 
+            to be deployed is specified and the estimated number of cages is equal to 
+            the number required.
+            */
             
-            // Update quote readonly fields if POST request succeeds
-            function(data)
-            {
-                $("#num-shafts").val(data.totalElevators);
-                $("#elevator-price").val("$" + data.elevatorPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
-                $("#installation-price").val("$" + data.installationPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
-                $("#total-estimate").val("$" + data.totalEstimate.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
-            } 
-        );
+            numApartments = null;
+            numFloors = $("#question-2").val();
+            numBasements = $("#question-3").val();
+            numCages = $("#question-5").val();
+            numParkingSpaces = $("#question-4").val();
+            numTenantCompanies = null;
+            numBusinesses =  $("#question-1").val();
+            maxOccupantsPerFloor = null;
+            hoursOfActivity = null;
+
+            totalElevators = numCages;
         }
-        else 
+        else if (buildingType === "Corporate")
         {
-            // Make HTTP POST request to server with client input
-            $.post(" https://safe-depths-50027.herokuapp.com/corporate-hybrid",
-                {   
-                    numOccupantsPerFloor: parseInt($("#question-5").val()),
-                    numFloors: parseInt($("#question-2").val()),
-                    unitBasePrice: unitBasePrice,
-                    installFee: installFee
-                },
-                
-                // Update quote readonly fields if POST request succeeds
-                function(data)
-                {
-                    $("#num-shafts").val(data.totalElevators);
-                    $("#elevator-price").val("$" + data.elevatorPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
-                    $("#installation-price").val("$" + data.installationPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
-                    $("#total-estimate").val("$" + data.totalEstimate.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
-                } 
-            );
+            /* 
+            If the type of building is Corporate or Hybrid, multiply the number of occupants per floor 
+            by the number of floors (including the number of basements) to obtain the total number 
+            of occupants. The number of elevators required is determined by the number of occupants 
+            divided by 1000. The number of stories (including the number of basements) is 
+            divided by 20 to obtain the number of elevator columns required. 
+            Then divide the number of elevators by the number of columns to get the 
+            number of elevators per column. The total number of elevators is determined by 
+            the number of elevators per column multiplied by the number of columns.
+            */
+            
+            numApartments = null;
+            numFloors = $("#question-2").val();
+            numBasements = $("#question-3").val();
+            numCages = null;
+            numParkingSpaces = $("#question-4").val();
+            numTenantCompanies = $("#question-1").val();
+            numBusinesses = null;
+            maxOccupantsPerFloor = $("#question-5").val(); 
+            hoursOfActivity = null;
+           
+            var totalOccupants = numOccupantsPerFloor * numFloors;
+            var numElevators = Math.ceil(totalOccupants / 1000);
+            var numColumns = Math.ceil(numFloors / 20); 
+            
+            totalElevators = Math.ceil(numElevators / numColumns) * numColumns;
         }
-    });
-  });
+        else if (buildingType === "Hybrid")
+        {
+            /* 
+            If the type of building is Corporate or Hybrid, multiply the number of occupants per floor 
+            by the number of floors (including the number of basements) to obtain the total number 
+            of occupants. The number of elevators required is determined by the number of occupants 
+            divided by 1000. The number of stories (including the number of basements) is 
+            divided by 20 to obtain the number of elevator columns required. 
+            Then divide the number of elevators by the number of columns to get the 
+            number of elevators per column. The total number of elevators is determined by 
+            the number of elevators per column multiplied by the number of columns.
+            */
+            
+            numApartments = null;
+            numFloors = $("#question-2").val();
+            numBasements = $("#question-3").val();
+            numCages = null;
+            numParkingSpaces = $("#question-4").val();
+            numTenantCompanies = null;
+            numBusinesses = $("#question-1").val();
+            maxOccupantsPerFloor = $("#question-5").val(); 
+            hoursOfActivity = $("#question-6").val();
+          
+            var totalOccupants = numOccupantsPerFloor * numFloors;
+            var numElevators = Math.ceil(totalOccupants / 1000);
+            var numColumns = Math.ceil(numFloors / 20); 
+            
+            totalElevators = Math.ceil(numElevators / numColumns) * numColumns;
+        }
+        
+        // Prevents NaN errors from displaying on the console when the estimate hasnt been calculated yet
+        if (!isNaN(totalElevators))
+            $("#num-shafts").val(totalElevators);
+        
+        // Get product line choice and calculate cost
+        productGrade = $("input[name='product-line']:checked").val();
+        if (productGrade === "standard")
+        {
+            elevatorsCost = totalElevators * 7565;
+            installationCost = elevatorsCost * 0.1;
+        }
+        else if (productGrade === "premium") 
+        {
+            elevatorsCost = totalElevators * 12345;
+            installationCost = elevatorsCost * 0.13;
+        }
+        else if (productGrade === "excelium")
+        {
+            elevatorsCost = totalElevators * 15400;
+            installationCost = elevatorsCost * 0.16;
+        }
+
+        // Display cost
+        $("#elevator-price").val("$" + elevatorsCost.toFixed(2));
+        $("#installation-price").val("$" + installationCost.toFixed(2));
+        if (!isNaN(elevatorsCost) && !isNaN(installationCost))
+        {
+            totalCost = elevatorsCost + installationCost;
+            $("#total-estimate").val("$" + totalCost.toFixed(2));
+        }
+    }, 500);
+
+    // Send AJAX POST containing quote data to Quotes table in mySQL database
+    var quote = {
+
+        no_of_appartments: numApartments,
+        no_of_floors: numFloors,
+        no_of_basements: numBasements,
+        no_of_elevators_cages: numCages,
+        no_of_parking_spaces: numParkingSpaces,
+        no_of_tenant_companies: numTenantCompanies,
+        no_of_distinct_businesses: numBusinesses,
+        no_of_daily_hours_of_activity: hoursOfActivity,
+        no_of_elevators: totalElevators,
+        product_grade: productGrade,
+        no_of_elevators: totalElevators,
+        elevator_cost: elevatorsCost,
+        installation_cost: installationCost,
+        total_cost: totalCost
+    }
+    
+    
+    var submitForm = $("#product-lines-form");
+    submitForm.submit((e) => {
+        $.ajax({
+            type: "POST",
+            url: "/create",
+            data: quote,
+            dataType: 'json',  
+        })
+        e.preventDefault();
+    })
+})
