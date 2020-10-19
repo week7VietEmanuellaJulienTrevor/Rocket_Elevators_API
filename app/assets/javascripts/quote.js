@@ -1,7 +1,8 @@
 /*** AUTHOR: Fabien H. Dimitrov  ***************************************************************/
 /*** CONTEXT: Rocket Elevators (Codeboxx) ******************************************************/
 /*** DESCRIPTION: Validates the quote request form @ 'quote.html' on the client-side, 
-                  and then calculates estimated cost of client's elevator project **************/
+                  and then calculates estimated cost of client's elevator project
+                  ADD-ON: Sends the quote to the mySQL database ********************************/
 
 
 
@@ -312,8 +313,6 @@ $(document).ready(function(){
 
 
     // Send AJAX POST containing quote data to Quotes table in mySQL database
-    
-    
     var submitForm = $("#product-lines-form");
     submitForm.submit((e) => {
         $.ajax({
