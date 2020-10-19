@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_184017) do
+ActiveRecord::Schema.define(version: 2020_10_19_205938) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -53,6 +53,20 @@ ActiveRecord::Schema.define(version: 2020_10_19_184017) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "building_id"
+    t.string "type"
+    t.string "status"
+    t.string "employee_id"
+    t.date "commissioning_date"
+    t.date "last_inspection_date"
+    t.string "operations_certificate"
+    t.string "information"
+    t.string "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.date "customer_creation_date"
@@ -65,6 +79,21 @@ ActiveRecord::Schema.define(version: 2020_10_19_184017) do
     t.string "full_name_service_technical_authority"
     t.string "technical_authority_phone"
     t.string "technical_manager_email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "column_id"
+    t.string "serial_number"
+    t.string "model"
+    t.string "type"
+    t.string "status"
+    t.date "commissioning_date"
+    t.date "last_inspection_date"
+    t.string "inspection_certificate"
+    t.string "information"
+    t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

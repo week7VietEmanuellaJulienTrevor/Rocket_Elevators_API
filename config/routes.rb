@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :elevators
+  resources :batteries
   resources :customers
   resources :addresses
   devise_for :admin_users, ActiveAdmin::Devise.config
