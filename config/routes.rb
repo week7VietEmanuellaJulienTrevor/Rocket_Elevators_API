@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :building_details
   resources :buildings
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
