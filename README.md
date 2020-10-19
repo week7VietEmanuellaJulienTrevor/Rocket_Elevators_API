@@ -6,7 +6,8 @@ This is our ruby on rails project for Rocket Elevators. The goal was to make an 
 
 # Framework
 
- Rails Database using MYSQL
+ - Rails
+ - Database using MYSQL
 
 ## Languages used
 
@@ -15,11 +16,20 @@ This is our ruby on rails project for Rocket Elevators. The goal was to make an 
 3. JAVASCRIPT
 4. RUBY
 
+## To connect to the websit 
+
+follow the link to the url and you will see a familiar site resembling the work of one of the team mates here : 
+https://www.rocket-elevators.ca/
+
 ## Steps
 1.  Go to http://rocket-elevators-trevor.tk/admin
 2. Enter a user email "nicolas.genest@codeboxx.biz" for example
 3. Enter the password "password" (no quote)
-4. Then "voila" you have the back office
+4. you will connect the administration part of the site where you will be able to display the database comprised of the following tables : 
+
+        - Quotes
+        - Employees
+        - Users
 
 ## TEAM MEMBERS
 
