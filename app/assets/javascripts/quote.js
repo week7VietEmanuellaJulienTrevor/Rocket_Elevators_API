@@ -320,8 +320,12 @@ $(document).ready(function(){
             type: "POST",
             url: "/create",
             data: quote,
-            dataType: 'json',  
+            dataType: 'json',            
+            success: (data) => { 
+                alert("Quote successfully sent!");
+             }
         })
+
         console.log("AJAX SENT");
         console.log(quote);
         e.preventDefault();
