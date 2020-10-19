@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :customers
   resources :addresses
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -9,7 +10,8 @@ Rails.application.routes.draw do
   resource :quotes 
 
   get 'quote' => 'quotes#quote'
-  get 'address' => 'addresses#address'
+  # get 'address' => 'addresses#address'
+  # get 'customer' => 'customer#customer'
   get 'corporate' => 'pages#corporate'
   get 'residential' => 'pages#residential'
   get 'index' => 'pages#index'

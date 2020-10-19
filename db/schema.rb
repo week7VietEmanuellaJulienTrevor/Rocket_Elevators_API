@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_170319) do
+ActiveRecord::Schema.define(version: 2020_10_19_184017) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_170319) do
     t.string "suite_or_apartment"
     t.string "city"
     t.string "postal_code"
-    t.string "country"
+    t.string "nation"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,6 +51,22 @@ ActiveRecord::Schema.define(version: 2020_10_19_170319) do
     t.boolean "admin_role", default: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.date "customer_creation_date"
+    t.string "company_name"
+    t.string "company_headquarter_address"
+    t.string "full_name_company_contact"
+    t.string "company_contact_phone"
+    t.string "email_company_contact"
+    t.string "company_description"
+    t.string "full_name_service_technical_authority"
+    t.string "technical_authority_phone"
+    t.string "technical_manager_email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
