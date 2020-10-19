@@ -319,7 +319,7 @@ $(document).ready(function(){
             type: "POST",
             url: "/create",
             data: quote,
-            dataType: 'json',  
+            dataType: 'json'      
         })
         console.log("AJAX SENT");
         console.log(quote);

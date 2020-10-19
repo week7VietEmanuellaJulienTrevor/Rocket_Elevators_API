@@ -14,6 +14,5 @@ Rails.application.routes.draw do
   get 'index' => 'pages#index'
 
   post 'create' => 'quotes#create'
-
 end
 
