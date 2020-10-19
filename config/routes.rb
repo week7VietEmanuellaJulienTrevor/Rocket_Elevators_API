@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :columns
   resources :building_details
   resources :buildings
   devise_for :admin_users, ActiveAdmin::Devise.config
