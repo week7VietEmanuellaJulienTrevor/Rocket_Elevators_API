@@ -288,8 +288,8 @@ $(document).ready(function(){
             $("#total-estimate").val("$" + totalCost.toFixed(2));
         }
 
-        // Save Quote object form for AJAX
-         quote = {
+        // Save Quote object for AJAX
+        quote = {
             building_type: buildingType, 
             no_of_appartments: numApartments,
             no_of_floors: numFloors,
@@ -317,12 +317,12 @@ $(document).ready(function(){
     submitForm.submit((e) => {
         $.ajax({
             type: "POST",
-            url: "/create",
+            url: "/quote/create",
             data: quote,
             dataType: 'json',            
             success: (data) => { 
                 alert("Quote successfully sent!");
-             }
+            }
         })
 
         console.log("AJAX SENT");

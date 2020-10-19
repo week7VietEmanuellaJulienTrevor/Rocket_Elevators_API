@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_133007) do
+ActiveRecord::Schema.define(version: 2020_10_19_161856) do
 
   create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_133007) do
     t.string "contact_full_name"
     t.string "company_name"
     t.string "email"
-    t.integer "phone"
+    t.string "phone"
     t.string "project_name"
     t.text "project_description"
     t.string "department"
