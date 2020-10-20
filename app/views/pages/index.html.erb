@@ -905,38 +905,38 @@
 								<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
 							</div><!-- /Alert Mandatory -->
 
-							<form method="post" enctype="multipart/form-data">
+							<form id="contact-form" method="post" action="contact/create" enctype="multipart/form-data">
 								<fieldset>
 									<input type="hidden" name="action" value="contact_send" />
 
 									<div class="row">
 											<div class="col-md-6">
-												<label for="contact:name">Contact Full Name *</label>
-												<input required type="text" value="" class="form-control" name="contact[name][required]" id="contact:name">
+												<label for="contact-name">Contact Full Name *</label>
+												<input required type="text" value="" class="form-control" name="leads[contact_full_name]" id="contact-name">
 											</div>
 											<div class="col-md-6">
-												<label for="contact:business">Contact Business Name </label>
-												<input type="text" value="" class="form-control" name="contact[business]" id="contact:business">
+												<label for="contact-business">Contact Business Name </label>
+												<input type="text" value="" class="form-control" name="leads[company_name]" id="contact-business">
 											</div>
 									</div>
 									<div class="row">
 											<div class="col-md-6">
-												<label for="contact:email">E-mail Address *</label>
-												<input required type="email" value="" class="form-control" name="contact[email][required]" id="contact:email">
+												<label for="contact-email">E-mail Address *</label>
+												<input required type="email" value="" class="form-control" name="leads[email]" id="contact-email">
 											</div>
 											<div class="col-md-6">
-												<label for="contact:phone">Phone Number </label>
-												<input type="text" value="" class="form-control" name="contact[phone]" id="contact:phone">
+												<label for="contact-phone">Phone Number (XXX-XXX-XXXX)</label>
+												<input type="tel" value="" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" name="leads[phone]" id="contact-phone">
 											</div>
 									</div>
 									<div class="row">
 											<div class="col-md-8">
-												<label for="contact:subject">Project Name </label>
-												<input required type="text" value="" class="form-control" name="contact[subject][required]" id="contact:subject">
+												<label for="contact-project-name">Project Name </label>
+												<input required type="text" value="" class="form-control" name="leads[project_name]" id="contact-project-name">
 											</div>
 											<div class="col-md-4">
-												<label for="contact_department">Department</label>
-												<select class="form-control pointer" name="contact[department]">
+												<label for="contact-department">Department</label>
+												<select class="form-control pointer" name="leads[department]">
 													<option value="">--- Select ---</option>
 													<option value="Residential">Residential</option>
 													<option value="Corporate">Corporate</option>
@@ -948,22 +948,22 @@
 																		
 									<div class="row">
 										<div class="col-md-12">
-											<label for="contact:desc">Project Description </label>
-											<textarea maxlength="10000" rows="8" class="form-control" name="contact[desc]" id="contact:desc"></textarea>
+											<label for="contact-description">Project Description </label>
+											<textarea maxlength="10000" rows="8" class="form-control" name="leads[project_description]" id="contact-description"></textarea>
 										</div>
 									</div>
 									<div class="row">
 											<div class="col-md-12">
-												<label for="contact:message">Message *</label>
-												<textarea required maxlength="10000" rows="8" class="form-control" name="contact[message]" id="contact:message"></textarea>
+												<label for="contact-message">Message *</label>
+												<textarea required maxlength="10000" rows="8" class="form-control" name="leads[message]" id="contact-message"></textarea>
 											</div>
 									</div>
 									<div class="row">
 											<div class="col-md-12">
-												<label for="contact:attachment">File Attachment</label>
+												<label for="contact-attachment">File Attachment</label>
 
 												<!-- custom file upload -->
-												<input class="custom-file-upload" type="file" id="file" name="contact[attachment]" id="contact:attachment" data-btn-text="Select a File" />
+												<input class="custom-file-upload" type="file" id="file" name="leads[attached_file]" id="contact-attachment" data-btn-text="Select a File" />
 												<small class="text-muted block">Max file size: 10Mb (zip/pdf/jpg/png)</small>
 
 											</div>
