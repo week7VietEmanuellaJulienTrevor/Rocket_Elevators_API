@@ -1,12 +1,12 @@
 ActiveAdmin.register Battery do
-  permit_params :building_id, :type, :status, :employee_id, :commissioning_date, :last_inspection_date, :operations_certificate, :information, :notes
+  permit_params :building_id, :type_of_building, :status, :employee_id, :commissioning_date, :last_inspection_date, :operations_certificate, :information, :notes
 
   index do
     selectable_column
-    column :building_id
-    column :type
+    #column :building_id
+    column :type_of_building
     column :status
-    column :employee_id
+    #column :employee_id
     column :commissioning_date
     column :last_inspection_date
     column :operations_certificate
@@ -16,7 +16,7 @@ ActiveAdmin.register Battery do
   end
 
   filter :building_id
-  filter :type
+  filter :type_of_building
   filter :status
   filter :employee_id
   filter :commissioning_date
@@ -28,12 +28,12 @@ ActiveAdmin.register Battery do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :building_id, :type, :status, :employee_id, :commissioning_date, :last_inspection_date, :operations_certificate, :information, :notes
+  # permit_params :building_id, :type_of_building, :status, :employee_id, :commissioning_date, :last_inspection_date, :operations_certificate, :information, :notes
   #
   # or
   #
   # permit_params do
-  #   permitted = [:building_id, :type, :status, :employee_id, :commissioning_date, :last_inspection_date, :operations_certificate, :information, :notes]
+  #   permitted = [:building_id, :type_of_building, :status, :employee_id, :commissioning_date, :last_inspection_date, :operations_certificate, :information, :notes]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end

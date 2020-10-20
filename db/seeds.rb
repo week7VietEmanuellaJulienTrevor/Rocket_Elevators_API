@@ -26,3 +26,8 @@ Employee.create(first_name:"Mathieu", last_name:"Lortie", title:"Engineer", emai
 Employee.create(first_name:"Thomas", last_name:"Carrier", title:"Engineer", email:"thomas.carrier@codeboxx.biz")
 
 Column.create(type_of_building:"Residential", number_of_floors_served:"18", status:"offline", information:"test", notes:"this is a test")
+
+Building.create(address_of_the_building:"test Address", full_name_of_the_building_administrator:"john Smith", email_of_the_administrator_of_the_building:"XXX@XXX.x", phone_number_of_the_building_administrator:"123-456-7890", full_name_of_the_technical_contact_for_the_building:"John Doe", technical_contact_email_for_the_building:"YYY@YYY.Y", technical_contact_phone_for_the_building:"098-765-4321")
+
+Battery.create(building_id:1, type_of_building:"Residential", status:"online", employee_id:1, commissioning_date:'2010-11-20', last_inspection_date:'2020-10-16', operations_certificate:"functional", information:"test", notes:"test note")
+Battery.create(building_id:1, type_of_building:"Residential", status:"online", employee_id:1, commissioning_date:'2010-11-20', last_inspection_date:'2020-10-16', operations_certificate:"functional", information:"test", notes:"test note")
