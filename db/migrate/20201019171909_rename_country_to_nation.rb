@@ -4,6 +4,6 @@ class RenameCountryToNation < ActiveRecord::Migration[5.2]
   end
 
   def self.down
-    rename_column :addresses, :nation, :country
+    # rename_column :addresses, :nation, :country
   end
 end
