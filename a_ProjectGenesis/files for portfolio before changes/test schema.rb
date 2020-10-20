@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_012708) do
+<<<<<<< vietnga
+ActiveRecord::Schema.define(version: 2020_10_19_205938) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -34,11 +35,14 @@ ActiveRecord::Schema.define(version: 2020_10_20_012708) do
     t.string "suite_or_apartment"
     t.string "city"
     t.string "postal_code"
-    t.string "country"
+    t.string "nation"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+=======
+ActiveRecord::Schema.define(version: 2020_10_19_230343) do
+>>>>>>> trevor
 
   create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -53,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_012708) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< vietnga
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "building_id"
     t.string "type"
@@ -63,39 +68,16 @@ ActiveRecord::Schema.define(version: 2020_10_20_012708) do
     t.string "operations_certificate"
     t.string "information"
     t.string "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+=======
   create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "information_key"
     t.string "value"
+>>>>>>> trevor
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "address_of_the_building"
-    t.string "full_name_of_the_building_administrator"
-    t.string "email_of_the_administrator_of_the_building"
-    t.string "phone_number_of_the_building_administrator"
-    t.string "full_name_of_the_technical_contact_for_the_building"
-    t.string "technical_contact_email_for_the_building"
-    t.string "technical_contact_phone_for_the_building"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "type_of_building"
-    t.integer "number_of_floors_served"
-    t.string "status"
-    t.string "information"
-    t.text "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+<<<<<<< vietnga
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.date "customer_creation_date"
@@ -108,10 +90,21 @@ ActiveRecord::Schema.define(version: 2020_10_20_012708) do
     t.string "full_name_service_technical_authority"
     t.string "technical_authority_phone"
     t.string "technical_manager_email"
+=======
+  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "address_of_the_building"
+    t.string "full_name_of_the_building_administrator"
+    t.string "email_of_the_administrator_of_the_building"
+    t.string "phone_number_of_the_building_administrator"
+    t.string "full_name_of_the_technical_contact_for_the_building"
+    t.string "technical_contact_email_for_the_building"
+    t.string "technical_contact_phone_for_the_building"
+>>>>>>> trevor
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< vietnga
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "column_id"
     t.string "serial_number"
@@ -123,6 +116,14 @@ ActiveRecord::Schema.define(version: 2020_10_20_012708) do
     t.string "inspection_certificate"
     t.string "information"
     t.string "notes"
+=======
+  create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "type_of_building"
+    t.integer "number_of_floors_served"
+    t.string "status"
+    t.string "information"
+    t.text "notes"
+>>>>>>> trevor
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -154,14 +155,6 @@ ActiveRecord::Schema.define(version: 2020_10_20_012708) do
     t.float "installation_cost"
     t.float "total_cost"
     t.integer "no_of_daily_hours_of_activity"
-  end
-
-  create_table "tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name"
-    t.string "Last_name"
-    t.integer "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

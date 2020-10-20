@@ -90,3 +90,4 @@ gem 'popper_js', '~> 1.9', '>= 1.9.9'
 gem 'jquery-countdown-rails', '~> 2.0', '>= 2.0.2'
 
 
+gem 'country_select', '~> 4.0'
