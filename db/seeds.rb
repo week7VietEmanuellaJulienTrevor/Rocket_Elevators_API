@@ -24,3 +24,5 @@ Employee.create(first_name:"Mathieu", last_name:"Houde", title:"Captain", email:
 Employee.create(first_name:"David", last_name:"Boutin", title:"Engineer", email:"david.boutin@codeboxx.biz")
 Employee.create(first_name:"Mathieu", last_name:"Lortie", title:"Engineer", email:"mathieu.lortie@codeboxx.biz")
 Employee.create(first_name:"Thomas", last_name:"Carrier", title:"Engineer", email:"thomas.carrier@codeboxx.biz")
+
+Column.create(type_of_building:"Residential", number_of_floors_served:"18", status:"offline", information:"test", notes:"this is a test")
