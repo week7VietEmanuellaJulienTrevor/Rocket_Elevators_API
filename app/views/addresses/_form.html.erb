@@ -47,7 +47,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :country %>
+    <%= form.label :country, "With Priority Countries" %>
+    <%= f.country_select :country_code %>
     <%= form.text_field :country %>
   </div>
 
