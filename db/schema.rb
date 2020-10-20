@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_012708) do
+ActiveRecord::Schema.define(version: 2020_10_20_101543) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_012708) do
 
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "building_id"
-    t.string "type"
+    t.string "type_of_building"
     t.string "status"
     t.string "employee_id"
     t.date "commissioning_date"
@@ -136,6 +136,20 @@ ActiveRecord::Schema.define(version: 2020_10_20_012708) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "contact_full_name"
+    t.string "company_name"
+    t.string "email"
+    t.string "phone"
+    t.string "project_name"
+    t.text "project_description"
+    t.string "department"
+    t.text "message"
+    t.binary "attached_file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "building_type"
     t.integer "no_of_appartments"
@@ -150,9 +164,9 @@ ActiveRecord::Schema.define(version: 2020_10_20_012708) do
     t.datetime "updated_at", null: false
     t.integer "no_of_elevators"
     t.string "product_grade"
-    t.float "elevator_cost"
-    t.float "installation_cost"
-    t.float "total_cost"
+    t.string "elevator_cost"
+    t.string "installation_cost"
+    t.string "total_cost"
     t.integer "no_of_daily_hours_of_activity"
   end
 
