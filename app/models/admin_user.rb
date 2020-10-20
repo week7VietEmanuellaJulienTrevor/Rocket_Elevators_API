@@ -4,5 +4,5 @@ class AdminUser < ApplicationRecord
   devise :database_authenticatable, 
          :recoverable, :rememberable, :validatable
   
-  belongs_to :employees
+  belongs_to :employees, optional: true
 end
