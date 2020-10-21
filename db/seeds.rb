@@ -1104,19 +1104,193 @@ add = [
 
 
 100.times do
+    index = rand(0..add.length-1)
     addresses = Address.new(
         type_of_address: addressType[rand(0..3)],
         status: status[rand(0..1)],
         entity: entity[rand(0..1)],
-        number_and_street: add[:address1],
-        suite_or_apartment: rand(1..1000),
-        city: add[:city],
-        postal_code: add[:postalCode],
+        number_and_street: add[index][:address1],
+        # number_and_street: add[1][0],
+        suite_or_apartment: rand(1..100),
+        city: add[index][:city],
+        postal_code: add[index][:postalCode],
         country: "United States",
-        notes: Faker::Space.agency
+        notes: Faker::Measurement.metric_height
     )
-    addresses.save
+    addresses.save!
 end
+
+Employee.create(first_name:"Nicolas", last_name:"Genest", title:"CEO", email:"nicolas.genest@codeboxx.biz", user_id:1)
+Employee.create(first_name:"Nadya", last_name:"Fortier", title:"Director", email:"nadya.fortier@codeboxx.biz", user_id:2)
+Employee.create(first_name:"Martin", last_name:"Chantal", title:"Director Assistant", email:"martin.chantal@codeboxx.biz", user_id:3)
+Employee.create(first_name:"Mathieu", last_name:"Houde", title:"Captain", email:"mathieu.houde@codeboxx.biz", user_id:4)
+Employee.create(first_name:"David", last_name:"Boutin", title:"Engineer", email:"david.boutin@codeboxx.biz", user_id:5)
+Employee.create(first_name:"Mathieu", last_name:"Lortie", title:"Engineer", email:"mathieu.lortie@codeboxx.biz", user_id:6)
+Employee.create(first_name:"Thomas", last_name:"Carrier", title:"Engineer", email:"thomas.carrier@codeboxx.biz", user_id:7)
+# 50.times do
+#     adminUsers = AdminUser.new(
+#         email: Faker::Internet.email,
+#         encrypted_password: Faker::Internet.password
+#     )
+#     adminUsers.save
+# end
+
+
+# AdminUser.populate 50 do |a|
+#     a.email = Faker::Internet.email,
+#     a.encrypted_password = Faker::Internet.password
+# end
+
+
+
+userID = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+
+i = 8
+50.times do
+    customers = Customer.new(
+        #how can take value of array in order, to be unique
+        # while i < userID.length
+        #     user_id = userID[i]
+        #     i = i + 1
+        # end
+        user_id: userID[i],
+        customer_creation_date: Faker::Date.between(from: '2017-01-01', to: '2020-12-31'),
+        company_name: Faker::Company.name,
+        company_headquarter_address: Faker::Address.full_address,
+        full_name_company_contact: Faker::Name.name,
+        company_contact_phone: Faker::PhoneNumber.cell_phone,
+        email_company_contact: Faker::Internet.email,
+        company_description: Faker::Company.industry,
+        full_name_service_technical_authority: Faker::Name.name_with_middle,
+        technical_authority_phone: Faker::PhoneNumber.cell_phone,
+        technical_manager_email: Faker::Internet.email
+    )
+    customers.save
+    i = i+1
+end
+
+# buildingID = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+typeBuilding = ["Residential", "Commercial", "Corporate", "Hybrid"]
+
+Customer.all.each do |c|
+    Building.create!(
+        address_of_the_building: add[rand(0..add.length-1)][:address1],
+        full_name_of_the_building_administrator: Faker::Name.name,
+        email_of_the_administrator_of_the_building: Faker::Internet.email,
+        phone_number_of_the_building_administrator: Faker::PhoneNumber.cell_phone,
+        full_name_of_the_technical_contact_for_the_building: Faker::Name.name,
+        technical_contact_email_for_the_building: Faker::Internet.email,
+        technical_contact_phone_for_the_building: Faker::PhoneNumber.cell_phone,
+        customer_id: c.user_id
+    )
+end
+
+
+Building.all.each do |b|
+    Battery.create!(
+        building_id: b.id,
+        type_of_building: typeBuilding[rand(0..3)],
+        status: status[rand(0..1)],
+        employee_id: userID[rand(0..6)],
+        commissioning_date: Faker::Date.in_date_period,
+        last_inspection_date: Faker::Date.between_except(from: '2014-09-23', to: '2015-09-25', excepted: '2015-01-24'),
+        operations_certificate: Faker::DrivingLicence.british_driving_licence,
+        information: Faker::Company.buzzword,
+        notes: Faker::Company.catch_phrase
+    )
+end
+
+
+# buildingDetail = [
+#     {
+#         "information": "Type",
+#         "value": "Commercial",
+#     },
+#     {
+#         "information": "Type",
+#         "value": "Residential",
+#     },
+#     {
+#         "information": "Construction year",
+#         "value": "1969",
+#     },
+#     {
+#         "information": "Construction year",
+#         "value": "1948",
+#     },
+#     {
+#         "information": "Construction year",
+#         "value": "1989",
+#     },
+# ]    
+
+# Building.find_each do |b|
+#     Building_detail.create!(
+#         information_key: buildingDetail[rand(0..buildingDetail.length-1)][:information],
+#         value: buildingDetail[rand(0..buildingDetail.length-1)][:value],
+#         building_id: b.id
+#     )
+# end
+
+Battery.all.each do |battery|
+    Column.create!(
+        type_of_building: typeBuilding[rand(0..3)],
+        number_of_floors_served: userID[rand(8..49)],
+        status: status[rand(0..1)],
+        information: Faker::Company.buzzword,
+        notes: Faker::Company.catch_phrase,
+        battery_id: battery.id
+    )
+end
+
+
+# 50.times do
+#     columns = Column.new(
+#         type_of_building: typeBuilding[rand(0..3)],
+#         number_of_floors_served: userID[rand(8..49)],
+#         status: status[rand(0..1)],
+#         information: Faker::Company.buzzword,
+#         notes: Faker::Company.catch_phrase
+#     )
+#     columns.save
+# end
+
+# elevatorModel = ["Standard", "Premium", "Excelium"]
+
+# Column.all.each do |col|
+#     Elevator.create!(
+#         column_id: col.id,
+#         serial_number: "1",
+#         model: elevatorModel[rand(0..2)],
+#         type: typeBuilding[rand(0..2)],
+#         status: status[rand(0..1)],
+#         commissioning_date: Faker::Date.in_date_period,
+#         last_inspection_date: Faker::Date.between_except(from: '2014-09-23', to: '2015-09-25', excepted: '2015-01-24'),
+#         inspection_certificate: Faker::DrivingLicence.british_driving_licence,
+#         information: Faker::Company.buzzword,
+#         notes: Faker::Company.catch_phrase
+#     )
+# end
+
+# elevatorModel = ["Standard", "Premium", "Excelium"]
+# 50.times do
+#     elevators = Elevator.new(
+#         column_id: "1",
+#         serial_number: "1",
+#         model: elevatorModel[rand(0..2)],
+#         type: typeBuilding[rand(0..2)],
+#         status: status[rand(0..1)],
+#         commissioning_date: Faker::Date.in_date_period,
+#         last_inspection_date: Faker::Date.between_except(from: '2014-09-23', to: '2015-09-25', excepted: '2015-01-24'),
+#         inspection_certificate: Faker::DrivingLicence.british_driving_licence,
+#         information: Faker::Company.buzzword,
+#         notes: Faker::Company.catch_phrase
+#     )
+#     elevators.save
+# end
+
+
+
 
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
@@ -1131,13 +1305,13 @@ AdminUser.create!(email: 'mathieu.lortie@codeboxx.biz', password: 'password', pa
 AdminUser.create!(email: 'thomas.carrier@codeboxx.biz', password: 'password', password_confirmation: 'password')
 
 
-Employee.create(first_name:"Nicolas", last_name:"Genest", title:"CEO", email:"nicolas.genest@codeboxx.biz")
-Employee.create(first_name:"Nadya", last_name:"Fortier", title:"Director", email:"nadya.fortier@codeboxx.biz")
-Employee.create(first_name:"Martin", last_name:"Chantal", title:"Director Assistant", email:"martin.chantal@codeboxx.biz")
-Employee.create(first_name:"Mathieu", last_name:"Houde", title:"Captain", email:"mathieu.houde@codeboxx.biz")
-Employee.create(first_name:"David", last_name:"Boutin", title:"Engineer", email:"david.boutin@codeboxx.biz")
-Employee.create(first_name:"Mathieu", last_name:"Lortie", title:"Engineer", email:"mathieu.lortie@codeboxx.biz")
-Employee.create(first_name:"Thomas", last_name:"Carrier", title:"Engineer", email:"thomas.carrier@codeboxx.biz")
+# Employee.create(first_name:"Nicolas", last_name:"Genest", title:"CEO", email:"nicolas.genest@codeboxx.biz", user_id:1)
+# Employee.create(first_name:"Nadya", last_name:"Fortier", title:"Director", email:"nadya.fortier@codeboxx.biz", user_id:2)
+# Employee.create(first_name:"Martin", last_name:"Chantal", title:"Director Assistant", email:"martin.chantal@codeboxx.biz", user_id:3)
+# Employee.create(first_name:"Mathieu", last_name:"Houde", title:"Captain", email:"mathieu.houde@codeboxx.biz", user_id:4)
+# Employee.create(first_name:"David", last_name:"Boutin", title:"Engineer", email:"david.boutin@codeboxx.biz", user_id:5)
+# Employee.create(first_name:"Mathieu", last_name:"Lortie", title:"Engineer", email:"mathieu.lortie@codeboxx.biz", user_id:6)
+# Employee.create(first_name:"Thomas", last_name:"Carrier", title:"Engineer", email:"thomas.carrier@codeboxx.biz", user_id:7)
 
 Column.create(type_of_building:"Residential", number_of_floors_served:"18", status:"offline", information:"test", notes:"this is a test")
 

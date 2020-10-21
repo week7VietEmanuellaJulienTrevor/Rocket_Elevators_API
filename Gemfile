@@ -94,3 +94,6 @@ gem 'country_select', '~> 4.0'
 
 
 gem 'faker', '~> 2.14'
+
+
+gem 'populator', '~> 1.0'

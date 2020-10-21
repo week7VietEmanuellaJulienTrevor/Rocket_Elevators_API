@@ -10,7 +10,7 @@ ActiveAdmin.register Address do
     column :suite_or_apartment
     column :city
     column :postal_code
-    column :nation
+    column :country
     column :notes
     actions
   end
@@ -22,7 +22,7 @@ ActiveAdmin.register Address do
   filter :suite_or_apartment
   filter :city
   filter :postal_code
-  filter :nation
+  filter :country
 
 
   # See permitted parameters documentation:

@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_10_20_140212) do
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "columns_id"
+    t.index ["columns_id"], name: "index_batteries_on_columns_id"
   end
 
   create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -164,10 +166,11 @@ ActiveRecord::Schema.define(version: 2020_10_20_140212) do
     t.datetime "updated_at", null: false
     t.integer "no_of_elevators"
     t.string "product_grade"
-    t.float "elevator_cost"
-    t.float "installation_cost"
-    t.float "total_cost"
+    t.string "elevator_cost"
+    t.string "installation_cost"
+    t.string "total_cost"
     t.integer "no_of_daily_hours_of_activity"
   end
 
+  add_foreign_key "batteries", "columns", column: "columns_id"
 end
