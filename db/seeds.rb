@@ -7,22 +7,22 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Employee.create(first_name:"Nicolas", last_name:"Genest", title:"CEO", email:"nicolas.genest@codeboxx.biz")
-Employee.create(first_name:"Nadya", last_name:"Fortier", title:"Director", email:"nadya.fortier@codeboxx.biz")
-Employee.create(first_name:"Martin", last_name:"Chantal", title:"Director Assistant", email:"martin.chantal@codeboxx.biz")
-Employee.create(first_name:"Mathieu", last_name:"Houde", title:"Captain", email:"mathieu.houde@codeboxx.biz")
-Employee.create(first_name:"David", last_name:"Boutin", title:"Engineer", email:"david.boutin@codeboxx.biz")
-Employee.create(first_name:"Mathieu", last_name:"Lortie", title:"Engineer", email:"mathieu.lortie@codeboxx.biz")
-Employee.create(first_name:"Thomas", last_name:"Carrier", title:"Engineer", email:"thomas.carrier@codeboxx.biz")
+Employee.create(first_name:"Nicolas", last_name:"Genest", title:"CEO", email:"nicolas.genest@codeboxx.biz", admin_user_id:3)
+Employee.create(first_name:"Nadya", last_name:"Fortier", title:"Director", email:"nadya.fortier@codeboxx.biz", admin_user_id:4)
+Employee.create(first_name:"Martin", last_name:"Chantal", title:"Director Assistant", email:"martin.chantal@codeboxx.biz", admin_user_id:5)
+Employee.create(first_name:"Mathieu", last_name:"Houde", title:"Captain", email:"mathieu.houde@codeboxx.biz", admin_user_id:6)
+Employee.create(first_name:"David", last_name:"Boutin", title:"Engineer", email:"david.boutin@codeboxx.biz", admin_user_id:7)
+Employee.create(first_name:"Mathieu", last_name:"Lortie", title:"Engineer", email:"mathieu.lortie@codeboxx.biz", admin_user_id:8)
+Employee.create(first_name:"Thomas", last_name:"Carrier", title:"Engineer", email:"thomas.carrier@codeboxx.biz", admin_user_id:9)
 
-Column.create(type_of_building:"Residential", number_of_floors_served:"18", status:"offline", information:"test", notes:"this is a test")
+#Column.create(type_of_building:"Residential", number_of_floors_served:"18", status:"offline", information:"test", notes:"this is a test")
 
-Building.create(address_of_the_building:"test Address", full_name_of_the_building_administrator:"john Smith", email_of_the_administrator_of_the_building:"XXX@XXX.x", phone_number_of_the_building_administrator:"123-456-7890", full_name_of_the_technical_contact_for_the_building:"John Doe", technical_contact_email_for_the_building:"YYY@YYY.Y", technical_contact_phone_for_the_building:"098-765-4321", customer_id:2)
+#Building.create(address_of_the_building:"test Address", full_name_of_the_building_administrator:"john Smith", email_of_the_administrator_of_the_building:"XXX@XXX.x", phone_number_of_the_building_administrator:"123-456-7890", full_name_of_the_technical_contact_for_the_building:"John Doe", technical_contact_email_for_the_building:"YYY@YYY.Y", technical_contact_phone_for_the_building:"098-765-4321", customer_id:2)
 
-Battery.create(building_id:1, type_of_building:"Residential", status:"online", employee_id:1, commissioning_date:'2010-11-20', last_inspection_date:'2020-10-16', operations_certificate:"functional", information:"test", notes:"test note")
-Battery.create(building_id:1, type_of_building:"Residential", status:"online", employee_id:1, commissioning_date:'2010-11-20', last_inspection_date:'2020-10-16', operations_certificate:"functional", information:"test", notes:"test note")
+#Battery.create(building_id:1, type_of_building:"Residential", status:"online", employee_id:1, commissioning_date:'2010-11-20', last_inspection_date:'2020-10-16', operations_certificate:"functional", information:"test", notes:"test note")
+#Battery.create(building_id:1, type_of_building:"Residential", status:"online", employee_id:1, commissioning_date:'2010-11-20', last_inspection_date:'2020-10-16', operations_certificate:"functional", information:"test", notes:"test note")
 
-Customer.create(:customer_creation_date => "2020-10-19", :company_name => "company", :company_headquarter_address => "ADDRESS", :full_name_company_contact => "john Doe", :company_contact_phone => "123-456-7890", :email_company_contact => "XXXXX@XX.XX", :company_description => "this is a test", :full_name_service_technical_authority => "jane Doe", :technical_authority_phone => "111-222-3333", :technical_manager_email=> "YYY.Y@YYY.Y", :admin_user_id => 1 )
+#Customer.create(:customer_creation_date => "2020-10-19", :company_name => "company", :company_headquarter_address => "ADDRESS", :full_name_company_contact => "john Doe", :company_contact_phone => "123-456-7890", :email_company_contact => "XXXXX@XX.XX", :company_description => "this is a test", :full_name_service_technical_authority => "jane Doe", :technical_authority_phone => "111-222-3333", :technical_manager_email=> "YYY.Y@YYY.Y", :admin_user_id => 1 )
 
 # AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
