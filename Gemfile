@@ -91,3 +91,5 @@ gem 'jquery-countdown-rails', '~> 2.0', '>= 2.0.2'
 
 
 gem 'country_select', '~> 4.0'
+
+gem 'pg', '~> 1.2', '>= 1.2.3'
