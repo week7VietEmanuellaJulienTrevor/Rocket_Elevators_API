@@ -22,7 +22,7 @@ ActiveAdmin.register Address do
   filter :suite_or_apartment
   filter :city
   filter :postal_code
-  filter :nation
+  filter :country
 
 
   # See permitted parameters documentation:

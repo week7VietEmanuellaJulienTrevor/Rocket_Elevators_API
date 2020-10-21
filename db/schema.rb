@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_10_21_171516) do
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "columns_id"
+    t.index ["columns_id"], name: "index_batteries_on_columns_id"
   end
 
   create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -147,7 +149,6 @@ ActiveRecord::Schema.define(version: 2020_10_21_171516) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "admin_user_id"
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -186,4 +187,5 @@ ActiveRecord::Schema.define(version: 2020_10_21_171516) do
     t.index ["customer_id"], name: "index_quotes_on_customer_id"
   end
 
+  add_foreign_key "batteries", "columns", column: "columns_id"
 end
