@@ -4,5 +4,12 @@ class AdminUser < ApplicationRecord
   devise :database_authenticatable, 
          :recoverable, :rememberable, :validatable, :registerable
   
-  belongs_to :employees, optional: true
+  has_many :employees
+  def to_s
+    "#{email}"
+  end
+  has_many :customers
+  def to_s
+    "#{email}"
+  end
 end
