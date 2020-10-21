@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_21_024138) do
+ActiveRecord::Schema.define(version: 2020_10_21_171516) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -184,6 +184,8 @@ ActiveRecord::Schema.define(version: 2020_10_21_024138) do
     t.string "installation_cost"
     t.string "total_cost"
     t.integer "no_of_daily_hours_of_activity"
+    t.bigint "customer_id"
+    t.index ["customer_id"], name: "index_quotes_on_customer_id"
   end
 
   add_foreign_key "batteries", "columns", column: "columns_id"
