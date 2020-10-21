@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_21_014518) do
+ActiveRecord::Schema.define(version: 2020_10_21_024138) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2020_10_21_014518) do
     t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "building_id"
+    t.index ["building_id"], name: "index_building_details_on_building_id"
   end
 
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -85,6 +87,8 @@ ActiveRecord::Schema.define(version: 2020_10_21_014518) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "customer_id"
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_buildings_on_address_id"
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
@@ -115,6 +119,8 @@ ActiveRecord::Schema.define(version: 2020_10_21_014518) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "admin_user_id"
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_customers_on_address_id"
     t.index ["admin_user_id"], name: "index_customers_on_admin_user_id"
   end
 

@@ -5,4 +5,5 @@ class Customer < ApplicationRecord
     def to_s
         "#{company_name}"
     end
+    belongs_to :address
 end

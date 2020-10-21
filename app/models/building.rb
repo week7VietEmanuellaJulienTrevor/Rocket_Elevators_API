@@ -5,6 +5,11 @@ class Building < ApplicationRecord
     end
 
     belongs_to :customer
+    has_one :building_detail
+    def to_s
+        "#{company_name} #{full_name_company_contact}"
+    end
+    belongs_to :address
    
 
 end
