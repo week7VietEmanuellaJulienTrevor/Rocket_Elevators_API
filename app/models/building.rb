@@ -7,7 +7,7 @@ class Building < ApplicationRecord
     belongs_to :customer
     has_one :building_detail
     def to_s
-        "#{company_name} #{full_name_company_contact}"
+        "#{address_of_the_building}"
     end
     belongs_to :address
    
