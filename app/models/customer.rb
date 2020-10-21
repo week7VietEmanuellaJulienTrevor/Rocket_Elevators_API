@@ -6,8 +6,5 @@ class Customer < ApplicationRecord
         "#{company_name}"
     end
     belongs_to :address
-    has_many :quotes
-    def full_name
-        "#{company_name}"
-    end
+    
 end
