@@ -4,6 +4,7 @@ class Building < ApplicationRecord
         "#{address_of_the_building}"
     end
 
+    belongs_to :customer
    
 
 end
