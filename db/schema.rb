@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_101543) do
+ActiveRecord::Schema.define(version: 2020_10_21_155307) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -112,6 +112,16 @@ ActiveRecord::Schema.define(version: 2020_10_20_101543) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "dimcustomers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "creation_date"
+    t.string "company_name"
+    t.string "full_name_of_company_main_contact"
+    t.integer "nb_elevator"
+    t.string "building_city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "column_id"
     t.string "serial_number"
@@ -132,6 +142,32 @@ ActiveRecord::Schema.define(version: 2020_10_20_101543) do
     t.string "last_name"
     t.string "title"
     t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "factcontact", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "creation_date"
+    t.string "company_name"
+    t.string "email"
+    t.integer "project_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "factelevator", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "serial_number"
+    t.string "date_of_commissioning"
+    t.string "building_city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "factquote", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "creation"
+    t.string "company_name"
+    t.string "email"
+    t.integer "nb_elevator"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -164,18 +200,10 @@ ActiveRecord::Schema.define(version: 2020_10_20_101543) do
     t.datetime "updated_at", null: false
     t.integer "no_of_elevators"
     t.string "product_grade"
-    t.float "elevator_cost"
-    t.float "installation_cost"
-    t.float "total_cost"
+    t.string "elevator_cost"
+    t.string "installation_cost"
+    t.string "total_cost"
     t.integer "no_of_daily_hours_of_activity"
-  end
-
-  create_table "tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name"
-    t.string "Last_name"
-    t.integer "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

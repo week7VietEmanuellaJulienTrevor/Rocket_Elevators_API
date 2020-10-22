@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_155307) do
   end
 
   create_table "factquote", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "creation"
+    t.date "creation_date"
     t.string "company_name"
     t.string "email"
     t.integer "nb_elevator"
