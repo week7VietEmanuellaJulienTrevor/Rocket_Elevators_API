@@ -16,8 +16,9 @@ ActiveRecord::Schema.define(version: 2020_10_21_155307) do
     t.date "creation_date"
     t.string "company_name"
     t.string "full_name_of_company_main_contact"
+    t.string "email_of_company_main_contact"
     t.integer "nb_elevator"
-    t.string "building_city"
+    t.string "contact_city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_155307) do
   end
 
   create_table "factquote", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "creation_date"
+    t.date "creation"
     t.string "company_name"
     t.string "email"
     t.integer "nb_elevator"

@@ -17,16 +17,16 @@ namespace :export do
         table = Quote.all
         conn = PG::Connection.open(host: " ", user: " ", password: " ", dbname: " ")
 
-        conn.exec("TRUNCATE \"FactQuote\" RESTART IDENTITY")
+        conn.exec("TRUNCATE \"factquote\" RESTART IDENTITY")
 
         table.each do |row|
-            if row.nb_elevators == nil then
-                row.nb_elevators = 0
+            if row.nb_elevator == nil then
+                row.nb_elevator = 0
             end
 
             date = row.created_at.strftime("%Y%m%d")
 
-            conn.exec("INSERT INTO \"FactQuote\" (\"QuoteId\", \"CreationDate\", \"Business\", \"Email\", \"NbElevator\") VALUES (#{row.id}, '#{date}', \'#{row.business}\', \'#{row.email}\', #{row.nb_elevators})")
+            conn.exec("INSERT INTO \"factquote\" (\"quote_id\", \"creation_date\", \"company_name\", \"email\", \"nb_elevator\") VALUES (#{row.id}, '#{date}', \'#{row.company_name}\', \'#{row.email}\', #{row.nb_elevator})")
         end
         conn.finish()
     end
