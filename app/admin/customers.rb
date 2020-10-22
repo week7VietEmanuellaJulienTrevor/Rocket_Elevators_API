@@ -3,7 +3,7 @@ ActiveAdmin.register Customer do
 
   index do
     selectable_column
-    column :admin_user_id
+    column :admin_user_id, as:"User"
     column :address_id
     column :customer_creation_date
     column :company_name
@@ -18,7 +18,7 @@ ActiveAdmin.register Customer do
     actions
   end
 
-  filter :user_id
+  filter :admin_user_id
   filter :customer_creation_date
   filter :company_name
   filter :company_headquarter_address
