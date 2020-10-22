@@ -12210,40 +12210,6 @@ j=1
         technical_authority_phone: Employee.find(technicalAthorityID)[:phone_number],
         technical_manager_email: Employee.find(technicalAthorityID)[:email]
     )
-    
-customers.save
-b = rand(1..3)
-b.times do
-    addressID2 = rand(1..100)
-    administrator = rand(1..7)
-    buildings = Building.new(
-        address_id: addressID2,
-        address_of_the_building: Address.find(addressID2)[:number_and_street] + " " + Address.find(addressID2)[:suite_or_apartment] + " " + Address.find(addressID2)[:city] + " " + Address.find(addressID2)[:postal_code] + " " + Address.find(addressID2)[:country],
-        full_name_of_the_building_administrator: Employee.find(administrator)[:first_name] + " " + Employee.find(administrator)[:last_name],
-        email_of_the_administrator_of_the_building: Employee.find(administrator)[:email],
-        phone_number_of_the_building_administrator: Employee.find(administrator)[:phone_number],
-        full_name_of_the_technical_contact_for_the_building: Employee.find(technicalAthorityID)[:first_name] + " " + Employee.find(technicalAthorityID)[:last_name],
-        technical_contact_email_for_the_building: Employee.find(technicalAthorityID)[:email],
-        technical_contact_phone_for_the_building: Employee.find(technicalAthorityID)[:phone_number],
-        customer_id: j
-    )
-    buildings.save
-    
-    bcounter += 1
-    arrayIndex = rand(0..buildingDetail.length-1)
-    buildingDetails = Building_detail.new(
-        building_id: bcounter,
-        information_key: buildingDetail[arrayIndex][:information],
-        value: buildingDetail[arrayIndex][:value]
-    )
-    buildingDetails.save
-    i = i+1
-    j += 1
-
-end
-
-buildingID = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
-typeBuilding = ["Residential", "Commercial", "Corporate", "Hybrid"]
 
     customers.save
 
