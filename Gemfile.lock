@@ -203,6 +203,7 @@ GEM
       rack (>= 1.6.2, < 3)
     orm_adapter (0.5.0)
     owlcarousel-rails (2.2.3.5)
+    pg (1.2.3)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     popper_js (1.16.0)
@@ -349,6 +350,7 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   omniauth
   owlcarousel-rails (~> 2.2, >= 2.2.3.5)
+  pg (~> 1.2, >= 1.2.3)
   popper_js (~> 1.9, >= 1.9.9)
   populator (~> 1.0)
   puma (~> 3.11)

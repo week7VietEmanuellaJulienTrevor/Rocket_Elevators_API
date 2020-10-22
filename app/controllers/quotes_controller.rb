@@ -30,12 +30,21 @@ class QuotesController < ApplicationController
     end
 
     
-    # POST /quotes
-    # POST /quotes.json
+    # POST /create/quote
+    # POST /create/quote.json
     def create 
         @quote = Quote.new(params[:quote])
 
+        
+        p '------------------'
+        p '------------------'
+        p @quote
+        p '------------------'
+        p '------------------'
+
+
         respond_to do |format|
+            @quote.update!(quote_params)
             if @quote.save 
                 format.html { redirect_to @quote, notice: "Save process completed!" }
                 format.json { render json: @quote, status: :created, location: @quote }
