@@ -6,5 +6,5 @@ class Customer < ApplicationRecord
         "#{company_name}"
     end
     belongs_to :address
-    
+    belongs_to :employee
 end
