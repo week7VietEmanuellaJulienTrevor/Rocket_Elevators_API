@@ -128,6 +128,8 @@ GEM
     ed25519 (1.2.4)
     erubi (1.9.0)
     execjs (2.7.0)
+    faker (2.14.0)
+      i18n (>= 1.6, < 2)
     ffi (1.13.1)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
@@ -201,6 +203,7 @@ GEM
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     popper_js (1.16.0)
+    populator (1.0.0)
     public_suffix (4.0.6)
     puma (3.12.6)
     rack (2.2.3)
@@ -332,6 +335,7 @@ DEPENDENCIES
   country_select (~> 4.0)
   devise
   ed25519 (>= 1.2, < 2.0)
+  faker (~> 2.14)
   font-awesome-rails (~> 4.7, >= 4.7.0.5)
   font-awesome-sass (~> 4.3.0)
   jbuilder (~> 2.5)
@@ -343,6 +347,7 @@ DEPENDENCIES
   owlcarousel-rails (~> 2.2, >= 2.2.3.5)
   pg (~> 1.2, >= 1.2.3)
   popper_js (~> 1.9, >= 1.9.9)
+  populator (~> 1.0)
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.4)
   rvm1-capistrano3
