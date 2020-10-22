@@ -12254,7 +12254,7 @@ j=1
                 building_id: bcounter,
                 type_of_building: typeBuilding[Btype],
                 status: status[stat],
-                employee_id: rand(0..7),
+                employee_id: technicalAthorityID,
                 commissioning_date: Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20'),
                 last_inspection_date: Faker::Date.between(from: '2019-10-20', to: '2020-10-20'),
                 operations_certificate: Faker::DrivingLicence.british_driving_licence,
