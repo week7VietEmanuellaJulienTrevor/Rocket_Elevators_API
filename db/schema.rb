@@ -128,17 +128,6 @@ ActiveRecord::Schema.define(version: 2020_10_22_132217) do
     t.index ["employee_id"], name: "index_customers_on_employee_id"
   end
 
-  create_table "dimcustomers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "creation_date"
-    t.string "company_name"
-    t.string "full_name_of_company_main_contact"
-    t.string "email_of_company_main_contact"
-    t.integer "nb_elevator"
-    t.string "contact_city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "serial_number"
     t.string "model"
@@ -165,32 +154,6 @@ ActiveRecord::Schema.define(version: 2020_10_22_132217) do
     t.bigint "admin_user_id"
     t.string "phone_number"
     t.index ["admin_user_id"], name: "index_employees_on_admin_user_id"
-  end
-
-  create_table "factcontact", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "creation_date"
-    t.string "company_name"
-    t.string "email"
-    t.integer "project_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "factelevator", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "serial_number"
-    t.string "date_of_commissioning"
-    t.string "building_city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "factquote", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "creation"
-    t.string "company_name"
-    t.string "email"
-    t.integer "nb_elevator"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

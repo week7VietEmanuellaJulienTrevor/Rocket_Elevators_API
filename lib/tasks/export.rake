@@ -14,8 +14,8 @@ namespace :export do
     # FactQuote
     desc "export data from mysql database to postgresql table FactQuote"
     task factquote: :environment do
-        table = Quote.all
-        conn = PG::Connection.open(host: " ", user: " ", password: " ", dbname: " ")
+        table = quotes.all
+        conn = PG::Connection.open(dbname: "datawarehouse_development")
 
         conn.exec("TRUNCATE \"factquote\" RESTART IDENTITY")
 
@@ -26,7 +26,7 @@ namespace :export do
 
             date = row.created_at.strftime("%Y%m%d")
 
-            conn.exec("INSERT INTO \"factquote\" (\"quote_id\", \"creation_date\", \"company_name\", \"email\", \"nb_elevator\") VALUES (#{row.id}, '#{date}', \'#{row.company_name}\', \'#{row.email}\', #{row.nb_elevator})")
+            conn.exec("INSERT INTO \"factquote\" (\"quote_id\", \"creation_date\", \"company_name\", \"email\", \"nb_elevator\") VALUES (#{row.id}, '#{date}', \'#{row.company_name}\', \'#{row.email}\', #{row.no_of_elevators})")
         end
         conn.finish()
     end
