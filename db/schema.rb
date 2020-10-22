@@ -156,40 +156,6 @@ ActiveRecord::Schema.define(version: 2020_10_22_153401) do
     t.string "last_name"
     t.string "title"
     t.string "email"
-<<<<<<< HEAD
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "admin_user_id"
-    t.string "phone_number"
-    t.index ["admin_user_id"], name: "index_employees_on_admin_user_id"
-  end
-
-  create_table "factcontact", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "creation_date"
-    t.string "company_name"
-    t.string "email"
-    t.integer "project_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "factelevator", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "serial_number"
-    t.string "date_of_commissioning"
-    t.string "building_city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "factquote", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "creation"
-    t.string "company_name"
-    t.string "email"
-    t.integer "nb_elevator"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-=======
->>>>>>> 12f713f567cc213e4a8f3e8de942578c69c08c4c
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
