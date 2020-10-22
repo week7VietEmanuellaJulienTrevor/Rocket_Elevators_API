@@ -2,7 +2,7 @@ ActiveAdmin.register Employee do
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  permit_params :admin_user_id, :first_name, :last_name, :title, :email
+  permit_params :phone_number, :admin_user_id, :first_name, :last_name, :title, :email
 
   index do
     selectable_column
@@ -12,6 +12,7 @@ ActiveAdmin.register Employee do
     column :title
     column :email
     column :user_admins
+    column :phone_number
     actions
   end
 
