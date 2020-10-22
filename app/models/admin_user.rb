@@ -5,7 +5,7 @@ class AdminUser < ApplicationRecord
          :recoverable, :rememberable, :validatable, :registerable
   
   has_many :employees
-  def to_s
+  def display_name
     "#{email}"
   end
   has_many :customers
