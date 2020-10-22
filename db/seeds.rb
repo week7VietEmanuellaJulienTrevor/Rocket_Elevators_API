@@ -37,7 +37,7 @@ Employee.create(first_name:"Thomas", last_name:"Carrier", title:"Engineer", emai
 # puts " ---------------------------------------------------------------------------------"
 
 addressType = ["Billing", "Shipping", "Home", "Business"]
-status = ["Active", "Inactive"]
+status = ["Inactive","Active"]
 entity = ["Building", "Customer"]
 
 # address list as array of objects
@@ -1156,7 +1156,40 @@ end
 
 userID = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
 
+
+buildingDetail = [
+    {
+        "information": "Type",
+        "value": "Commercial",
+    },
+    {
+        "information": "Type",
+        "value": "Residential",
+    },
+    {
+        "information": "Construction year",
+        "value": "1969",
+    },
+    {
+        "information": "Construction year",
+        "value": "1948",
+    },
+    {
+        "information": "Construction year",
+        "value": "1989",
+    },
+] 
+
+typeBuilding = ["Residential", "Commercial", "Corporate", "Hybrid"]
+elevatorModel = ["Standard", "Premium", "Excelium"]
+
+
+
+cCounter = 0
+batCounter = 0
+bcounter = 0
 i = 10
+j=1
 50.times do
     technicalAthorityID = rand(1..7)
     eMail = Faker::Internet.email
@@ -1223,106 +1256,110 @@ end
 buildingID = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
 typeBuilding = ["Residential", "Commercial", "Corporate", "Hybrid"]
 
-# Customer.all.each do |c|
-#     Building.create!(
-#         address_of_the_building: add[rand(0..add.length-1)][:address1],
-#         full_name_of_the_building_administrator: Faker::Name.name,
-#         email_of_the_administrator_of_the_building: Faker::Internet.email,
-#         phone_number_of_the_building_administrator: Faker::PhoneNumber.cell_phone,
-#         full_name_of_the_technical_contact_for_the_building: Faker::Name.name,
-#         technical_contact_email_for_the_building: Faker::Internet.email,
-#         technical_contact_phone_for_the_building: Faker::PhoneNumber.cell_phone,
-#         customer_id: c.user_id
-#     )
-# end
+    customers.save
 
 
-# Building.all.each do |b|
-#     Battery.create!(
-#         building_id: b.id,
-#         type_of_building: typeBuilding[rand(0..3)],
-#         status: status[rand(0..1)],
-#         employee_id: userID[rand(0..6)],
-#         commissioning_date: Faker::Date.in_date_period,
-#         last_inspection_date: Faker::Date.between_except(from: '2014-09-23', to: '2015-09-25', excepted: '2015-01-24'),
-#         operations_certificate: Faker::DrivingLicence.british_driving_licence,
-#         information: Faker::Company.buzzword,
-#         notes: Faker::Company.catch_phrase
-#     )
-# end
+    b = rand(1..3)
+    b.times do
+        addressID2 = rand(1..100)
+        administrator = rand(1..7)
+        buildings = Building.new(
+            address_id: addressID2,
+            address_of_the_building: Address.find(addressID2)[:number_and_street] + " " + Address.find(addressID2)[:suite_or_apartment] + " " + Address.find(addressID2)[:city] + " " + Address.find(addressID2)[:postal_code] + " " + Address.find(addressID2)[:country],
+            full_name_of_the_building_administrator: Employee.find(administrator)[:first_name] + " " + Employee.find(administrator)[:last_name],
+            email_of_the_administrator_of_the_building: Employee.find(administrator)[:email],
+            phone_number_of_the_building_administrator: Employee.find(administrator)[:phone_number],
+            full_name_of_the_technical_contact_for_the_building: Employee.find(technicalAthorityID)[:first_name] + " " + Employee.find(technicalAthorityID)[:last_name],
+            technical_contact_email_for_the_building: Employee.find(technicalAthorityID)[:email],
+            technical_contact_phone_for_the_building: Employee.find(technicalAthorityID)[:phone_number],
+            customer_id: j
+        )
+        buildings.save
+        bcounter += 1
+
+        arrayIndex = rand(0..buildingDetail.length-1)
+
+        # buildingDetails = Building_detail.new(
+        #     building_id: bcounter,
+        #     information_key: buildingDetail[arrayIndex][:information],
+        #     value: buildingDetail[arrayIndex][:value]
+        # )
+        # buildingDetails.save
+        
+        bat = rand(1..3)
+        bat.times do
+            stat = rand(0..5)
+            if stat > 0
+                stat = 1
+            end
+            batteries = Battery.new(
+                building_id: bcounter,
+                type_of_building: typeBuilding[rand(0..3)],
+                status: status[stat],
+                employee_id: rand(0..7),
+                commissioning_date: Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20'),
+                last_inspection_date: Faker::Date.between(from: '2019-10-20', to: '2020-10-20'),
+                operations_certificate: Faker::DrivingLicence.british_driving_licence,
+                information: Faker::Company.buzzword,
+                notes:  Faker::Company.catch_phrase,
+            )
+            batteries.save
+            batCounter = batCounter + 1
+
+            puts batCounter
+            
+            c = rand(1..5)
+            c.times do
+                stat = rand(0..5)
+                if stat > 0
+                    stat = 1
+                end
+                columns = Column.new(
+                    battery_id:batCounter,
+                    type_of_building: Battery.find(batCounter)[:type_of_building],
+                    number_of_floors_served: rand(5..20),
+                    status: status[stat],
+                    information: Faker::Company.buzzword,
+                    notes: Faker::Company.catch_phrase
+                )
+                columns.save
+                cCouter = cCounter + 1
 
 
-# buildingDetail = [
-#     {
-#         "information": "Type",
-#         "value": "Commercial",
-#     },
-#     {
-#         "information": "Type",
-#         "value": "Residential",
-#     },
-#     {
-#         "information": "Construction year",
-#         "value": "1969",
-#     },
-#     {
-#         "information": "Construction year",
-#         "value": "1948",
-#     },
-#     {
-#         "information": "Construction year",
-#         "value": "1989",
-#     },
-# ]    
+                e = rand(1..5)
+                e.times do
+                    stat = rand(0..5)
+                    if stat > 0
+                        stat = 1
+                    end
+    
+                    elevators = Elevator.new(
+                        column_id: cCounter,
+                        serial_number:Faker::Device.serial,
+                        model:elevatorModel[rand(0..2)],
+                        type:Battery.find(batCounter)[:type_of_building],
+                        status:status[stat],
+                        commissioning_date:Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20'),
+                        last_inspection_date:Faker::Date.between(from: '2019-10-20', to: '2020-10-20'),
+                        inspection_certificate:Faker::DrivingLicence.british_driving_licence,
+                        information:Faker::Company.buzzword,
+                        notes:Faker::Company.catch_phrase,
 
-# Building.find_each do |b|
-#     Building_detail.create!(
-#         information_key: buildingDetail[rand(0..buildingDetail.length-1)][:information],
-#         value: buildingDetail[rand(0..buildingDetail.length-1)][:value],
-#         building_id: b.id
-#     )
-# end
-
-Battery.all.each do |battery|
-    Column.create!(
-        type_of_building: typeBuilding[rand(0..3)],
-        number_of_floors_served: userID[rand(8..49)],
-        status: status[rand(0..1)],
-        information: Faker::Company.buzzword,
-        notes: Faker::Company.catch_phrase,
-        battery_id: battery.id
-    )
+                    )
+                    elevators.save
+                end
+            end
+        end
+    end
+    i = i+1
+    j += 1
 end
 
+# # buildingID = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
 
-# 50.times do
-#     columns = Column.new(
-#         type_of_building: typeBuilding[rand(0..3)],
-#         number_of_floors_served: userID[rand(8..49)],
-#         status: status[rand(0..1)],
-#         information: Faker::Company.buzzword,
-#         notes: Faker::Company.catch_phrase
-#     )
-#     columns.save
-# end
 
-# elevatorModel = ["Standard", "Premium", "Excelium"]
 
-# Column.all.each do |col|
-#     Elevator.create!(
-#         column_id: col.id,
-#         serial_number: "1",
-#         model: elevatorModel[rand(0..2)],
-#         type: typeBuilding[rand(0..2)],
-#         status: status[rand(0..1)],
-#         commissioning_date: Faker::Date.in_date_period,
-#         last_inspection_date: Faker::Date.between_except(from: '2014-09-23', to: '2015-09-25', excepted: '2015-01-24'),
-#         inspection_certificate: Faker::DrivingLicence.british_driving_licence,
-#         information: Faker::Company.buzzword,
-#         notes: Faker::Company.catch_phrase
-#     )
-# end
-
+   
 # elevatorModel = ["Standard", "Premium", "Excelium"]
 # 50.times do
 #     elevators = Elevator.new(
