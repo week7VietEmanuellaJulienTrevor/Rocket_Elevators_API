@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_014051) do
+ActiveRecord::Schema.define(version: 2020_10_22_132217) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -115,13 +115,13 @@ ActiveRecord::Schema.define(version: 2020_10_22_014051) do
     t.string "company_contact_phone"
     t.string "email_company_contact"
     t.string "company_description"
+    t.string "full_name_service_technical_authority"
+    t.string "technical_authority_phone"
+    t.string "technical_manager_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "admin_user_id"
     t.bigint "address_id"
-    t.string "full_name_service_technical_authority"
-    t.string "technical_authority_phone"
-    t.string "technical_manager_email"
     t.bigint "employee_id"
     t.index ["address_id"], name: "index_customers_on_address_id"
     t.index ["admin_user_id"], name: "index_customers_on_admin_user_id"
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_014051) do
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "serial_number"
     t.string "model"
-    t.string "type"
+    t.string "type_of_building"
     t.string "status"
     t.date "commissioning_date"
     t.date "last_inspection_date"
