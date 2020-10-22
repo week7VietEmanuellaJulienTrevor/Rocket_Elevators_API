@@ -12231,12 +12231,12 @@ b.times do
     
     bcounter += 1
     arrayIndex = rand(0..buildingDetail.length-1)
-    # buildingDetails = Building_detail.new(
-    #     building_id: bcounter,
-    #     information_key: buildingDetail[arrayIndex][:information],
-    #     value: buildingDetail[arrayIndex][:value]
-    # )
-    # buildingDetails.save
+    buildingDetails = Building_detail.new(
+        building_id: bcounter,
+        information_key: buildingDetail[arrayIndex][:information],
+        value: buildingDetail[arrayIndex][:value]
+    )
+    buildingDetails.save
     i = i+1
     j += 1
 
