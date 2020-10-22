@@ -24,16 +24,16 @@
 
 # Customer.create(:customer_creation_date => "2020-10-19", :company_name => "company", :company_headquarter_address => "ADDRESS", :full_name_company_contact => "john Doe", :company_contact_phone => "123-456-7890", :email_company_contact => "XXXXX@XX.XX", :company_description => "this is a test", :full_name_service_technical_authority => "jane Doe", :technical_authority_phone => "111-222-3333", :technical_manager_email=> "YYY.Y@YYY.Y", :admin_user_id => 1 )
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-AdminUser.create!(email: 'codeboxx@example.com', password: 'password', password_confirmation: 'password')
-AdminUser.create!(email: 'nicolas.genest@codeboxx.biz', password: 'password', password_confirmation: 'password')
-AdminUser.create!(email: 'nadya.fortier@codeboxx.biz', password: 'password', password_confirmation: 'password')
-AdminUser.create!(email: 'martin.chantal@codeboxx.biz', password: 'password', password_confirmation: 'password')
-AdminUser.create!(email: 'mathieu.houde@codeboxx.biz', password: 'password', password_confirmation: 'password')
-AdminUser.create!(email: 'david.boutin@codeboxx.biz', password: 'password', password_confirmation: 'password') 
-AdminUser.create!(email: 'mathieu.lortie@codeboxx.biz', password: 'password', password_confirmation: 'password')
-AdminUser.create!(email: 'thomas.carrier@codeboxx.biz', password: 'password', password_confirmation: 'password')
+# AdminUser.create!(email: 'codeboxx@example.com', password: 'password', password_confirmation: 'password')
+# AdminUser.create!(email: 'nicolas.genest@codeboxx.biz', password: 'password', password_confirmation: 'password')
+# AdminUser.create!(email: 'nadya.fortier@codeboxx.biz', password: 'password', password_confirmation: 'password')
+# AdminUser.create!(email: 'martin.chantal@codeboxx.biz', password: 'password', password_confirmation: 'password')
+# AdminUser.create!(email: 'mathieu.houde@codeboxx.biz', password: 'password', password_confirmation: 'password')
+# AdminUser.create!(email: 'david.boutin@codeboxx.biz', password: 'password', password_confirmation: 'password') 
+# AdminUser.create!(email: 'mathieu.lortie@codeboxx.biz', password: 'password', password_confirmation: 'password')
+# AdminUser.create!(email: 'thomas.carrier@codeboxx.biz', password: 'password', password_confirmation: 'password')
 
 
 Employee.create(first_name:"Nicolas", last_name:"Genest", title:"CEO", email:"nicolas.genest@codeboxx.biz")
@@ -1273,16 +1273,16 @@ end
 #     )
 # end
 
-Battery.all.each do |battery|
-    Column.create!(
-        type_of_building: typeBuilding[rand(0..3)],
-        number_of_floors_served: userID[rand(8..49)],
-        status: status[rand(0..1)],
-        information: Faker::Company.buzzword,
-        notes: Faker::Company.catch_phrase,
-        battery_id: battery.id
-    )
-end
+# Battery.all.each do |battery|
+#     Column.create!(
+#         type_of_building: typeBuilding[rand(0..3)],
+#         number_of_floors_served: userID[rand(8..49)],
+#         status: status[rand(0..1)],
+#         information: Faker::Company.buzzword,
+#         notes: Faker::Company.catch_phrase,
+#         battery_id: battery.id
+#     )
+# end
 
 
 # 50.times do
@@ -1368,13 +1368,13 @@ end
 
 
 
-Employee.create(first_name:"Nicolas", last_name:"Genest", title:"CEO", email:"nicolas.genest@codeboxx.biz")
-Employee.create(first_name:"Nadya", last_name:"Fortier", title:"Director", email:"nadya.fortier@codeboxx.biz")
-Employee.create(first_name:"Martin", last_name:"Chantal", title:"Director Assistant", email:"martin.chantal@codeboxx.biz")
-Employee.create(first_name:"Mathieu", last_name:"Houde", title:"Captain", email:"mathieu.houde@codeboxx.biz")
-Employee.create(first_name:"David", last_name:"Boutin", title:"Engineer", email:"david.boutin@codeboxx.biz")
-Employee.create(first_name:"Mathieu", last_name:"Lortie", title:"Engineer", email:"mathieu.lortie@codeboxx.biz")
-Employee.create(first_name:"Thomas", last_name:"Carrier", title:"Engineer", email:"thomas.carrier@codeboxx.biz")
+Employee.create(first_name:"Nicolas", last_name:"Genest", title:"CEO", email:"nicolas.genest@codeboxx.biz", admin_user_id:3)
+Employee.create(first_name:"Nadya", last_name:"Fortier", title:"Director", email:"nadya.fortier@codeboxx.biz", admin_user_id:4)
+Employee.create(first_name:"Martin", last_name:"Chantal", title:"Director Assistant", email:"martin.chantal@codeboxx.biz", admin_user_id:5)
+Employee.create(first_name:"Mathieu", last_name:"Houde", title:"Captain", email:"mathieu.houde@codeboxx.biz", admin_user_id:6)
+Employee.create(first_name:"David", last_name:"Boutin", title:"Engineer", email:"david.boutin@codeboxx.biz", admin_user_id:7)
+Employee.create(first_name:"Mathieu", last_name:"Lortie", title:"Engineer", email:"mathieu.lortie@codeboxx.biz", admin_user_id:8)
+Employee.create(first_name:"Thomas", last_name:"Carrier", title:"Engineer", email:"thomas.carrier@codeboxx.biz", admin_user_id:9)
 
 # Column.create(type_of_building:"Residential", number_of_floors_served:"18", status:"offline", information:"test", notes:"this is a test")
 
