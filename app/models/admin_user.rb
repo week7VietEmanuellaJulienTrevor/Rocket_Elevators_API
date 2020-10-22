@@ -15,6 +15,14 @@ class AdminUser < ApplicationRecord
 
   # SCOPES
   scope :filter_by_email, -> (email) { where email: email}
+  
+  # Assign admin role if user is an Employee
+  def admin?
+    true
+  end
+
+
+
 
   # Check if user is an employee
   #user = @admin_user 

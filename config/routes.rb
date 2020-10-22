@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   resources :columns
   resources :building_details
   resources :buildings
+
   resource :quotes
   resource :leads
+
+  resource :employees
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -26,6 +29,7 @@ Rails.application.routes.draw do
   get 'index' => 'pages#index'
 
   # POST routes
+
   post 'quote/create' => 'quotes#create'
   post 'contact/create' => 'leads#create'
 end
