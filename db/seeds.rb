@@ -12241,7 +12241,8 @@ j=1
         buildingDetails = BuildingDetail.new(
             building_id: bcounter,
             information_key: buildingDetail[arrayIndex][:information],
-            value: buildingDetail[arrayIndex][:value]
+            value: buildingDetail[arrayIndex][:value],
+            customer_id: j
         )
         buildingDetails.save
         
@@ -12307,7 +12308,7 @@ j=1
             product_grade: EModel,
             elevator_cost: cost,
             installation_cost: inst * cost * elevators,
-            total_cost: (elevators * inst * cost) + (elevators * cost),
+            total_cost: "$" + '%.2f' % ((elevators * inst * cost) + (elevators * cost)),
             no_of_daily_hours_of_activity: activity,       
 
         )
@@ -12334,6 +12335,7 @@ j=1
                 operations_certificate: Faker::DrivingLicence.british_driving_licence,
                 information: Faker::Company.buzzword,
                 notes:  Faker::Company.catch_phrase,
+                customer_id: j
             )
             batteries.save
             batCounter = batCounter + 1
@@ -12360,7 +12362,8 @@ j=1
                         number_of_floors_served: rand(5..20),
                         status: status[stat],
                         information: Faker::Company.buzzword,
-                        notes: Faker::Company.catch_phrase
+                        notes: Faker::Company.catch_phrase,
+                        customer_id: j
                     )
                     columns.save
                     cCounter = cCounter + 1
@@ -12392,6 +12395,7 @@ j=1
                                 inspection_certificate:Faker::DrivingLicence.british_driving_licence,
                                 information:Faker::Company.buzzword,
                                 notes:Faker::Company.catch_phrase,
+                                customer_id: j
 
                             )
                             elevators.save

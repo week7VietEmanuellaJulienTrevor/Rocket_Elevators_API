@@ -26,7 +26,7 @@ namespace :export do
              
              # Path to add ramdom date to nil field
              if row.customer_creation_date == nil then
-                 Year = 1976+rand(42)
+                 Year = 1976+rand(43)
                  Month = 1+rand(11)
                  Day = 1+rand(27)
                  date = Date.new(Year, Month, Day)

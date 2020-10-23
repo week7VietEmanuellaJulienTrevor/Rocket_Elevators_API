@@ -1,5 +1,5 @@
 ActiveAdmin.register Elevator do
-  permit_params :column_id, :serial_number, :model, :type, :status, :commissioning_date, :last_inspection_date, :inspection_certificate, :information, :notes
+  permit_params :column_id, :serial_number, :model, :type, :status, :commissioning_date, :last_inspection_date, :inspection_certificate, :information, :notes, :customer_id
 
   index do
     selectable_column

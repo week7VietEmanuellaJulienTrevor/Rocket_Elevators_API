@@ -15,7 +15,6 @@ ActiveAdmin.register Building do
   #   permitted
   # end
   index do
-    #column :customer_id
     #column :address_id
     column :address_of_the_building
     column :full_name_of_the_building_administrator
@@ -30,5 +29,6 @@ ActiveAdmin.register Building do
   filter :address_of_the_building
   filter :full_name_of_the_building_administrator
   filter :full_name_of_the_technical_contact_for_the_building
+  filter :customer_id
 
 end
