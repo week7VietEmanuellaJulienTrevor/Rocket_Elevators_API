@@ -119,5 +119,11 @@ yarn-debug.log*
 
 
 .DS_Store
+<<<<<<< HEAD
 database.yml
 database_second.yml
+=======
+
+database.yml
+databse_second.yml
+>>>>>>> test
