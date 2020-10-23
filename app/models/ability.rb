@@ -16,6 +16,9 @@ class Ability
       can :read, Building, customer_id: user.id - 10
       can :read, BuildingDetail
 
+      # USER ------ CUSTOMER ----- BUILDING
+      # 
+
     end
 
     if user.admin?
