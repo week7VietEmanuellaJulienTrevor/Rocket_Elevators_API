@@ -12379,14 +12379,16 @@ j=1
                                 stat = 1
                             end
 
+                            commisioningDate = Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20')
+
                             elevators = Elevator.new(
                                 column_id: cCounter,
                                 serial_number:Faker::Device.serial,
                                 model: EModel,
                                 type_of_building:Battery.find(batCounter)[:type_of_building].to_s,
                                 status:status[stat],
-                                commissioning_date:Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20'),
-                                last_inspection_date:Faker::Date.between(from: '2019-10-20', to: '2020-10-20'),
+                                commissioning_date:commisioningDate,
+                                last_inspection_date:Faker::Date.between(from: commisioningDate, to: '2020-10-20'),
                                 inspection_certificate:Faker::DrivingLicence.british_driving_licence,
                                 information:Faker::Company.buzzword,
                                 notes:Faker::Company.catch_phrase,
