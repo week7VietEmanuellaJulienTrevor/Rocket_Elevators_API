@@ -25,11 +25,10 @@ ActiveRecord::Schema.define(version: 2020_10_21_155307) do
   end
 
   create_table "factcontact", force: :cascade do |t|
-    t.integer "contact_id"
     t.date "creation_date"
     t.string "company_name"
     t.string "email"
-    t.integer "project_name"
+    t.string "project_name"
   end
 
   create_table "factelevator", force: :cascade do |t|
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 2020_10_21_155307) do
   end
 
   create_table "factquote", force: :cascade do |t|
-    t.integer "quote_id"
     t.date "creation"
     t.string "company_name"
     t.string "email"

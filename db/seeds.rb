@@ -12378,7 +12378,7 @@ j=1
                             if stat > 0
                                 stat = 1
                             end
-            
+
                             elevators = Elevator.new(
                                 column_id: cCounter,
                                 serial_number:Faker::Device.serial,
