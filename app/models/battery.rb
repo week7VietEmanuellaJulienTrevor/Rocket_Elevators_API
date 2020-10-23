@@ -5,4 +5,5 @@ class Battery < ApplicationRecord
     def display_name
         "#{id}"
     end
+    
 end

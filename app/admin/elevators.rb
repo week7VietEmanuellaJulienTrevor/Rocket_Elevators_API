@@ -4,11 +4,11 @@ ActiveAdmin.register Elevator do
   index do
     selectable_column
     column :column_id
-    column :serial_number
+    #column :serial_number
     column :model
-    column :type
+    #column :type
     column :status
-    column :commissioning_date
+    #column :commissioning_date
     column :last_inspection_date
     column :inspection_certificate
     column :information
@@ -19,12 +19,12 @@ ActiveAdmin.register Elevator do
   filter :column_id
   filter :serial_number
   filter :model
-  filter :type
+  #filter :type
   filter :status
   filter :commissioning_date
   filter :last_inspection_date
   filter :inspection_certificate
-  filter :information
+  #filter :information
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

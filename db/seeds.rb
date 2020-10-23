@@ -12121,7 +12121,7 @@ add = [
 ]
 
 #seed the address table
-100.times do
+500.times do
     index = rand(0..add.length-1)
     addresses = Address.new(
         type_of_address: addressType[rand(0..3)],
@@ -12179,7 +12179,7 @@ i = 10
 j=1
 
 #create the customers
-50.times do
+100.times do
     
     eMail = Faker::Internet.email
 
@@ -12216,7 +12216,7 @@ j=1
     )
 
     customers.save
-
+    
     #buildings are nested in their customer
     b = rand(1..3)
     b.times do
@@ -12224,7 +12224,7 @@ j=1
         administrator = rand(1..7)
         buildings = Building.new(
             address_id: addressID2,
-            address_of_the_building: Address.find(addressID2)[:number_and_street] + " " + Address.find(addressID2)[:suite_or_apartment] + " " + Address.find(addressID2)[:city] + " " + Address.find(addressID2)[:postal_code] + " " + Address.find(addressID2)[:country],
+            address_of_the_building: Address.find(addressID2)[:number_and_street], #+ " " + Address.find(addressID2)[:suite_or_apartment] + " " + Address.find(addressID2)[:city] + " " + Address.find(addressID2)[:postal_code] + " " + Address.find(addressID2)[:country],
             full_name_of_the_building_administrator: Employee.find(administrator)[:first_name] + " " + Employee.find(administrator)[:last_name],
             email_of_the_administrator_of_the_building: Employee.find(administrator)[:email],
             phone_number_of_the_building_administrator: Employee.find(administrator)[:phone_number],
@@ -12378,15 +12378,17 @@ j=1
                             if stat > 0
                                 stat = 1
                             end
-            
+
+                            commisioningDate = Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20')
+
                             elevators = Elevator.new(
                                 column_id: cCounter,
                                 serial_number:Faker::Device.serial,
                                 model: EModel,
                                 type_of_building:Battery.find(batCounter)[:type_of_building].to_s,
                                 status:status[stat],
-                                commissioning_date:Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20'),
-                                last_inspection_date:Faker::Date.between(from: '2019-10-20', to: '2020-10-20'),
+                                commissioning_date:commisioningDate,
+                                last_inspection_date:Faker::Date.between(from: commisioningDate, to: '2020-10-20'),
                                 inspection_certificate:Faker::DrivingLicence.british_driving_licence,
                                 information:Faker::Company.buzzword,
                                 notes:Faker::Company.catch_phrase,
@@ -12426,7 +12428,8 @@ end
         project_name: Faker::Company.catch_phrase,
         project_description: Faker::Lorem.sentence,
         department: typeBuilding[rand(0..3)],
-        message: Faker::Lorem.paragraphs
+        message: Faker::Lorem.paragraphs,
+        created_at: Faker::Date.between(from: '1976-01-01', to: '2020-10-20')
         # attached_file:Faker::Types.rb_string 
 
 

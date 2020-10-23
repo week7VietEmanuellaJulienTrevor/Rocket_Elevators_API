@@ -5,4 +5,5 @@ class Column < ApplicationRecord
         "#{id}"
     end
     belongs_to :battery    
+    
 end
