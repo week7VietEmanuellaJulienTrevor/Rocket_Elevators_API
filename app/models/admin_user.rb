@@ -2,7 +2,7 @@ class AdminUser < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, 
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :registerable
   
   has_many :employees
   def display_name
@@ -13,8 +13,7 @@ class AdminUser < ApplicationRecord
     "#{email}"
   end
 
-  belongs_to :quote
-  belongs_to :customer
+  #belongs_to :quote
 
   # Assign admin role if user is an Employee
   def admin?

@@ -8,13 +8,14 @@ class Ability
 
     if user.customer?
     
+      offset = 9
       can :read, AdminUser, id: user.id
       can :read, Customer, admin_user_id: user.id
-      can :read, Elevator
-      can :read, Column
-      can :read, Battery
-      can :read, Building, customer_id: user.id - 10
-      can :read, BuildingDetail
+      can :read, Elevator, customer_id: user.id - offset
+      can :read, Column, customer_id: user.id - offset
+      can :read, Battery, customer_id: user.id - offset
+      can :read, Building, customer_id: user.id - offset
+      can :read, BuildingDetail, customer_id: user.id - offset
 
       # USER ------ CUSTOMER ----- BUILDING
       # 
@@ -31,7 +32,7 @@ class Ability
       #redirect_to root_path
     #end
 
-    cannot [:create, :update], [Lead, Quote]
+    cannot [:create, :update], [Lead, Quote, AdminUser]
     can :update, AdminUser, id: user.id
 
 

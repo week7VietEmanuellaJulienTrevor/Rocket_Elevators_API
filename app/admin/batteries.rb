@@ -1,5 +1,5 @@
 ActiveAdmin.register Battery do
-  permit_params :building_id, :type_of_building, :status, :employee_id, :commissioning_date, :last_inspection_date, :operations_certificate, :information, :notes
+  permit_params :building_id, :type_of_building, :status, :employee_id, :commissioning_date, :last_inspection_date, :operations_certificate, :information, :notes, :customer_id
 
   index do
     selectable_column
