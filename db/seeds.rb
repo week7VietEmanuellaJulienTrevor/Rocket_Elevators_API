@@ -12179,171 +12179,188 @@ i = 10
 j=1
 
 #create the customers
-50.times do
-    technicalAthorityID = rand(1..7)
-    eMail = Faker::Internet.email
-    addressID = rand(1..100)
+# 50.times do
+#     technicalAthorityID = rand(1..7)
+#     eMail = Faker::Internet.email
+#     addressID = rand(1..100)
 
-    users = AdminUser.new(
-        email:eMail,
-        password:"password",
-        password_confirmation:"password"
-    )
-    users.save
+#     users = AdminUser.new(
+#         email:eMail,
+#         password:"password",
+#         password_confirmation:"password"
+#     )
+#     users.save
 
-    customers = Customer.new(
-        #user_id: userID[i],
-        customer_creation_date: Faker::Date.between(from: '1976-01-01', to: '2020-10-20'),
-        company_name: Faker::Company.name,
-        company_headquarter_address: Address.find(addressID)[:number_and_street].to_s + " " + Address.find(addressID)[:suite_or_apartment].to_s + " " + Address.find(addressID)[:city].to_s + " " + Address.find(addressID)[:postal_code].to_s + " " + Address.find(addressID)[:country].to_s,
+#     customers = Customer.new(
+#         #user_id: userID[i],
+#         customer_creation_date: Faker::Date.between(from: '1976-01-01', to: '2020-10-20'),
+#         company_name: Faker::Company.name,
+#         company_headquarter_address: Address.find(addressID)[:number_and_street].to_s + " " + Address.find(addressID)[:suite_or_apartment].to_s + " " + Address.find(addressID)[:city].to_s + " " + Address.find(addressID)[:postal_code].to_s + " " + Address.find(addressID)[:country].to_s,
         
-        full_name_company_contact: Faker::Name.name,
-        address_id: addressID,
-        company_contact_phone: Faker::PhoneNumber.cell_phone,
-        email_company_contact: eMail,
-        admin_user_id: i,
-        company_description: Faker::Company.industry,
+#         full_name_company_contact: Faker::Name.name,
+#         address_id: addressID,
+#         company_contact_phone: Faker::PhoneNumber.cell_phone,
+#         email_company_contact: eMail,
+#         admin_user_id: i,
+#         company_description: Faker::Company.industry,
 
-        employee_id:technicalAthorityID,
-        full_name_service_technical_authority: Employee.find(technicalAthorityID)[:first_name] + " " + Employee.find(technicalAthorityID)[:last_name] , 
+#         employee_id:technicalAthorityID,
+#         full_name_service_technical_authority: Employee.find(technicalAthorityID)[:first_name] + " " + Employee.find(technicalAthorityID)[:last_name] , 
        
-        technical_authority_phone: Employee.find(technicalAthorityID)[:phone_number],
-        technical_manager_email: Employee.find(technicalAthorityID)[:email]
-    )
+#         technical_authority_phone: Employee.find(technicalAthorityID)[:phone_number],
+#         technical_manager_email: Employee.find(technicalAthorityID)[:email]
+#     )
 
-    customers.save
+#     customers.save
 
-    #buildings are nested in their customer
-    b = rand(1..3)
-    b.times do
-        addressID2 = rand(1..100)
-        administrator = rand(1..7)
-        buildings = Building.new(
-            address_id: addressID2,
-            address_of_the_building: Address.find(addressID2)[:number_and_street] + " " + Address.find(addressID2)[:suite_or_apartment] + " " + Address.find(addressID2)[:city] + " " + Address.find(addressID2)[:postal_code] + " " + Address.find(addressID2)[:country],
-            full_name_of_the_building_administrator: Employee.find(administrator)[:first_name] + " " + Employee.find(administrator)[:last_name],
-            email_of_the_administrator_of_the_building: Employee.find(administrator)[:email],
-            phone_number_of_the_building_administrator: Employee.find(administrator)[:phone_number],
-            full_name_of_the_technical_contact_for_the_building: Employee.find(technicalAthorityID)[:first_name] + " " + Employee.find(technicalAthorityID)[:last_name],
-            technical_contact_email_for_the_building: Employee.find(technicalAthorityID)[:email],
-            technical_contact_phone_for_the_building: Employee.find(technicalAthorityID)[:phone_number],
-            customer_id: j
-        )
-        buildings.save
-        bcounter += 1
+#     #buildings are nested in their customer
+#     b = rand(1..3)
+#     b.times do
+#         addressID2 = rand(1..100)
+#         administrator = rand(1..7)
+#         buildings = Building.new(
+#             address_id: addressID2,
+#             address_of_the_building: Address.find(addressID2)[:number_and_street] + " " + Address.find(addressID2)[:suite_or_apartment] + " " + Address.find(addressID2)[:city] + " " + Address.find(addressID2)[:postal_code] + " " + Address.find(addressID2)[:country],
+#             full_name_of_the_building_administrator: Employee.find(administrator)[:first_name] + " " + Employee.find(administrator)[:last_name],
+#             email_of_the_administrator_of_the_building: Employee.find(administrator)[:email],
+#             phone_number_of_the_building_administrator: Employee.find(administrator)[:phone_number],
+#             full_name_of_the_technical_contact_for_the_building: Employee.find(technicalAthorityID)[:first_name] + " " + Employee.find(technicalAthorityID)[:last_name],
+#             technical_contact_email_for_the_building: Employee.find(technicalAthorityID)[:email],
+#             technical_contact_phone_for_the_building: Employee.find(technicalAthorityID)[:phone_number],
+#             customer_id: j
+#         )
+#         buildings.save
+#         bcounter += 1
 
-        arrayIndex = rand(0..buildingDetail.length-1)
+#         arrayIndex = rand(0..buildingDetail.length-1)
 
-        buildingDetails = BuildingDetail.new(
-            building_id: bcounter,
-            information_key: buildingDetail[arrayIndex][:information],
-            value: buildingDetail[arrayIndex][:value]
-        )
-        buildingDetails.save
+#         buildingDetails = BuildingDetail.new(
+#             building_id: bcounter,
+#             information_key: buildingDetail[arrayIndex][:information],
+#             value: buildingDetail[arrayIndex][:value]
+#         )
+#         buildingDetails.save
         
 
-        #batterie is nested in buiding
-        bat = rand(1..3)
-        Btype = rand(0..3)
-        bat.times do
-            stat = rand(0..5)
-            if stat > 0
-                stat = 1
-            end
-            batteries = Battery.new(
-                building_id: bcounter,
-                type_of_building: typeBuilding[Btype],
-                status: status[stat],
-                employee_id: technicalAthorityID,
-                commissioning_date: Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20'),
-                last_inspection_date: Faker::Date.between(from: '2019-10-20', to: '2020-10-20'),
-                operations_certificate: Faker::DrivingLicence.british_driving_licence,
-                information: Faker::Company.buzzword,
-                notes:  Faker::Company.catch_phrase,
-            )
-            batteries.save
-            batCounter = batCounter + 1
+#         #batterie is nested in buiding
+#         bat = rand(1..3)
+#         Btype = rand(0..3)
+#         bat.times do
+#             stat = rand(0..5)
+#             if stat > 0
+#                 stat = 1
+#             end
+#             batteries = Battery.new(
+#                 building_id: bcounter,
+#                 type_of_building: typeBuilding[Btype],
+#                 status: status[stat],
+#                 employee_id: technicalAthorityID,
+#                 commissioning_date: Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20'),
+#                 last_inspection_date: Faker::Date.between(from: '2019-10-20', to: '2020-10-20'),
+#                 operations_certificate: Faker::DrivingLicence.british_driving_licence,
+#                 information: Faker::Company.buzzword,
+#                 notes:  Faker::Company.catch_phrase,
+#             )
+#             batteries.save
+#             batCounter = batCounter + 1
 
-            # print "battery counter : "
-            # print batCounter
-            # print " last battery ID : "
-            # puts Battery.last[:id]
+#             # print "battery counter : "
+#             # print batCounter
+#             # print " last battery ID : "
+#             # puts Battery.last[:id]
 
             
             
-            if Battery.last[:id] == batCounter
+#             if Battery.last[:id] == batCounter
 
 
 
-                #columns inside batteries
-                c = rand(1..5)
-                c.times do
-                    stat = rand(0..5)
-                    if stat > 0
-                        stat = 1
-                    end
-                    columns = Column.new(
-                        battery_id:batCounter,
-                        type_of_building: typeBuilding[Btype],
-                        number_of_floors_served: rand(5..20),
-                        status: status[stat],
-                        information: Faker::Company.buzzword,
-                        notes: Faker::Company.catch_phrase
-                    )
-                    columns.save
-                    cCounter = cCounter + 1
-                    print "                     column counter : "
-                    print cCounter
-                    print " last column ID : "
-                    puts Column.last[:id]
+#                 #columns inside batteries
+#                 c = rand(1..5)
+#                 c.times do
+#                     stat = rand(0..5)
+#                     if stat > 0
+#                         stat = 1
+#                     end
+#                     columns = Column.new(
+#                         battery_id:batCounter,
+#                         type_of_building: typeBuilding[Btype],
+#                         number_of_floors_served: rand(5..20),
+#                         status: status[stat],
+#                         information: Faker::Company.buzzword,
+#                         notes: Faker::Company.catch_phrase
+#                     )
+#                     columns.save
+#                     cCounter = cCounter + 1
+#                     print "                     column counter : "
+#                     print cCounter
+#                     print " last column ID : "
+#                     puts Column.last[:id]
 
-                    if Column.last[:id] == cCounter
+#                     if Column.last[:id] == cCounter
 
-                        #elevators inside Columns
+#                         #elevators inside Columns
 
-                        e = rand(1..5)
-                        e.times do
-                            stat = rand(0..5)
-                            if stat > 0
-                                stat = 1
-                            end
+#                         e = rand(1..5)
+#                         e.times do
+#                             stat = rand(0..5)
+#                             if stat > 0
+#                                 stat = 1
+#                             end
             
-                            elevators = Elevator.new(
-                                column_id: cCounter,
-                                serial_number:Faker::Device.serial,
-                                model:elevatorModel[rand(0..2)],
-                                type_of_building:Battery.find(batCounter)[:type_of_building].to_s,
-                                status:status[stat],
-                                commissioning_date:Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20'),
-                                last_inspection_date:Faker::Date.between(from: '2019-10-20', to: '2020-10-20'),
-                                inspection_certificate:Faker::DrivingLicence.british_driving_licence,
-                                information:Faker::Company.buzzword,
-                                notes:Faker::Company.catch_phrase,
+#                             elevators = Elevator.new(
+#                                 column_id: cCounter,
+#                                 serial_number:Faker::Device.serial,
+#                                 model:elevatorModel[rand(0..2)],
+#                                 type_of_building:Battery.find(batCounter)[:type_of_building].to_s,
+#                                 status:status[stat],
+#                                 commissioning_date:Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20'),
+#                                 last_inspection_date:Faker::Date.between(from: '2019-10-20', to: '2020-10-20'),
+#                                 inspection_certificate:Faker::DrivingLicence.british_driving_licence,
+#                                 information:Faker::Company.buzzword,
+#                                 notes:Faker::Company.catch_phrase,
 
-                            )
-                            elevators.save
-                            eCounter = eCounter + 1
-                            print "                                 elevator counter : "
-                            print eCounter
-                            print " last elevator ID : "
-                            puts Elevator.last[:id]
+#                             )
+#                             elevators.save
+#                             eCounter = eCounter + 1
+#                             print "                                 elevator counter : "
+#                             print eCounter
+#                             print " last elevator ID : "
+#                             puts Elevator.last[:id]
 
-                        end
-                    else
-                        if Column.last[:id] != nil
-                            cCounter = Column.last[:id]
-                        end
-                    end
-                end
-            else
-                if Battery.last[:id] != nil
-                    batCounter = Battery.last[:id]
-                end
-            end
-        end
-    end
-    i = i+1
-    j += 1
+#                         end
+#                     else
+#                         if Column.last[:id] != nil
+#                             cCounter = Column.last[:id]
+#                         end
+#                     end
+#                 end
+#             else
+#                 if Battery.last[:id] != nil
+#                     batCounter = Battery.last[:id]
+#                 end
+#             end
+#         end
+#     end
+#     i = i+1
+#     j += 1
+# end
+
+147.times do
+    leads = Lead.new(
+        contact_full_name: Faker::Name.name ,
+        company_name: Faker::Company.name,
+        email: Faker::Internet.email ,
+        phone: Faker::PhoneNumber.cell_phone,
+        project_name: Faker::Company.catch_phrase,
+        project_description: Faker::Lorem.sentence,
+        department: typeBuilding[rand(0..3)],
+        message: Faker::Lorem.paragraphs
+        # attached_file:Faker::Types.rb_string 
+
+
+    )
+    leads.save
 end
 
 
