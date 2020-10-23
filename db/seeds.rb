@@ -12212,7 +12212,7 @@ j=1
     )
 
     customers.save
-
+    
     #buildings are nested in their customer
     b = rand(1..3)
     b.times do

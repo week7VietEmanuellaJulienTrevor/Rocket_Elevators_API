@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_132217) do
     t.index ["admin_user_id"], name: "index_customers_on_admin_user_id"
     t.index ["employee_id"], name: "index_customers_on_employee_id"
   end
-
+  
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "serial_number"
     t.string "model"
