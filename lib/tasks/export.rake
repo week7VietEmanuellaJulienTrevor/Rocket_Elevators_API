@@ -28,9 +28,9 @@ namespace :export do
                  Month = 1+rand(11)
                  Day = 1+rand(27)
                  date = Date.new(Year, Month, Day)
-                 date = date.strftime("%Y%m%d")
+                 date = date.strftime("%F")
              else
-                 date = row.customer_creation_date.strftime("%Y%m%d")
+                 date = row.customer_creation_date.strftime("%F")
              end
              city = "#{row.company_name.gsub("'", "''")} City"
              conn.exec("INSERT INTO \"dimcustomers\" (\"creation_date\", \"company_name\", \"full_name_of_company_main_contact\", \"email_of_company_main_contact\", \"nb_elevator\", \"contact_city\") VALUES ('#{date}', '#{row.company_name.gsub("'", "''")}', '#{row.full_name_company_contact.gsub("'", "''")}', '#{row.email_company_contact}', #{nb_elevator}, \'#{city}\')")
@@ -48,9 +48,9 @@ namespace :export do
 
         table.each do |row|
 
-            date = row.created_at.strftime("%Y%m%d")
+            date = row.created_at.strftime("%F")
            
-            conn.exec("INSERT INTO \"factcontact\" (\"contact_id\", \"creation_date\", \"company_name\", \"email\", \"project_name\") VALUES (#{row.id}, '#{date}', '#{row.company_name.gsub("'", "''")}', \'#{row.email}\', \'#{row.project_name}\')")
+            conn.exec("INSERT INTO \"factcontact\" (\"id\", \"creation_date\", \"company_name\", \"email\", \"project_name\") VALUES (#{row.id}, '#{date}', '#{row.company_name.gsub("'", "''")}', \'#{row.email}\', \'#{row.project_name}\')")
         end
   
         conn.finish()
@@ -71,9 +71,9 @@ namespace :export do
             end
 
 
-            date = row.created_at.strftime("%Y%m%d")
+            date = row.created_at.strftime("%F")
 
-            conn.exec("INSERT INTO \"factquote\" (\"id\", \"creation\", \"company_name\", \"email\", \"nb_elevator\") VALUES (#{row.id},' #{date}', \'#{row.company_name}\', \'#{row.contact_email}\', \'#{row.no_of_elevators}\')")
+            conn.exec("INSERT INTO \"factquote\" (\"id\", \"creation\", \"company_name\", \"email\", \"nb_elevator\") VALUES (#{row.id},' #{date}', '#{row.company_name.gsub("'", "''")}', \'#{row.contact_email}\', \'#{row.no_of_elevators}\')")
         end
         conn.finish()
     end
@@ -87,20 +87,11 @@ namespace :export do
         conn.exec("TRUNCATE \"factelevator\" RESTART IDENTITY")
 
         table.each do |row|
-            # Path to add ramdom date to nil field
-            if row.commissioning_date == nil then
-                Year = 1976+rand(44)
-                Month = 1+rand(11)
-                Day = 1+rand(27)
-                date = Date.new(Year, Month, Day)
-                date = date.strftime("%Y%m%d")
-            else
-                date = row.commissioning_date.strftime("%Y%m%d")
-            end
 
-            #city = Building.find(Batterie.find(Column.find(column_ID)[:battery_id])[:building_id])[:address_of_the_building]
-
-            conn.exec("INSERT INTO \"factelevator\" (\"id\",\"serial_number\", \"date_of_commissioning\", \"building_id\", \"customer_id\", \"building_city\") VALUES (#{row.id}, '#{row.serial_number}', '#{date}' , #{-1}, #{-1}, 'city')")
+            date = row.commissioning_date.strftime("%F")
+            city = row.column.battery.building.address.city
+           
+            conn.exec("INSERT INTO \"factelevator\" (\"id\",\"serial_number\", \"date_of_commissioning\", \"building_id\", \"customer_id\", \"building_city\") VALUES ('#{row.id}', \'#{row.serial_number.gsub("'", "''")}\', '#{date}', \'#{row.column.battery.building_id}\', \'#{row.column.battery.building.customer_id}\', '#{city}')")
          
         end
         conn.finish()
