@@ -98,3 +98,7 @@ gem 'faker', '~> 2.14'
 
 
 gem 'populator', '~> 1.0'
+
+
+gem 'omniauth'
+

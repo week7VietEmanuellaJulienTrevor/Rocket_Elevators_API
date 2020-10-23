@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_132217) do
+ActiveRecord::Schema.define(version: 2020_10_23_015613) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -43,14 +43,13 @@ ActiveRecord::Schema.define(version: 2020_10_22_132217) do
   create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin_role", default: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["email"], name: "index_admin_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,13 +64,11 @@ ActiveRecord::Schema.define(version: 2020_10_22_132217) do
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "columns_id"
-    t.index ["columns_id"], name: "index_batteries_on_columns_id"
   end
 
   create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "information_key"
-    t.string "value"
+    t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "building_id"
@@ -107,7 +104,6 @@ ActiveRecord::Schema.define(version: 2020_10_22_132217) do
   end
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
     t.date "customer_creation_date"
     t.string "company_name"
     t.string "company_headquarter_address"
@@ -137,7 +133,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_132217) do
     t.date "last_inspection_date"
     t.string "inspection_certificate"
     t.string "information"
-    t.string "notes"
+    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "column_id"
@@ -182,14 +178,16 @@ ActiveRecord::Schema.define(version: 2020_10_22_132217) do
     t.integer "no_of_distinct_businesses"
     t.integer "max_occupants_per_floors"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "no_of_elevators"
     t.string "product_grade"
     t.string "elevator_cost"
     t.string "installation_cost"
     t.string "total_cost"
     t.integer "no_of_daily_hours_of_activity"
+    t.bigint "customer_id"
+    t.string "company_name"
+    t.string "contact_email"
+    t.index ["customer_id"], name: "index_quotes_on_customer_id"
   end
 
-  add_foreign_key "batteries", "columns", column: "columns_id"
 end
