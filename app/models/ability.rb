@@ -7,13 +7,12 @@ class Ability
 
     if user.present?
     
+      can :manage, Elevator, admin_user_id: user.id
       if user.admin?
         can :manage, :all
         cannot :destroy, Employee
         cannot :update, AdminUser
         can :update, AdminUser, id: user.id
-      else 
-        can :manage, Elevator, admin_user_id: user.id
       end
 
       cannot :create, Lead

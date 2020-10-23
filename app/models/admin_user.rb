@@ -22,13 +22,13 @@ class AdminUser < ApplicationRecord
   
   # Assign admin role if user is an Employee
   def admin?
-    employees = Employee.where(["email = ?", :email])
+    employees = Employee.where(["email = ?", email])
     p "-----------------"
-    #p employees
+    p employees
+    p Employee.all
     if employees.size > 0
       true
     end
-    true
 
     #@admin_users = @admin_users.filter_by_email(params[:email]) if params[:email] == params[:employees][:email]
     #if @admin_users.size == 1
