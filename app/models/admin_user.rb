@@ -13,6 +13,9 @@ class AdminUser < ApplicationRecord
     "#{email}"
   end
 
+  belongs_to :quote
+  belongs_to :customer
+
   # SCOPES
   scope :filter_by_email, -> (email) { where email: email}
   

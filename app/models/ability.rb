@@ -6,12 +6,32 @@ class Ability
   def initialize(user)
 
     if user.present?
-      can :manage, Building, customer_id: user.id
+      can :manage, Elevator, admin_user_id: user.id
+      #can :manage, Quote, admin
+      
+      cannot :create, Lead
+      cannot :update, Lead
+      cannot :create, Quote
+      cannot :update, Quote
+
       if user.admin?
-        can :manage, Quote
-        can :manage, Employee, employee_id: user.id
+        can :manage, :all
+        #cannot :destroy, Employee
+        #cannot :update, AdminUser
+        can :update, AdminUser, id: user.id
       end
     end
+
+
+    # QUOTE ------ USER ------ CUSTOMER
+    # QUOTE: belongs to USER
+    # USER: has many QUOTES
+    # if admin_user_id in QUOTES === admin_user_id in CUSTOMER >>>> show QUOTE in CUSTOMER's view
+
+
+   
+   
+   
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
