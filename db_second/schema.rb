@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_155307) do
     t.date "creation_date"
     t.string "company_name"
     t.string "email"
-    t.integer "project_name"
+    t.string "project_name"
   end
 
   create_table "factelevator", force: :cascade do |t|

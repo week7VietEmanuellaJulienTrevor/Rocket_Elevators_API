@@ -4,8 +4,8 @@ require 'date'
 namespace :export do
     desc "launch all export task"
     task datawarehouse: :environment do
-        #Rake::Task["export:factquote"].invoke
-        #Rake::Task["export:factcontact"].invoke
+        Rake::Task["export:factquote"].invoke
+        Rake::Task["export:factcontact"].invoke
         Rake::Task["export:factelevator"].invoke
         Rake::Task["export:dimcustomers"].invoke
         
@@ -20,8 +20,7 @@ namespace :export do
          conn.exec("TRUNCATE \"dimcustomers\" RESTART IDENTITY")
  
          table.each do |row|
-             # nbelevators = Elevator.joins(column: {battery: {building: :customer}}).where("customers.id = #{c.id}").count # The magic command adapted to the Jabir's team. But inadequate for us; must be adapted to fit our database
-             nb_elevator = 1+rand(50)
+            nb_elevator = 1+rand(50)
              
              # Path to add ramdom date to nil field
              if row.customer_creation_date == nil then
@@ -48,61 +47,64 @@ namespace :export do
         conn.exec("TRUNCATE \"factcontact\" RESTART IDENTITY")
 
         table.each do |row|
+
             date = row.created_at.strftime("%Y%m%d")
-            conn.exec("INSERT INTO \"FactContact\" (\"ContactId\", \"CreationDate\", \"Business\", \"Email\", \"ProjectName\") VALUES (#{row.id}, '#{date}', '#{row.Business.gsub("'", "''")}', \'#{row.Email}\', \'#{row.Project_Name}\')")
+           
+            conn.exec("INSERT INTO \"factcontact\" (\"contact_id\", \"creation_date\", \"company_name\", \"email\", \"project_name\") VALUES (#{row.id}, '#{date}', '#{row.company_name.gsub("'", "''")}', \'#{row.email}\', \'#{row.project_name}\')")
+        end
+  
+        conn.finish()
+    end
+
+    # FactQuote
+    desc "export data from mysql database to postgresql table FactQuote"
+    task factquote: :environment do
+        table = Quote.all
+        conn = PG::Connection.open(dbname: "datawarehouse_development")
+
+        conn.exec("TRUNCATE \"factquote\" RESTART IDENTITY")
+
+        table.each do |row|
+
+            if row.no_of_elevators == nil then
+                row.no_of_elevators = 0
+            end
+
+
+            date = row.created_at.strftime("%Y%m%d")
+
+            conn.exec("INSERT INTO \"factquote\" (\"id\", \"creation\", \"company_name\", \"email\", \"nb_elevator\") VALUES (#{row.id},' #{date}', \'#{row.company_name}\', \'#{row.contact_email}\', \'#{row.no_of_elevators}\')")
         end
         conn.finish()
     end
 
+     # FactElevator
+    desc "export data from mysql database to postgresql table FactElevator"
+    task factelevator: :environment do
+        table = Elevator.all
+        conn = PG::Connection.open(dbname: "datawarehouse_development")
 
-    #  # FactElevator
-    # desc "export data from mysql database to postgresql table FactElevator"
-    # task factelevator: :environment do
-    #     table = Elevator.all
-    #     conn = PG::Connection.open(dbname: "datawarehouse_development")
+        conn.exec("TRUNCATE \"factelevator\" RESTART IDENTITY")
 
-    #     conn.exec("TRUNCATE \"factelevator\" RESTART IDENTITY")
+        table.each do |row|
+            # Path to add ramdom date to nil field
+            if row.commissioning_date == nil then
+                Year = 1976+rand(44)
+                Month = 1+rand(11)
+                Day = 1+rand(27)
+                date = Date.new(Year, Month, Day)
+                date = date.strftime("%Y%m%d")
+            else
+                date = row.commissioning_date.strftime("%Y%m%d")
+            end
 
-    #     table.each do |row|
-    #         # Path to add ramdom date to nil field
-    #         if row.commissioning_date == nil then
-    #             Year = 1976+rand(44)
-    #             Month = 1+rand(11)
-    #             Day = 1+rand(27)
-    #             date = Date.new(Year, Month, Day)
-    #             date = date.strftime("%Y%m%d")
-    #         else
-    #             date = row.commissioning_date.strftime("%Y%m%d")
-    #         end
+            #city = Building.find(Batterie.find(Column.find(column_ID)[:battery_id])[:building_id])[:address_of_the_building]
 
-    #         #city = Building.find(Batterie.find(Column.find(column_ID)[:battery_id])[:building_id])[:address_of_the_building]
-
-    #         conn.exec("INSERT INTO \"factelevator\" (\"serial_number\", \"date_of_commissioning\", \"building_id\", \"customer_id\", \"building_city\") VALUES ('#{row.serial_number}', '#{date}' , '#{-1}', '#{-1}', 'city')")
-    #     end
-    #     conn.finish()
-    # end
-
-    # # FactQuote
-    # desc "export data from mysql database to postgresql table FactQuote"
-    # task factquote: :environment do
-    #     table = Quote.all
-    #     conn = PG::Connection.open(dbname: "datawarehouse_development")
-
-    #     conn.exec("TRUNCATE \"factquote\" RESTART IDENTITY")
-
-    #     table.each do |row|
-    #         p nb_elevator
-    #         if row.nb_elevator == nil then
-    #             row.nb_elevator = 0
-    #         end
-
-
-    #         date = row.created_at.strftime("%Y%m%d")
-
-    #         conn.exec("INSERT INTO \"factquote\" (\"id\", \"creation\", \"company_name\", \"email\", \"nb_elevator\", \"created_at\", \"updated_at\",) VALUES (#{row.id},' #{date}', \'#{row.company_name}\', \'#{row.email}\', \'#{row.no_of_elevators}\')")
-    #     end
-    #     conn.finish()
-    # end
+            conn.exec("INSERT INTO \"factelevator\" (\"id\",\"serial_number\", \"date_of_commissioning\", \"building_id\", \"customer_id\", \"building_city\") VALUES (#{row.id}, '#{row.serial_number}', '#{date}' , #{-1}, #{-1}, 'city')")
+         
+        end
+        conn.finish()
+    end
 
 end
 
