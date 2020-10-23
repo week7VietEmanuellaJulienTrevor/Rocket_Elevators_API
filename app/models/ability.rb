@@ -6,33 +6,37 @@ class Ability
   def initialize(user)
 
 
-    if user.customer?
+    if user.present?
+      if user.customer?
+      
+        offset = 9
+        can :read, AdminUser, id: user.id
+        can :read, Customer, admin_user_id: user.id
+        can :read, Elevator, customer_id: user.id - offset
+        can :read, Column, customer_id: user.id - offset
+        can :read, Battery, customer_id: user.id - offset
+        can :read, Building, customer_id: user.id - offset
+        can :read, BuildingDetail, customer_id: user.id - offset
+
+        # USER ------ CUSTOMER ----- BUILDING
+        # 
+
+      end
+
+      if user.admin?
+        can :manage, :all
+        cannot :destroy, Employee
+        cannot :update, AdminUser
+      end
+    end
+
     
-      offset = 9
-      can :read, AdminUser, id: user.id
-      can :read, Customer, admin_user_id: user.id
-      can :read, Elevator, customer_id: user.id - offset
-      can :read, Column, customer_id: user.id - offset
-      can :read, Battery, customer_id: user.id - offset
-      can :read, Building, customer_id: user.id - offset
-      can :read, BuildingDetail, customer_id: user.id - offset
-
-      # USER ------ CUSTOMER ----- BUILDING
-      # 
-
-    end
-
-    if user.admin?
-      can :manage, :all
-      cannot :destroy, Employee
-      cannot :update, AdminUser
-    end
-
     #if !user.admin? && !user.customer?
       #redirect_to root_path
     #end
 
-    cannot [:create, :update], [Lead, Quote, AdminUser]
+    cannot [:create], [Lead, Quote, AdminUser]
+    cannot [:update], [Lead, AdminUser]
     can :update, AdminUser, id: user.id
 
 

@@ -12179,7 +12179,7 @@ i = 10
 j=1
 
 #create the customers
-10.times do
+100.times do
     
     eMail = Faker::Internet.email
 
@@ -12308,7 +12308,7 @@ j=1
             product_grade: EModel,
             elevator_cost: cost,
             installation_cost: inst * cost * elevators,
-            total_cost: (elevators * inst * cost) + (elevators * cost),
+            total_cost: "$" + '%.2f' % ((elevators * inst * cost) + (elevators * cost)),
             no_of_daily_hours_of_activity: activity,       
 
         )
