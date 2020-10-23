@@ -12179,7 +12179,7 @@ i = 10
 j=1
 
 #create the customers
-50.times do
+100.times do
     
     eMail = Faker::Internet.email
 
@@ -12428,7 +12428,8 @@ end
         project_name: Faker::Company.catch_phrase,
         project_description: Faker::Lorem.sentence,
         department: typeBuilding[rand(0..3)],
-        message: Faker::Lorem.paragraphs
+        message: Faker::Lorem.paragraphs,
+        created_at: Faker::Date.between(from: '1976-01-01', to: '2020-10-20')
         # attached_file:Faker::Types.rb_string 
 
 
