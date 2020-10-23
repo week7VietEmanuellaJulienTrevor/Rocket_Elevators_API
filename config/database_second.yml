@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: datawarehouse_develpement2
+  database: datawarehouse_development
   pool: 5
   username: trevorkitchen 
   password: boby
@@ -43,7 +43,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: datawarehouse_test2
+  database: datawarehouse_test
   username: trevorkitchen 
   password: boby
 

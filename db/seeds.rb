@@ -12218,7 +12218,7 @@ j=1
     customers.save
     
     #buildings are nested in their customer
-    b = rand(1..3)
+    b = rand(1..5)
     b.times do
         addressID2 = rand(1..100)
         administrator = rand(1..7)
