@@ -15,11 +15,7 @@ set :rails_env, "development"
 set :bundle_without, "production"
 set :deploy_to, "/home/ubuntu/apps/#{app}"
 set :linked_dirs, %w{tmp/pids tmp/sockets log}
-<<<<<<< HEAD
 set :linked_files, %w{config/database.yml config/database_second.yml }
-=======
-set :linked_files, %w{config/database.yml config/database_second.yml}
->>>>>>> test
 
 # role-based syntax
 # ==================
