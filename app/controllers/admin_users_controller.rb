@@ -62,6 +62,14 @@ class AdminUsersController < ApplicationController
     end
   end
 
+  # Check if user is employee
+  def is_employee?
+    employees = Employee.where(["email = ?", params[:email])
+    p employees
+    if employees.size > 0
+      true
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -74,3 +82,4 @@ class AdminUsersController < ApplicationController
       params.permit(:email, :password, :password_confirmation, :admin_role)
     end
 end
+

@@ -3,7 +3,7 @@ class AdminUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, 
          :recoverable, :rememberable, :validatable, :registerable, :omniauthable
-  
+
   has_many :employees
   def display_name
     "#{email}"
@@ -16,12 +16,24 @@ class AdminUser < ApplicationRecord
   belongs_to :quote
   belongs_to :customer
 
+
   # SCOPES
   scope :filter_by_email, -> (email) { where email: email}
   
   # Assign admin role if user is an Employee
   def admin?
+    employees = Employee.where(["email = ?", :email])
+    p "-----------------"
+    #p employees
+    if employees.size > 0
+      true
+    end
     true
+
+    #@admin_users = @admin_users.filter_by_email(params[:email]) if params[:email] == params[:employees][:email]
+    #if @admin_users.size == 1
+      #return true
+   # end
   end
 
 

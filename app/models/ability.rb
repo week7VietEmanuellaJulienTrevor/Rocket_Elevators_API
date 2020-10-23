@@ -6,20 +6,20 @@ class Ability
   def initialize(user)
 
     if user.present?
-      can :manage, Elevator, admin_user_id: user.id
-      #can :manage, Quote, admin
-      
+    
+      if user.admin?
+        can :manage, :all
+        cannot :destroy, Employee
+        cannot :update, AdminUser
+        can :update, AdminUser, id: user.id
+      else 
+        can :manage, Elevator, admin_user_id: user.id
+      end
+
       cannot :create, Lead
       cannot :update, Lead
       cannot :create, Quote
       cannot :update, Quote
-
-      if user.admin?
-        can :manage, :all
-        #cannot :destroy, Employee
-        #cannot :update, AdminUser
-        can :update, AdminUser, id: user.id
-      end
     end
 
 
