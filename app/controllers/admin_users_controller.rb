@@ -29,7 +29,7 @@ class AdminUsersController < ApplicationController
 
     respond_to do |format|
       if @admin_user.save
-        format.html { redirect_to @admin_user, notice: 'Admin user was successfully created.' }
+        format.html { redirect_to @admin_user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @admin_user }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class AdminUsersController < ApplicationController
   def update
     respond_to do |format|
       if @admin_user.update(admin_user_params)
-        format.html { redirect_to @admin_user, notice: 'Admin user was successfully updated.' }
+        format.html { redirect_to @admin_user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_user }
       else
         format.html { render :edit }
@@ -57,17 +57,8 @@ class AdminUsersController < ApplicationController
   def destroy
     @admin_user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_url, notice: 'Admin user was successfully destroyed.' }
+      format.html { redirect_to admin_users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
-    end
-  end
-
-  # Check if user is employee
-  def is_employee?
-    employees = Employee.where(["email = ?", params[:email])
-    p employees
-    if employees.size > 0
-      true
     end
   end
 

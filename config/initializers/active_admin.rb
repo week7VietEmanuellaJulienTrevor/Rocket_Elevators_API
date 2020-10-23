@@ -117,7 +117,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  config.root_to = 'quotes#index'
+  config.root_to = 'elevators#index'
 
   # == Admin Comments
   #
