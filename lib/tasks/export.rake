@@ -16,8 +16,8 @@ namespace :export do
      task dimcustomers: :environment do
          table = Customer.all
          
-        conn = PG::Connection.open(dbname: "datawarehouse_development")
-        #  conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "pg_Trevor_Kitchen_team2")
+        # conn = PG::Connection.open(dbname: "datawarehouse_development")
+         conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "pg_Trevor_Kitchen_team2")
  
          conn.exec("TRUNCATE \"dimcustomers\" RESTART IDENTITY")
  
@@ -44,6 +44,8 @@ namespace :export do
     desc "export data from mysql database to postgresql table FactContact"
     task factcontact: :environment do
         table = Lead.all
+        
+        # conn = PG::Connection.open(dbname: "datawarehouse_development")
         conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "pg_Trevor_Kitchen_team2")
 
         conn.exec("TRUNCATE \"factcontact\" RESTART IDENTITY")
@@ -63,8 +65,8 @@ namespace :export do
     task factquote: :environment do
         table = Quote.all
 
-        conn = PG::Connection.open(dbname: "datawarehouse_development")
-        # conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "pg_Trevor_Kitchen_team2")
+        # conn = PG::Connection.open(dbname: "datawarehouse_development")
+        conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "pg_Trevor_Kitchen_team2")
 
         conn.exec("TRUNCATE \"factquote\" RESTART IDENTITY")
 
@@ -86,8 +88,8 @@ namespace :export do
     desc "export data from mysql database to postgresql table FactElevator"
     task factelevator: :environment do
         table = Elevator.all
-        conn = PG::Connection.open(dbname: "datawarehouse_development")
-        # conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "pg_Trevor_Kitchen_team2")
+        # conn = PG::Connection.open(dbname: "datawarehouse_development")
+        conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "pg_Trevor_Kitchen_team2")
 
         conn.exec("TRUNCATE \"factelevator\" RESTART IDENTITY")
 
