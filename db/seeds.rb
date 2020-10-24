@@ -12237,185 +12237,191 @@ j=1
         bcounter += 1
 
         arrayIndex = rand(0..buildingDetail.length-1)
-
-        buildingDetails = BuildingDetail.new(
-            building_id: bcounter,
-            information_key: buildingDetail[arrayIndex][:information],
-            value: buildingDetail[arrayIndex][:value],
-            customer_id: j
-        )
-        buildingDetails.save
-        
-
-        commissionDate = Faker::Date.between(from: customerDate, to: '2020-10-20')        
-        contactEmail = eMail
-        e = rand(1..5)
-        c = rand(1..5)
-        bat = rand(1..3)
-        Btype = rand(0..3)
-        EModel = elevatorModel[rand(0..2)]
-        appartements = 0
-        companies = 0
-        buisinesses = 0
-        occupants = 0
-        activity = 0
-        cost = 0
-        elevators = bat * c * e
-
-
-        if typeBuilding[Btype] == "Residential"
-            appartements = rand(10..300)
-
-        elsif typeBuilding[Btype] == "Commercial" 
-            buisinesses = rand(3..50)
-                      
-        else 
-            occupants = rand(0..300)
-            activity = rand(6..16)
-            companies = rand(3..50)
-        end
-
-      
-
-        if EModel == "Standard"
-            cost = 7565
-            inst = 0.1
-        elsif EModel == "Premium"
-            cost = 12345
-            inst = 0.13
-        else
-            cost = 15400
-            inst = 0.16
-        end
-
-
-        #onequote was made per BUILDING
-
-        quotes = Quote.new(
-            created_at:Faker::Date.between(from: '1976-01-01', to: customerDate) ,
-            company_name: companyName,
-            contact_email: eMail,
-            building_type:  typeBuilding[Btype],
-            no_of_appartments: appartements,
-            no_of_floors: rand(3..70),
-            no_of_basements: rand(0..5),
-            no_of_elevators_cages: bat * c * e,
-            no_of_parking_spaces: rand(0..200),
-            no_of_tenant_companies:companies ,
-            no_of_distinct_businesses:buisinesses ,
-            max_occupants_per_floors: occupants,
-            no_of_elevators: elevators,
-            product_grade: EModel,
-            elevator_cost: cost,
-            installation_cost: inst * cost * elevators,
-            total_cost: "$" + '%.2f' % ((elevators * inst * cost) + (elevators * cost)),
-            no_of_daily_hours_of_activity: activity,       
-
-        )
-        quotes.save
-        print "total quote cost : "
-        puts   (elevators * inst * cost) + (elevators * cost)
-
-
-
-
-        #batterie is nested in buiding
-        bat.times do
-            stat = rand(0..5)
-            if stat > 0
-                stat = 1
-            end
-            batteries = Battery.new(
+        if Building.last[:id] == bcounter
+                
+            buildingDetails = BuildingDetail.new(
                 building_id: bcounter,
-                type_of_building: typeBuilding[Btype],
-                status: status[stat],
-                employee_id: technicalAthorityID,
-                commissioning_date: commissionDate,
-                last_inspection_date: Faker::Date.between(from: '2019-10-20', to: '2020-10-20'),
-                operations_certificate: Faker::DrivingLicence.british_driving_licence,
-                information: Faker::Company.buzzword,
-                notes:  Faker::Company.catch_phrase,
+                information_key: buildingDetail[arrayIndex][:information],
+                value: buildingDetail[arrayIndex][:value],
                 customer_id: j
             )
-            batteries.save
-            batCounter = batCounter + 1
-
-            # print "battery counter : "
-            # print batCounter
-            # print " last battery ID : "
-            # puts Battery.last[:id]
-
+            buildingDetails.save
             
-            if Battery.last[:id] == batCounter
+
+            commissionDate = Faker::Date.between(from: customerDate, to: '2020-10-20')        
+            contactEmail = eMail
+            e = rand(1..5)
+            c = rand(1..5)
+            bat = rand(1..3)
+            Btype = rand(0..3)
+            EModel = elevatorModel[rand(0..2)]
+            appartements = 0
+            companies = 0
+            buisinesses = 0
+            occupants = 0
+            activity = 0
+            cost = 0
+            elevators = bat * c * e
 
 
+            if typeBuilding[Btype] == "Residential"
+                appartements = rand(10..300)
 
-                #columns inside batteries
-                c.times do
-                    stat = rand(0..5)
-                    if stat > 0
-                        stat = 1
-                    end
-                    columns = Column.new(
-                        battery_id:batCounter,
-                        type_of_building: typeBuilding[Btype],
-                        number_of_floors_served: rand(5..20),
-                        status: status[stat],
-                        information: Faker::Company.buzzword,
-                        notes: Faker::Company.catch_phrase,
-                        customer_id: j
-                    )
-                    columns.save
-                    cCounter = cCounter + 1
-                    print "                     column counter : "
-                    print cCounter
-                    print " last column ID : "
-                    puts Column.last[:id]
+            elsif typeBuilding[Btype] == "Commercial" 
+                buisinesses = rand(3..50)
+                        
+            else 
+                occupants = rand(0..300)
+                activity = rand(6..16)
+                companies = rand(3..50)
+            end
 
-                    if Column.last[:id] == cCounter
+        
 
-                        #elevators inside Columns
-
-                        e.times do
-                            stat = rand(0..5)
-                            if stat > 0
-                                stat = 1
-                            end
-
-                            commisioningDate = Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20')
-
-                            elevators = Elevator.new(
-                                column_id: cCounter,
-                                serial_number:Faker::Device.serial,
-                                model: EModel,
-                                type_of_building:Battery.find(batCounter)[:type_of_building].to_s,
-                                status:status[stat],
-                                commissioning_date:commisioningDate,
-                                last_inspection_date:Faker::Date.between(from: commisioningDate, to: '2020-10-20'),
-                                inspection_certificate:Faker::DrivingLicence.british_driving_licence,
-                                information:Faker::Company.buzzword,
-                                notes:Faker::Company.catch_phrase,
-                                customer_id: j
-
-                            )
-                            elevators.save
-                            eCounter = eCounter + 1
-                            print "                                 elevator counter : "
-                            print eCounter
-                            print " last elevator ID : "
-                            puts Elevator.last[:id]
-
-                        end
-                    else
-                        if Column.last[:id] != nil
-                            cCounter = Column.last[:id]
-                        end
-                    end
-                end
+            if EModel == "Standard"
+                cost = 7565
+                inst = 0.1
+            elsif EModel == "Premium"
+                cost = 12345
+                inst = 0.13
             else
-                if Battery.last[:id] != nil
-                    batCounter = Battery.last[:id]
+                cost = 15400
+                inst = 0.16
+            end
+
+
+            #onequote was made per BUILDING
+
+            quotes = Quote.new(
+                created_at:Faker::Date.between(from: '1976-01-01', to: customerDate) ,
+                company_name: companyName,
+                contact_email: eMail,
+                building_type:  typeBuilding[Btype],
+                no_of_appartments: appartements,
+                no_of_floors: rand(3..70),
+                no_of_basements: rand(0..5),
+                no_of_elevators_cages: bat * c * e,
+                no_of_parking_spaces: rand(0..200),
+                no_of_tenant_companies:companies ,
+                no_of_distinct_businesses:buisinesses ,
+                max_occupants_per_floors: occupants,
+                no_of_elevators: elevators,
+                product_grade: EModel,
+                elevator_cost: cost,
+                installation_cost: inst * cost * elevators,
+                total_cost: "$" + '%.2f' % ((elevators * inst * cost) + (elevators * cost)),
+                no_of_daily_hours_of_activity: activity,       
+
+            )
+            quotes.save
+            print "total quote cost : "
+            puts   (elevators * inst * cost) + (elevators * cost)
+
+
+
+
+            #batterie is nested in buiding
+            bat.times do
+                stat = rand(0..5)
+                if stat > 0
+                    stat = 1
                 end
+                batteries = Battery.new(
+                    building_id: bcounter,
+                    type_of_building: typeBuilding[Btype],
+                    status: status[stat],
+                    employee_id: technicalAthorityID,
+                    commissioning_date: commissionDate,
+                    last_inspection_date: Faker::Date.between(from: '2019-10-20', to: '2020-10-20'),
+                    operations_certificate: Faker::DrivingLicence.british_driving_licence,
+                    information: Faker::Company.buzzword,
+                    notes:  Faker::Company.catch_phrase,
+                    customer_id: j
+                )
+                batteries.save
+                batCounter = batCounter + 1
+
+                # print "battery counter : "
+                # print batCounter
+                # print " last battery ID : "
+                # puts Battery.last[:id]
+
+                
+                if Battery.last[:id] == batCounter
+
+
+
+                    #columns inside batteries
+                    c.times do
+                        stat = rand(0..5)
+                        if stat > 0
+                            stat = 1
+                        end
+                        columns = Column.new(
+                            battery_id:batCounter,
+                            type_of_building: typeBuilding[Btype],
+                            number_of_floors_served: rand(5..20),
+                            status: status[stat],
+                            information: Faker::Company.buzzword,
+                            notes: Faker::Company.catch_phrase,
+                            customer_id: j
+                        )
+                        columns.save
+                        cCounter = cCounter + 1
+                        print "                     column counter : "
+                        print cCounter
+                        print " last column ID : "
+                        puts Column.last[:id]
+
+                        if Column.last[:id] == cCounter
+
+                            #elevators inside Columns
+
+                            e.times do
+                                stat = rand(0..5)
+                                if stat > 0
+                                    stat = 1
+                                end
+
+                                commisioningDate = Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20')
+
+                                elevators = Elevator.new(
+                                    column_id: cCounter,
+                                    serial_number:Faker::Device.serial,
+                                    model: EModel,
+                                    type_of_building:Battery.find(batCounter)[:type_of_building].to_s,
+                                    status:status[stat],
+                                    commissioning_date:commisioningDate,
+                                    last_inspection_date:Faker::Date.between(from: commisioningDate, to: '2020-10-20'),
+                                    inspection_certificate:Faker::DrivingLicence.british_driving_licence,
+                                    information:Faker::Company.buzzword,
+                                    notes:Faker::Company.catch_phrase,
+                                    customer_id: j
+
+                                )
+                                elevators.save
+                                eCounter = eCounter + 1
+                                print "                                 elevator counter : "
+                                print eCounter
+                                print " last elevator ID : "
+                                puts Elevator.last[:id]
+
+                            end
+                        else
+                            if Column.last[:id] != nil
+                                cCounter = Column.last[:id]
+                            end
+                        end
+                    end
+                else
+                    if Battery.last[:id] != nil
+                        batCounter = Battery.last[:id]
+                    end
+                end
+            end
+        else
+            if Building.last[:id] != nil
+                bcounter = Battery.last[:id]
             end
         end
     end
