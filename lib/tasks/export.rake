@@ -15,6 +15,7 @@ namespace :export do
      desc "export data from mysql database to postgresql table DimCustomers"
      task dimcustomers: :environment do
          table = Customer.all
+         
         conn = PG::Connection.open(dbname: "datawarehouse_development")
         #  conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "pg_Trevor_Kitchen_team2")
  
