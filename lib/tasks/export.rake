@@ -34,7 +34,7 @@ namespace :export do
                  date = row.customer_creation_date.strftime("%F")
              end
              city = "#{row.company_name.gsub("'", "''")} City"
-             conn.exec("INSERT INTO \"dimcustomers\" (\"creation_date\", \"company_name\", \"full_name_of_company_main_contact\", \"email_of_company_main_contact\", \"nb_elevator\", \"contact_city\") VALUES ('#{date}', '#{row.company_name.gsub("'", "''")}', '#{row.full_name_company_contact.gsub("'", "''")}', '#{row.email_company_contact}', #{nb_elevator}, \'#{city}\')")
+             conn.exec("INSERT INTO \"dimcustomers\" (\"creation_date\", \"company_name\", \"full_name_of_company_main_contact\", \"email_of_company_main_contact\", \"nb_elevator\", \"contact_city\") VALUES ('#{date}', '#{row.company_name.gsub("'", "''")}', '#{row.full_name_company_contact.gsub("'", "''")}', '#{row.email_company_contact.gsub("'", "''")}', #{nb_elevator}, \'#{city}\')")
          end
          conn.finish()
      end 
@@ -51,7 +51,7 @@ namespace :export do
 
             date = row.created_at.strftime("%F")
            
-            conn.exec("INSERT INTO \"factcontact\" (\"id\", \"creation_date\", \"company_name\", \"email\", \"project_name\") VALUES (#{row.id}, '#{date}', '#{row.company_name.gsub("'", "''")}', \'#{row.email}\', \'#{row.project_name}\')")
+            conn.exec("INSERT INTO \"factcontact\" (\"id\", \"creation_date\", \"company_name\", \"email\", \"project_name\") VALUES (#{row.id}, '#{date}', '#{row.company_name.gsub("'", "''")}', \'#{row.email}\', \'#{row.project_name.gsub("'", "''")}\')")
         end
   
         conn.finish()
@@ -93,7 +93,7 @@ namespace :export do
         table.each do |row|
 
             date = row.commissioning_date.strftime("%F")
-            city = row.column.battery.building.address.city
+            city = row.column.battery.building.address.city.gsub("'", "''")
            
             conn.exec("INSERT INTO \"factelevator\" (\"id\",\"serial_number\", \"date_of_commissioning\", \"building_id\", \"customer_id\", \"building_city\") VALUES ('#{row.id}', \'#{row.serial_number.gsub("'", "''")}\', '#{date}', \'#{row.column.battery.building_id}\', \'#{row.column.battery.building.customer_id}\', '#{city}')")
          
