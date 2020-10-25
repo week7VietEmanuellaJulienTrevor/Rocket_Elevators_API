@@ -20,7 +20,7 @@ class Ability
         can :read, BuildingDetail, customer_id: customerID
 
         # USER ------ CUSTOMER ----- BUILDING
-        # 
+        
 
       end
 

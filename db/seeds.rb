@@ -12179,7 +12179,7 @@ i = 10
 j=1
 
 #create the customers
-100.times do
+150.times do
     
     eMail = Faker::Internet.email
 
@@ -12191,12 +12191,15 @@ j=1
     )
     users.save
 
-    role = rand(0..10)
+    role = rand(0..9)
     if role > 0
         role = 1
     end
+    if i == 10
+        role = 0
+    end
     if role == 1
-        technicalAthorityID = rand(1..7)
+        technicalAthorityID = Employee.where(title: "technician").last[:id]
         addressID = rand(1..100)
         companyName = Faker::Company.name
         customerDate = Faker::Date.between(from: '1976-01-01', to: '2020-10-20')
