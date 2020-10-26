@@ -12191,13 +12191,18 @@ j=1
     )
     users.save
 
+    # creates a role variable with a 1 in 9 chance of being 0 the other value is 1
     role = rand(0..9)
     if role > 0
         role = 1
     end
+
+    # admin user id 10 will always have role 0
     if i == 10
         role = 0
     end
+
+    # generate users dependant on the role variable ( 1 will be a customer 0 will be an employee )
     if role == 1
         technicalAthorityID = Employee.where(title: "technician").last[:id]
         addressID = rand(1..100)
@@ -12434,7 +12439,7 @@ j=1
             end
         end
         j += 1
-    else
+    else # role is 0 and creates an employee
         employees = Employee.new(
             first_name: Faker::Name.first_name,
             last_name: Faker::Name.last_name,

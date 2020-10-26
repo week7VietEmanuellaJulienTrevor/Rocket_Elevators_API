@@ -10,6 +10,7 @@ class Ability
       if user.customer?
 
         customerID = Customer.where(admin_user_id: user.id).take[:id]
+        
         offset = 9
         can :read, AdminUser, id: user.id
         can :read, Customer, admin_user_id: user.id
