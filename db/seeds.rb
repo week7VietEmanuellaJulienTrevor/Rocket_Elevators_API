@@ -12133,8 +12133,12 @@ add = [
         city: add[index][:city],
         postal_code: add[index][:postalCode],
         country: "United States",
-        notes: Faker::Measurement.metric_height
+        notes: Faker::Measurement.metric_height,
+        latitude: add[index][:coordinates][:lat],
+        longitude: add[index][:coordinates][:lng]
     )
+    # p add[index][:postalCode]
+    p add[index][:coordinates][:lng]
     addresses.save!
 end
 
