@@ -19,8 +19,8 @@ development:
   encoding: unicode
   database: datawarehouse_development
   pool: 5
-  username: trevorkitchen 
-  password: boby
+  username: <%= ENV["DB2_USERNAME"] %>
+  password: <%= ENV["DB2_PASSWORD"] %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -44,13 +44,13 @@ test:
   adapter: postgresql
   encoding: unicode
   database: datawarehouse_test
-  username: trevorkitchen 
-  password: boby
+  username: <%= ENV["DB2_USERNAME"] %>
+  password: <%= ENV["DB2_PASSWORD"] %>
 
 production:
   adapter: postgresql
   encoding: unicode
   database: datawarehouse_production
   pool: 5
-  username: trevorkitchen 
-  password: boby
+  username: <%= ENV["DB2_USERNAME"] %>
+  password: <%= ENV["DB2_PASSWORD"] %>
