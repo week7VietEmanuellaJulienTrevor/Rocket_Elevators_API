@@ -104,3 +104,5 @@ gem 'omniauth'
 
 gem 'cancancan'
 
+# figaro to create env variables
+gem 'figaro'

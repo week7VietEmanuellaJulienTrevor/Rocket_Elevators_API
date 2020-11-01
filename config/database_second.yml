@@ -19,8 +19,8 @@ development:
   encoding: unicode
   database: datawarehouse_development
   pool: 5
-  username: trevorkitchen 
-  password: boby
+  username: <% ENV["username_pg"] %>
+  password: <% ENV["mot_de_passe_pg"] %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
