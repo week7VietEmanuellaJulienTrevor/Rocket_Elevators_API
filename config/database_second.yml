@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: datawarehouse_development
+  database: <%= ENV["second_db"] %>
   pool: 5
   username: <% ENV["username_pg"] %>
   password: <% ENV["mot_de_passe_pg"] %>
@@ -44,13 +44,13 @@ test:
   adapter: postgresql
   encoding: unicode
   database: datawarehouse_test
-  username: trevorkitchen 
-  password: boby
+  username: <% ENV["username_pg"] %>
+  password: <% ENV["mot_de_passe_pg"] %>
 
 production:
   adapter: postgresql
   encoding: unicode
   database: datawarehouse_production
   pool: 5
-  username: trevorkitchen 
-  password: boby
+  username: <% ENV["username_pg"] %>
+  password: <% ENV["mot_de_passe_pg"] %>
