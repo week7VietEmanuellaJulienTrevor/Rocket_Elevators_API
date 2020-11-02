@@ -106,3 +106,9 @@ gem 'cancancan'
 
 # figaro to create env variables
 gem 'figaro'
+
+gem 'slack-notifier'
+gem 'slack-ruby-bot'
+gem 'dotenv'
+
+
