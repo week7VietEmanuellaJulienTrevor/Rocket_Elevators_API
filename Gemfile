@@ -106,3 +106,4 @@ gem 'cancancan'
 
 gem 'figaro'
 
+gem 'excon'
