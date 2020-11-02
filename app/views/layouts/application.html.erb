@@ -20,9 +20,15 @@
     <% end %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+ENV["google_api_key"] %>
+   
+
+</head>
+
+ 
   <body>
+   <%= yield(:head_tags) %>
     <%= yield %>
 
     <script> var plugin_path ='assets/';</script>

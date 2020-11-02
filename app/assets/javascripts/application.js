@@ -34,3 +34,4 @@
 //= require_tree ./slider.revolution/
 
 //= require quote
+//= require map
