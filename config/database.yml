@@ -13,8 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <% ENV["username_mysql"] %>
-  # socket: /tmp/mysql.sock
+  username: <%= ENV["username_mysql"] %>
+  password: <%= ENV["password_mysql"] %>
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
@@ -49,5 +50,5 @@ test:
 production:
   <<: *default
   database: Rocket_app_production
-  username: Rocket_app
-  password: <%= ENV['ROCKET_APP_DATABASE_PASSWORD'] %>
+  username: myapp
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
