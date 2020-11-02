@@ -34,4 +34,5 @@
 //= require_tree ./slider.revolution/
 
 //= require quote
-//= require map
+
+//= require_tree ./diyjs/

@@ -3,6 +3,7 @@ ActiveAdmin.register Address do
 
   index do
     selectable_column
+    id_column
     #column :type_of_address
     #column :status
     #column :entity

@@ -12,16 +12,18 @@
     <%= favicon_link_tag 'LOGO_702x702.png'%>
 
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     
     <% if params[:controller].include?('active_admin') %>
+
       <%= stylesheet_link_tag 'active_admin', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'active_admin', 'data-turbolinks-track': 'reload' %>
     <% end %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+ENV["google_api_key"]+'&callback=initMap&libraries=&v=weekly' %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+ENV["google_api_key"] %>
    
 
 </head>
