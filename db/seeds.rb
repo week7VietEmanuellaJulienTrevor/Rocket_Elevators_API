@@ -12121,8 +12121,11 @@ add = [
 ]
 
 #seed the address table
+index = 0
 500.times do
-    index = rand(0..add.length-1)
+    # index = rand(0..add.length-1)
+    
+
     addresses = Address.new(
         type_of_address: addressType[rand(0..3)],
         status: status[rand(0..1)],
@@ -12140,6 +12143,7 @@ add = [
     # p add[index][:postalCode]
     p add[index][:coordinates][:lng]
     addresses.save!
+    index += 1
 end
 
 
@@ -12209,7 +12213,7 @@ j=1
     # generate users dependant on the role variable ( 1 will be a customer 0 will be an employee )
     if role == 1
         technicalAthorityID = Employee.where(title: "technician").last[:id]
-        addressID = rand(1..100)
+        addressID = rand(1..Address.last[:id])
         companyName = Faker::Company.name
         customerDate = Faker::Date.between(from: '1976-01-01', to: '2020-10-20')
         customers = Customer.new(
@@ -12237,7 +12241,7 @@ j=1
         #buildings are nested in their customer
         b = rand(1..5)
         b.times do
-            addressID2 = rand(1..100)
+            addressID2 = rand(1..Address.last[:id])
             administrator = rand(1..7)
             buildings = Building.new(
                 address_id: addressID2,

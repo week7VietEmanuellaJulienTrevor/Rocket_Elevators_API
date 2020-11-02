@@ -1,6 +1,6 @@
 class AddLongitudeLattitudeToAddresses < ActiveRecord::Migration[5.2]
   def change
-  add_column :addresses, :latitude, :decimal
-  add_column :addresses, :longitude, :decimal
+  add_column :addresses, :latitude, :double
+  add_column :addresses, :longitude, :double
   end
 end
