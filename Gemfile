@@ -106,3 +106,5 @@ gem 'cancancan'
 
 # figaro to create env variables
 gem 'figaro'
+
+gem 'twilio-ruby', '~> 5.41.0'
