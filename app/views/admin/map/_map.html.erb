@@ -6,7 +6,7 @@
     <style type="text/css">
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map.*/
-      #testmapper{
+      #maps{
         height: 550px;
         width: 100%;
 
@@ -25,13 +25,23 @@
         margin: 10px;
       }
     </style>
-    <script>
-      let map;
 
+
+    
+    <script>
+      // Initialize and add the map
       function initMap() {
-        map = new google.maps.Map(document.getElementById("testmapper"), {
-          center: { lat: 46.813878, lng: -71.207981 },
-          zoom: 8,
+        // The location of Uluru
+        const uluru = { lat: -25.344, lng: 131.036 };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("maps"), {
+          zoom: 4,
+          center: uluru,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
         });
       }
     </script>
@@ -39,5 +49,5 @@
 
 <body>
     <h1>AHOY</h1>
-    <div id="testmapper"></div>
+    <div id="maps"></div>
 </body>
