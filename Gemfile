@@ -110,7 +110,6 @@ gem 'async-websocket', '~> 0.8.0'
 gem 'figaro'
 
 gem 'slack-notifier'
-gem 'slack-ruby-bot'
-gem 'dotenv'
+
 
 
