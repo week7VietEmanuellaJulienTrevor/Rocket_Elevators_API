@@ -25,22 +25,32 @@
         margin: 10px;
       }
     </style>
-
-
-    
     <script>
+
+    <%= @lat = Address.find(Building.first[:address_id])[:latitude]%>
+    <%= @lng = Address.find(Building.first[:address_id])[:longitude]%>
+    <%= p "lat : " + @lat.to_s %>
+    <%= p "lng : " + @lng.to_s %>
+    
       // Initialize and add the map
       function initMap() {
-        // The location of Uluru
-        const uluru = { lat: -25.344, lng: 131.036 };
-        // The map, centered at Uluru
+        // The location of testBuilding
+        var jslat = <%= @lat %>
+      
+        var jslng = <%= @lng %>
+
+        <% p "lat: " + @lat.to_s %>
+        console.log (jslat)
+
+        const testBuilding = { lat:  jslat , lng:  jslng };
+        // The map, centered at testBuilding
         const map = new google.maps.Map(document.getElementById("maps"), {
-          zoom: 4,
-          center: uluru,
+          zoom: 10,
+          center: testBuilding,
         });
-        // The marker, positioned at Uluru
+        // The marker, positioned at testBuilding
         const marker = new google.maps.Marker({
-          position: uluru,
+          position: testBuilding,
           map: map,
         });
       }
@@ -48,6 +58,6 @@
 
 
 <body>
-    <h1>AHOY</h1>
+    <h1>Map of customers</h1>
     <div id="maps"></div>
 </body>

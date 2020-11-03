@@ -3,19 +3,19 @@
 
 <% puts Address.find(Building.first[:address_id])[:latitude]%>
 <% puts Address.find(Building.first[:address_id])[:longitude]%>
-<% lng = Address.find(Building.first[:address_id])[:latitude].to_s%>
-<% lat = Address.find(Building.first[:address_id])[:longitude].to_s%>
+<% lat = Address.find(Building.first[:address_id])[:latitude].to_s%>
+<% lng = Address.find(Building.first[:address_id])[:longitude].to_s%>
 
 
 
-<% puts "\n lng : " + lng.to_s %>
-<% puts "lat : " + lat.to_s %>
+<% puts "\n lat : " + lat.to_s %>
+<% puts "lng : " + lng.to_s %>
 <% puts Address.find(Building.first[:address_id])[:id] %>
 
 
 
 
-<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=800x400&markers=size:small%7Ccolor:red%7C#{lng},#{lat}&key=#{ENV['google_api_key']}", alt: "Map" %>
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=800x400&markers=size:small%7Ccolor:red%7C#{lat},#{lng}&key=#{ENV['google_api_key']}", alt: "Map" %>
 
 
 
