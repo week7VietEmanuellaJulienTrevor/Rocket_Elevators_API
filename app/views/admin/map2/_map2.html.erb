@@ -15,8 +15,8 @@
 
 
 
-<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=800x400&center=#{lng},#{lat}&key=#{ENV['google_api_key']}", alt: "Map" %>
-</p>
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=800x400&markers=size:small%7Ccolor:red%7C#{lng},#{lat}&key=#{ENV['google_api_key']}", alt: "Map" %>
+
 
 
 <div id="map">
