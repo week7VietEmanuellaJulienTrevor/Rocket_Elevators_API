@@ -106,4 +106,10 @@ gem 'cancancan'
 
 gem 'figaro'
 
+gem "sinatra"
+
 gem 'excon'
+
+gem 'sendgrid-ruby'
+
+gem 'sendgrid-actionmailer'
