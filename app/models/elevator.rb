@@ -15,11 +15,13 @@ class Elevator < ApplicationRecord
         @client = ::Twilio::REST::Client.new acct_sid, auth_token
 
         from = ENV['TWILIO_PHONE']
-        to = "+14388218911"
+        to = '+14388218911'
         body = ''
 
         if self.status.downcase == 'intervention'
             body = "The Elevator " + (self.id).to_s + " with Serial Number * " + (self.serial_number).to_s + " * changed status to intervention"
+        else
+        return
         end
 
         message = @client.messages.create(
