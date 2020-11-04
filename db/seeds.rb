@@ -12121,11 +12121,8 @@ add = [
 ]
 
 #seed the address table
-index = 0
-500.times do
-    # index = rand(0..add.length-1)
-    
-
+100.times do
+    index = rand(0..add.length-1)
     addresses = Address.new(
         type_of_address: addressType[rand(0..3)],
         status: status[rand(0..1)],
@@ -12463,7 +12460,7 @@ j=1
 
 end
 
-147.times do
+14.times do
     leads = Lead.new(
         contact_full_name: Faker::Name.name ,
         company_name: Faker::Company.name,

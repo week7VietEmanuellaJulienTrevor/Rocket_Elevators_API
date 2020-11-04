@@ -1,7 +1,5 @@
-ActiveAdmin.register_page "map" do
+ActiveAdmin.register_page "Map" do
     content do
-        render partial: 'map'
+      render partial: 'map'
     end
-    
-end
-  
+  end

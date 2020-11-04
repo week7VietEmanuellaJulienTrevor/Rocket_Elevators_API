@@ -96,3 +96,4 @@ Rails.application.configure do
   # routes.default_url_options[:host] = 'rocket-elevators-trevor.tk'
   config.action_mailer.default_url_options = { host: "rocket-elevators-trevor.tk" }
 end
+

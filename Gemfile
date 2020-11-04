@@ -106,6 +106,13 @@ gem 'omniauth'
 gem 'cancancan'
 gem 'async-websocket', '~> 0.8.0'
 
+gem "sinatra"
+
+gem 'excon'
+
+gem 'sendgrid-ruby'
+
+gem 'sendgrid-actionmailer'
 # figaro to create env variables
 gem 'figaro'
 

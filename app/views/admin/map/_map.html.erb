@@ -1,31 +1,16 @@
+<h1>Map Page</h1>
 
-<% provide :head_tags do %>
-    <script>
-    document.addEventListener("DOMContentLoaded", function(){
-        initMap(<%= Address.find(Building.first[:address_id])[:latitude] %>, <%= Address.find(Building.first[:address_id])[:longitude] %>)
-    });
-    </script>
-<% end %>
-<h1>HELLO WORLD</h1>
+<p>
+<%
+testlat = 38.867033
+testlon = -76.979235
+%>
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&center=#{testlat},#{testlon}&key=#{ENV["google_maps_api_key"]}", alt: "Map2" %>
 
-<% puts Address.find(Building.first[:address_id])[:latitude]%>
-<% puts Address.find(Building.first[:address_id])[:longitude]%>
-<% lng = Address.find(Building.first[:address_id])[:latitude]%>
-<% lat = Address.find(Building.first[:address_id])[:longitude]%>
-<% puts lng %>
-<% puts lat %>
+<%
+puts testlat
+puts testlon
+puts ENV["google_maps_api_key"]
+%>
 
-
-
-
-
-
-<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&center=#{lat},#{lng}&key=#{ENV['google_api_key']}", alt: "Map" %>
 </p>
-
-
-<div id="map">
-
-</div>
-
-  
