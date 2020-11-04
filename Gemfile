@@ -109,6 +109,7 @@ gem 'async-websocket', '~> 0.8.0'
 # figaro to create env variables
 gem 'figaro'
 
+gem 'twilio-ruby', '~> 5.41.0'
 gem 'slack-notifier'
 
 
