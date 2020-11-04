@@ -1,4 +1,5 @@
 <title>Customer Map</title>
+    <%= javascript_include_tag "https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"%>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default%22%3E"></script>
     
      <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['google_api_key']}&callback=initMap&libraries=&v=weekly", defer: 'defer' %>
@@ -11,30 +12,12 @@
     <%= @lat = Address.find(Building.first[:address_id])[:latitude]%>
     <%= @lng = Address.find(Building.first[:address_id])[:longitude]%>
     
-      // // Initialize and add the map
-      // function initMap() {
-      //   // The location of testBuilding
+    //coordinates to center the map on.
         var jslat = 38
       
         var jslng = -85
 
-      //   <% p "lat: " + @lat.to_s %>
-      //   console.log (jslat)
-
-      //   const testBuilding = { lat:  jslat , lng:  jslng };
-      //   // The map, centered at testBuilding
-      //   const map = new google.maps.Map(document.getElementById("maps"), {
-      //     zoom: 10,
-      //     center: testBuilding,
-      //   });
-      //   // The marker, positioned at testBuilding
-      //   const marker = new google.maps.Marker({
-      //     position: testBuilding,
-      //     map: map,
-      //   });
-        
-      // }
-
+    //initialise the map 
     function initMap() {
       const map = new google.maps.Map(document.getElementById("maps"), {
         zoom: 4,
@@ -44,13 +27,12 @@
       //addMarkerInfo();
 
       // Add some markers to the map.
-      // Note: The code uses the JavaScript Array.prototype.map() method to
-      // create an array of markers based on a given "locations" array.
-      // The map() method here has nothing to do with the Google Maps API.
+      
+      // The map() method here has nothing to do with the Google Maps API. it iterates through the buildinginformation array
            
       const markers = buildingInformation.map((buildingInform, i ) => {
         console.log (buildingInform)
-
+        //prepare text for info window
         const contentString = "<h4>Client : "+buildingInform.client+"</h4></br>"+
           "<h6>"+buildingInform.address+"</h6>"+
           "<p>latitude : "+buildingInform.coordinates.lat+"</p>"+
@@ -63,12 +45,12 @@
           content: contentString,
           
         })
-
+        //new marker
         const marker = new google.maps.Marker({
           position: buildingInform.coordinates,
           map: map, 
         });
-
+        //listener to open infowindow
         marker.addListener("mouseover",()=>{
           closeOtherInfo();
           infoWindow.open(map,marker);
@@ -77,7 +59,7 @@
 
 
       });
-
+      //closes all open infowindows
       function closeOtherInfo() {
           if (InforObj.length > 0) {
               InforObj[0].set("marker", null);
@@ -89,24 +71,19 @@
 
 
       // Add a marker clusterer to manage the markers.
-      // new MarkerClusterer(map, markers, {
-      //   imagePath:
-      //     "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-      // });
+      new MarkerClusterer(map, markers, {
+        imagePath:
+          "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+      });
     }
 
-    //var buildings = []
 
     var buildingInformation = []
 
-    // var numBuildings = <%= Building.last[:id] %>
-    // <% p "buildings : " + Building.last[:id].to_s %>
-    // <% numBuildings = "test" %>
-    // <% p numBuildings%>
-    // console.log(numBuildings)
 
     var lat, lng, buildingCoordinates, buildingInfo, client, batteries, columns, elevators, tecnichalContact, address;
 
+    //lots of inbedded ruby to extract information from the databases and feed to the infowindow
     <% i = 0 %>
     <% Building.last[:id].times do %>
       <% i += 1 %>
@@ -115,9 +92,7 @@
         <% @longitude = Address.find(Building.find(i)[:address_id])[:longitude]%>
         <% @address_of_building = Address.find(Building.find(i)[:address_id])[:number_and_street] + ", " + Address.find(Building.find(i)[:address_id])[:city]%>
         <% @client = Customer.find(Building.find(i)[:customer_id])[:company_name]%>
-        <% p @client %>
         <% @batteries_in_building = Battery.where(building_id: i).count %>
-        <% p "batteries for building : " + i.to_s + "     " + @batteries_in_building.to_s %>
 
         <% @batteries = Battery.where(building_id: i)%>
         <%  @columns_in_building = 0
@@ -134,30 +109,24 @@
               end
 
             end%>
-        <%p "elevators in building : " + @elevators_in_building.to_s%>
-        <% p "columns in building : " + @columns_in_building.to_s%>
 
 
         <% @columns = Building.find(i).batteries.columns.count%>
-        <% p "columns : "+ @columns.to_s %>
         <% @elevators = 1%>
         <% @techContact = Building.find(i)[:full_name_of_the_technical_contact_for_the_building] %>
 
         lat = <%= @latitude %> 
         lng = <%= @longitude %>
 
-        //buildingCoordinates = {lat: lat, lng: lng, }
-        //buildings.push(buildingCoordinates)
         
         client = "<%= @client%>"
-        <% p "client is : " + @client%>
-        console.log(client)
         batteries = <%= @batteries_in_building %>
         columns = <%= @columns_in_building %>
         elevators = <%= @elevators_in_building %>
         tecnichalContact = "<%= @techContact%>"
         address = "<%= @address_of_building%>"
 
+        //create building stats for infowindow
         buildingInfo = {
           coordinates:{
             lat: lat,
@@ -172,51 +141,10 @@
         }
         buildingInformation.push(buildingInfo)
 
-       <% p " building : " + i.to_s %>
-       <% p Address.find(Building.find(i)[:address_id])[:latitude] %>
-       //console.log("building" )
-       //console.log(lat)
+       
        console.log(buildingInfo.coordinates)
 
-    
-    //console.log(buildings)
-    //console.log("building information")
-    //console.log(buildingInformation)
     <% end %>
-
-    
-
-
-    <%= p "lat : " + @lat.to_s %>
-    <%= p "lng : " + @lng.to_s %>
-
-
-    //const locations = buildings
-    //   [
-    //   { lat: -31.56391, lng: 147.154312 },
-    //   { lat: -33.718234, lng: 150.363181 },
-    //   { lat: -33.727111, lng: 150.371124 },
-    //   { lat: -33.848588, lng: 151.209834 },
-    //   { lat: -33.851702, lng: 151.216968 },
-    //   { lat: -34.671264, lng: 150.863657 },
-    //   { lat: -35.304724, lng: 148.662905 },
-    //   { lat: -36.817685, lng: 175.699196 },
-    //   { lat: -36.828611, lng: 175.790222 },
-    //   { lat: -37.75, lng: 145.116667 },
-    //   { lat: -37.759859, lng: 145.128708 },
-    //   { lat: -37.765015, lng: 145.133858 },
-    //   { lat: -37.770104, lng: 145.143299 },
-    //   { lat: -37.7737, lng: 145.145187 },
-    //   { lat: -37.774785, lng: 145.137978 },
-    //   { lat: -37.819616, lng: 144.968119 },
-    //   { lat: -38.330766, lng: 144.695692 },
-    //   { lat: -39.927193, lng: 175.053218 },
-    //   { lat: -41.330162, lng: 174.865694 },
-    //   { lat: -42.734358, lng: 147.439506 },
-    //   { lat: -42.734358, lng: 147.501315 },
-    //   { lat: -42.735258, lng: 147.438 },
-    //   { lat: -43.999792, lng: 170.463352 },
-    // ];
 
         </script>
 
