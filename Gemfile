@@ -106,3 +106,6 @@ gem 'cancancan'
 
 # figaro to create env variables
 gem 'figaro'
+
+# Zendesk API
+gem "zendesk_api", git: 'https://github.com/zendesk/zendesk_api_client_rb'

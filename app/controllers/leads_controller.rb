@@ -1,5 +1,6 @@
 class LeadsController < InheritedResources::Base
   skip_before_action :verify_authenticity_token
+  
   #before_action :set_lead, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -9,6 +10,7 @@ class LeadsController < InheritedResources::Base
         format.json {render json: @lead}
     end
   end
+
 
   def index
     @leads = Lead.all
@@ -31,6 +33,7 @@ class LeadsController < InheritedResources::Base
       if @lead.save
         format.html { redirect_to root_path, notice: "Save process completed!" }
         format.json { render json: @lead, status: :created, location: @lead }
+
       else
         format.html { 
             flash.now[:notice]="Save proccess coudn't be completed!" 
