@@ -15,7 +15,7 @@ class Elevator < ApplicationRecord
         @client = ::Twilio::REST::Client.new acct_sid, auth_token
 
         from = ENV['TWILIO_PHONE']
-        to = '+14388218911'
+        to = ENV['phone']
         body = ''
 
         if self.status.downcase == 'intervention'
