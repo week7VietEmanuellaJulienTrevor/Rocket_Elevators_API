@@ -1,13 +1,15 @@
 <title>Customer Map</title>
-    <%= javascript_include_tag "https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"%>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default%22%3E"></script>
-    
-     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['google_api_key']}&callback=initMap&libraries=&v=weekly", defer: 'defer' %>
+
+    <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
+
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['google_api_key']}&callback=initMap&libraries=&v=weekly", defer: 'defer' %>
       
     
     <script>
     var map;
     var InforObj = [];
+    var markers;
 
     <%= @lat = Address.find(Building.first[:address_id])[:latitude]%>
     <%= @lng = Address.find(Building.first[:address_id])[:longitude]%>
@@ -30,28 +32,34 @@
       
       // The map() method here has nothing to do with the Google Maps API. it iterates through the buildinginformation array
            
-      const markers = buildingInformation.map((buildingInform, i ) => {
+      markers = buildingInformation.map((buildingInform, i ) => {
         console.log (buildingInform)
         //prepare text for info window
-        const contentString = "<h4>Client : "+buildingInform.client+"</h4></br>"+
-          "<h6>"+buildingInform.address+"</h6>"+
-          "<p>latitude : "+buildingInform.coordinates.lat+"</p>"+
-          "<p>longitude : "+buildingInform.coordinates.lng+"</p>"+
-          "<p>batteries : "+buildingInform.batteries+"</p>"+
-          "<p>column : "+buildingInform.columns+"</p>"+
-          "<p>elevators : "+buildingInform.elevators+"</p>"+
-          "<p>technical contact : "+buildingInform.tecnichalContact+"</p>";
+        const contentString = "<h6>Client : "+buildingInform.client+"</br>"+
+          buildingInform.address+"</h6>"+
+          "<ul>"+
+          "<li>latitude : "+buildingInform.coordinates.lat+"</li>"+
+          "<li>longitude : "+buildingInform.coordinates.lng+"</li>"+
+          "<li>floors : "+buildingInform.floors+"</li>"+
+          "<li>batteries : "+buildingInform.batteries+"</li>"+
+          "<li>column : "+buildingInform.columns+"</li>"+
+          "<li>elevators : "+buildingInform.elevators+"</li>"+
+          "<li>technical contact : "+buildingInform.tecnichalContact+"</p></ul>";
         const infoWindow = new google.maps.InfoWindow({
           content: contentString,
           
         })
         //new marker
-        const marker = new google.maps.Marker({
+        var marker = new google.maps.Marker({
           position: buildingInform.coordinates,
-          map: map, 
+          map: map,
+          getDraggable: false, 
         });
+
+
+
         //listener to open infowindow
-        marker.addListener("mouseover",()=>{
+        marker.addListener("click",()=>{
           closeOtherInfo();
           infoWindow.open(map,marker);
           InforObj[0] = infoWindow;
@@ -68,12 +76,12 @@
           }
       }
 
-
+      //marker.prototype.getDraggable = function() { return false; };
 
       // Add a marker clusterer to manage the markers.
-      new MarkerClusterer(map, markers, {
+      var markerCluster = new MarkerClusterer(map, markers, {
         imagePath:
-          "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+         `${window.location.origin}/m`,
       });
     }
 
@@ -81,7 +89,7 @@
     var buildingInformation = []
 
 
-    var lat, lng, buildingCoordinates, buildingInfo, client, batteries, columns, elevators, tecnichalContact, address;
+    var floors, lat, lng, buildingCoordinates, buildingInfo, client, batteries, columns, elevators, tecnichalContact, address;
 
     //lots of inbedded ruby to extract information from the databases and feed to the infowindow
     <% i = 0 %>
@@ -93,7 +101,7 @@
         <% @address_of_building = Address.find(Building.find(i)[:address_id])[:number_and_street] + ", " + Address.find(Building.find(i)[:address_id])[:city]%>
         <% @client = Customer.find(Building.find(i)[:customer_id])[:company_name]%>
         <% @batteries_in_building = Battery.where(building_id: i).count %>
-
+        <% @floors = 0%>
         <% @batteries = Battery.where(building_id: i)%>
         <%  @columns_in_building = 0
             @elevators_in_building = 0
@@ -106,6 +114,8 @@
               @columns.each do |column|
                 @elevators_in_column  = Elevator.where(column_id: column.id).count
                 @elevators_in_building += @elevators_in_column
+                @floors += column.number_of_floors_served 
+                puts @floors
               end
 
             end%>
@@ -125,6 +135,7 @@
         elevators = <%= @elevators_in_building %>
         tecnichalContact = "<%= @techContact%>"
         address = "<%= @address_of_building%>"
+        floors  = <%= @floors%>
 
         //create building stats for infowindow
         buildingInfo = {
@@ -138,6 +149,7 @@
           elevators: elevators,
           tecnichalContact: tecnichalContact,
           address: address,
+          floors: floors,
         }
         buildingInformation.push(buildingInfo)
 
