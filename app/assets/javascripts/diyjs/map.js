@@ -1,15 +1,21 @@
+console.log("TESTING")
+
+
+
+
+
 // console.log('"lat + " " + lng"')
 
-function initMap(lat, lng) {
-    console.log("initMap")
-    var myCoords = new google.maps.LatLng(lat, lng);
+// function initMap(lat, lng) {
+//     console.log("initMap")
+//     var myCoords = new google.maps.LatLng(lat, lng);
 
-    var mapOptions = {
-    center: myCoords,
-    zoom: 14
-    };
-    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-}
+//     var mapOptions = {
+//     center: myCoords,
+//     zoom: 14
+//     };
+//     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+// }
 
 
 

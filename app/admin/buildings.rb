@@ -15,6 +15,7 @@ ActiveAdmin.register Building do
   #   permitted
   # end
   index do
+    id_column
     #column :address_id
     column :address_of_the_building
     column :full_name_of_the_building_administrator
