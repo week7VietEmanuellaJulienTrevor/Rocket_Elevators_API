@@ -17,7 +17,7 @@ class Elevator < ApplicationRecord
         body = ''
 
         if self.status.downcase == 'intervention'
-            body = "The Elevator " + (self.id).to_s + " with Serial Number " + (self.serial_number).to_s + " changed status to intervention"
+            body = "The Elevator " + (self.id).to_s + " with Serial Number * " + (self.serial_number).to_s + " * changed status to intervention"
         end
 
         message = @client.messages.create(
