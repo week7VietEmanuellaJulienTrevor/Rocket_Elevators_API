@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
+gem 'http'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
@@ -103,8 +104,7 @@ gem 'populator', '~> 1.0'
 gem 'omniauth'
 
 gem 'cancancan'
-
-gem 'figaro'
+gem 'async-websocket', '~> 0.8.0'
 
 gem "sinatra"
 
@@ -113,3 +113,11 @@ gem 'excon'
 gem 'sendgrid-ruby'
 
 gem 'sendgrid-actionmailer'
+# figaro to create env variables
+gem 'figaro'
+
+gem 'twilio-ruby', '~> 5.41.0'
+gem 'slack-notifier'
+
+
+
