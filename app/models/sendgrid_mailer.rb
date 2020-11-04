@@ -13,7 +13,7 @@ class SendgridMailer
           }
         ],
         "from": {
-          "email": 'judup13@gmail.com'
+          "email": ENV['my_email']
         },
         "template_id": template_id
       }
