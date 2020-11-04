@@ -12184,7 +12184,7 @@ i = 10
 j=1
 
 #create the customers
-15.times do
+150.times do
     
     eMail = Faker::Internet.email
 
