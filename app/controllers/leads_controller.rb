@@ -63,3 +63,8 @@ class LeadsController < InheritedResources::Base
     end
 
 end
+ def download
+        lead = Lead.where(:id => params[:id]).first
+        send_data lead.attached_file, filename: lead.file_name
+       end
+

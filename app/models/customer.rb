@@ -1,6 +1,7 @@
 class Customer < ApplicationRecord
     belongs_to :admin_user
-    after_update :dropbox
+    after_create :dropbox
+
    # belongs_to :user, optional:true
 
     has_many :buildings
@@ -33,7 +34,7 @@ class Customer < ApplicationRecord
     end
 
     def dropbox
-        customer_leads = Lead.where(contact_full_name: self.id)
+        customer_leads = Lead.where(company_name: self.company_name)
 
         client = DropboxApi::Client.new ENV["access_token"]
         

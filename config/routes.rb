@@ -28,11 +28,14 @@ Rails.application.routes.draw do
   get 'residential' => 'pages#residential'
   get 'index' => 'pages#index'
   get 'admin_root' => 'elevators#index'
+  get 'admin' => 'sessions#new'
+ 
 
   # POST routes
 
   post 'quote/create' => 'quotes#create'
   post 'contact/create' => 'leads#create'
+  post 'admin' => 'sessions#create'
   # post 'pages/twilio' => 'pages#twilio'
   
 end
