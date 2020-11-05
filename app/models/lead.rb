@@ -35,8 +35,7 @@ class Lead < ApplicationRecord
             config.token = ENV['ZENDESK_TOKEN']
         end
 
-
-
+        # Creating a new lead ticket on Zendesk
         ZendeskAPI::Ticket.create!(client, 
             :subject => "#{self.contact_full_name} from #{self.company_name}", 
             :comment => { 

@@ -1,15 +1,15 @@
-require 'zendesk_api'
+# require 'zendesk_api'
 
-client = ZendeskAPI::Client.new do |config|
+# client = ZendeskAPI::Client.new do |config|
   # Mandatory:
 
-  config.url = ENV['ZENDESK_URL'] # e.g. https://mydesk.zendesk.com/api/v2
+  # config.url = ENV['ZENDESK_URL'] # e.g. https://mydesk.zendesk.com/api/v2
 
   # Basic / Token Authentication
-  config.username = ENV['ZENDESK_USERNAME']
+  # config.username = ENV['ZENDESK_USERNAME']
 
   # Choose one of the following depending on your authentication choice
-  config.token = ENV['ZENDESK_TOKEN']
+  # config.token = ENV['ZENDESK_TOKEN']
 
   # OAuth Authentication
 #  config.access_token = "your OAuth access token"
@@ -19,7 +19,7 @@ client = ZendeskAPI::Client.new do |config|
   # Retry uses middleware to notify the user
   # when hitting the rate limit, sleep automatically,
   # then retry the request.
- config.retry = true
+#  config.retry = true
 
   # Raise error when hitting the rate limit.
   # This is ignored and always set to false when `retry` is enabled.
@@ -38,4 +38,4 @@ client = ZendeskAPI::Client.new do |config|
 
   # When getting the error 'hostname does not match the server certificate'
   # use the API at https://yoursubdomain.zendesk.com/api/v2
-end
+# end
