@@ -12121,7 +12121,7 @@ add = [
 ]
 
 #seed the address table
-100.times do
+500.times do
     index = rand(0..add.length-1)
     addresses = Address.new(
         type_of_address: addressType[rand(0..3)],
@@ -12184,7 +12184,7 @@ i = 10
 j=1
 
 #create the customers
-150.times do
+15.times do
     
     eMail = Faker::Internet.email
 
