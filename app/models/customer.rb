@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
     belongs_to :admin_user
-    after_create :dropbox
+    after_update :dropbox
    # belongs_to :user, optional:true
 
     has_many :buildings
@@ -33,11 +33,11 @@ class Customer < ApplicationRecord
     end
 
     def dropbox
-        cus_leads = Lead.where(contact_full_name: self.id)
+        customer_leads = Lead.where(contact_full_name: self.id)
 
         client = DropboxApi::Client.new ENV["access_token"]
         
-         cus_leads.each do |l|
+         customer_leads.each do |l|
           begin
             client.get_metadata("/#{l.company_name}") 
           rescue => exception
