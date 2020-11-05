@@ -142,7 +142,7 @@ $(document).ready(function(){
         $("#num-shafts").val(0);
         $("#elevator-price").val("$0.00");
         $("#installation-price").val("$0.00");
-        $("#total-estimate").val("$0.00");
+        $("#total-estimate").val(" ");
 
     })
 
@@ -219,7 +219,7 @@ $(document).ready(function(){
             number of elevators per column. The total number of elevators is determined by 
             the number of elevators per column multiplied by the number of columns.
             */
-            // contactFullName = $("#question-7").val();
+            contactFullName = $("#question-7").val();
             phone1 = $("#question-8").val();
             companyName = $("#question-9").val();
             contactEmail = $("#question-10").val();
@@ -254,7 +254,7 @@ $(document).ready(function(){
             number of elevators per column. The total number of elevators is determined by 
             the number of elevators per column multiplied by the number of columns.
             */
-            // contactFullName = $("#question-7").val();
+            contactFullName = $("#question-7").val();
             phone1 = $("#question-8").val();
             companyName = $("#question-9").val();
             contactEmail = $("#question-10").val();
@@ -352,6 +352,22 @@ $(document).ready(function(){
 
         console.log("AJAX SENT");
         console.log(quote);
+
+    // Cleaning the fields after the form is sent
+        $("#question-1").val(" ")
+        $("#question-2").val(" ")
+        $("#question-3").val(" ")
+        $("#question-4").val(" ")
+        $("#question-5").val(" ")
+        $("#question-6").val(" ")
+        $("#question-7").val(" ")
+        $("#question-8").val(" ")
+        $("#question-9").val(" ")
+        $("#question-10").val(" ")
+        $("#num-shafts").val(0);
+        $("#elevator-price").val("$0.00");
+        $("#installation-price").val("$0.00");
+        $("#total-estimate").val(" ");
         e.preventDefault();
     })
 })

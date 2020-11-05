@@ -194,26 +194,26 @@
                 <!-- MAIN FORM -->
                 <div class="col-md-7 col-sm-7 mt-80">
                     <form action="" id="quote-form" method="post" enctype="multipart/form-data">
-                        <h3 class="text-center fw-400 ">Fill out this form about your project.</h3>
+                        <h3 class="text-center fw-400 ">Please, fill out all fields regarding your project.</h3>
 
                         <fieldset>
                         <%# Adding the form fields %>
 						<div id="q7" class="col-md-6" >
-							<label id="q7-label" for="quote_contact_full_name" >Full Name: </label>
-							<input class="form-control"  type = "text" id="question-7" required>
+							<label id="q7-label" for="quote_contact_full_name" >Full Name:* </label>
+							<input required type = "text" class="form-control" id="question-7">
 						</div>
 						<div id="q8" class="col-md-6" >
-							<label id="q8-label" for="quote_phone" >Phone Number (XXX-XXX-XXXX) </label>
-							<input  class="form-control" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="question-8" required>
+							<label id="q8-label" for="quote_phone" >Phone Number (XXX-XXX-XXXX)* </label>
+							<input type="tel" value="" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" id="question-8">
 						</div>
 
 						<div id="q9" class="col-md-6" >
-							<label id="q9-label" for="quote_company_name" >Company Name: </label>
-							<input  class="form-control" type="text" id="question-9" required>
+							<label id="q9-label" for="quote_company_name" >Company Name:* </label>
+							<input required type = "text" class="form-control" id="question-9">
 						</div>
 						<div id="q10" class="col-md-6" >
-							<label id="q10-label" for="quote_contact_email">Email: </label>
-							<input  class="form-control" type="email" id="question-10" required>
+							<label id="q10-label" for="quote_contact_email">Email:* </label>
+							<input required type="email" value="" class="form-control" id="question-10" required>
 						</div>                                                   
 
                             <div class="row justify-content-center mb-10">
