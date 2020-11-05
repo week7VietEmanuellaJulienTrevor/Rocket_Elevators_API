@@ -1,6 +1,7 @@
 class Lead < ApplicationRecord
 
     validate :file_size_under_ten_mb 
+    has_one :customers
 
     def initialize(params = {})
         super        

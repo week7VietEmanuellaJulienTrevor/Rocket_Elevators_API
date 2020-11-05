@@ -54,6 +54,8 @@ class LeadsController < InheritedResources::Base
     end
   end
 
+  
+
 
   private
     def lead_params
