@@ -14,6 +14,8 @@ ActiveAdmin.register_page "Map" do
     total_elevators = ""
     if total_elev > 1000
       total_elevators = " #{(total_elev /1000 )} thousand #{total_elev % 1000}"
+    else 
+      total_elevators = total_elev.to_s
     end
     puts "________________________________________________________________________________________________________"
     puts "elevators : "+ total_elevators.to_s
@@ -33,6 +35,8 @@ ActiveAdmin.register_page "Map" do
     not_running_servicing_elevators_string = ""
     if not_running_servicing_elevators > 1000
       not_running_servicing_elevators_string = " #{(not_running_servicing_elevators /1000 )} thousand #{not_running_servicing_elevators % 1000}"
+    else  
+      not_running_servicing_elevators_string = not_running_servicing_elevators.to_s
     end
     puts "________________________________________________________________________________________________________"
     puts "inactive elevators and in intervention : "+ not_running_servicing_elevators.to_s
