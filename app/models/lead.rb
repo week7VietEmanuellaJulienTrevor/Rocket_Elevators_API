@@ -6,8 +6,8 @@ class Lead < ApplicationRecord
         super        
         @file = params[:attached_file]
         if @file
-            self.attached_file = @file.open()
-            self.attached_file_path = @file.path()
+            self.attached_file = @file.read
+            self.attached_file_path = @file.original_filename
         end
     end
 
