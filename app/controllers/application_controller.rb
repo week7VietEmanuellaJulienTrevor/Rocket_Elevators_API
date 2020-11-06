@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    protect_from_forgery prepend: true, with: :exception
     
     def access_denied(exception)
         redirect_to index_path, alert: exception.message
