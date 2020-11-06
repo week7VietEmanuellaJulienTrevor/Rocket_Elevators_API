@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-    skip_before_action :verify_authenticity_token
+    # skip_before_action :verify_authenticity_token
     before_action :set_quote, only: [:show, :edit, :update, :destroy]
   
     
@@ -49,6 +49,8 @@ class QuotesController < ApplicationController
             if @quote.save 
                 format.html { redirect_to @quote, notice: "Save process completed!" }
                 format.json { render json: @quote, status: :created, location: @quote }
+
+
             else
                 format.html { 
                     flash.now[:notice]="Save proccess coudn't be completed!" 
@@ -83,7 +85,12 @@ class QuotesController < ApplicationController
 
         # Allowed parameters
         def quote_params
-            params.permit(:building_type,
+            params.permit(
+                            :contact_full_name,
+                            :company_name,
+                            :contact_email,
+                            :phone,
+                            :building_type,
                             :no_of_appartments, 
                             :no_of_floors, 
                             :no_of_basements, 

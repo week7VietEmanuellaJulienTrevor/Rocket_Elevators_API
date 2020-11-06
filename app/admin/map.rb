@@ -14,6 +14,8 @@ ActiveAdmin.register_page "Map" do
     total_elevators = ""
     if total_elev > 1000
       total_elevators = " #{(total_elev /1000 )} thousand #{total_elev % 1000}"
+    else 
+      total_elevators = total_elev.to_s
     end
     puts "________________________________________________________________________________________________________"
     puts "elevators : "+ total_elevators.to_s
@@ -33,6 +35,8 @@ ActiveAdmin.register_page "Map" do
     not_running_servicing_elevators_string = ""
     if not_running_servicing_elevators > 1000
       not_running_servicing_elevators_string = " #{(not_running_servicing_elevators /1000 )} thousand #{not_running_servicing_elevators % 1000}"
+    else  
+      not_running_servicing_elevators_string = not_running_servicing_elevators.to_s
     end
     puts "________________________________________________________________________________________________________"
     puts "inactive elevators and in intervention : "+ not_running_servicing_elevators.to_s
@@ -68,23 +72,23 @@ ActiveAdmin.register_page "Map" do
     puts text_for_Watson
     puts "________________________________________________________________________________________________________"
 
-    authenticator = Authenticators::IamAuthenticator.new(
-    apikey: ENV['ibm_watson_key']
-    )
+    # authenticator = Authenticators::IamAuthenticator.new(
+    # apikey: ENV['ibm_watson_key']
+    # )
 
-    text_to_speech = TextToSpeechV1.new(
-    authenticator: authenticator
-    )
-    text_to_speech.service_url = ENV['ibm_watson_url']
+    # text_to_speech = TextToSpeechV1.new(
+    # authenticator: authenticator
+    # )
+    # text_to_speech.service_url = ENV['ibm_watson_url']
 
-    File.open("app/assets/audio/first.wav", "wb") do |audio_file|
-    response = text_to_speech.synthesize(
-        text: text_for_Watson,
-        accept: "audio/wav",
-        voice: "en-US_AllisonV3Voice"
-    )
-    audio_file.write(response.result)
-    end
+    # File.open("app/assets/audio/first.wav", "wb") do |audio_file|
+    # response = text_to_speech.synthesize(
+    #     text: text_for_Watson,
+    #     accept: "audio/wav",
+    #     voice: "en-US_AllisonV3Voice"
+    # )
+    # audio_file.write(response.result)
+    # end
 
     render partial: 'map'
 

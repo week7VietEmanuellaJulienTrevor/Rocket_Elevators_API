@@ -11,6 +11,10 @@ $(document).ready(function(){
     
 
     // Fields that are sent to the Quote table in the mySQL database
+    var contactFullName;
+    var phone1;
+    var companyName;
+    var contactEmail;
     var buildingType;
     var numApartments;
     var numFloors;
@@ -44,7 +48,7 @@ $(document).ready(function(){
         var inputDivs = []; // Stores the input divs 
         var inputs = []; // Stores the inputs
         
-        // Get six input divs and put them in the inputDivs array
+        // Get dix input divs and put them in the inputDivs array
         var q1 = $("#q1");
         var q2 = $("#q2");
         var q3 = $("#q3");
@@ -52,31 +56,36 @@ $(document).ready(function(){
         var q5 = $("#q5");
         var q6 = $("#q6");
 
+
         inputDivs.push(q1, q2, q3, q4, q5, q6);
 
-        // Get six inputs from the 6 input fields and put them in the inputs array
+        // Get dix inputs from the 10 input fields and put them in the inputs array
         var input1 = $("#question-1");
         var input2 = $("#question-2");
         var input3 = $("#question-3");
         var input4 = $("#question-4");
         var input5 = $("#question-5");
         var input6 = $("#question-6");
+        var input7 = $("#question-7");
+        var input8 = $("#question-8");
+        var input9 = $("#question-9");
+        var input10 = $("#question-10");        
 
-        inputs.push(input1, input2, input3, input4, input5, input6);
+        inputs.push(input1, input2, input3, input4, input5, input6, input7, input8, input9, input10);
 
         // Reset all input fields when button is pressed, just in case it is pressed more than once
-        for (var i = 0; i < inputs.length; i++)
-        {
-            inputs[i].val(NaN);
-        }
-
-        // Get labels for the six input divs and put them in the divLabels array
+        // for (var i = 0; i < inputs.length; i++)
+        // {
+        //     inputs[i].val(NaN);
+        // }
+        
+        // Get labels for the ten input divs and put them in the divLabels array
         var q1Label = $("#q1-label");
         var q2Label = $("#q2-label");
         var q3Label = $("#q3-label");
         var q4Label = $("#q4-label");
         var q5Label = $("#q5-label");
-        var q6Label = $("#q6-label");
+        var q6Label = $("#q6-label");       
         
         var numDivsToShow = 0; // Change label values based on building type
 
@@ -117,7 +126,6 @@ $(document).ready(function(){
             q4Label.text("The number of parking space available");
             q5Label.text("The maximum number of occupants per floor");
             q6Label.text("The number of hours of activity of the building per day");
-        
         }
 
         // Show/hide input divs based on building type
@@ -134,7 +142,7 @@ $(document).ready(function(){
         $("#num-shafts").val(0);
         $("#elevator-price").val("$0.00");
         $("#installation-price").val("$0.00");
-        $("#total-estimate").val("$0.00");
+        $("#total-estimate").val(" ");
 
     })
 
@@ -151,6 +159,10 @@ $(document).ready(function(){
             A new column is therefore added to each new group of 20 stories.
             */
 
+            contactFullName = $("#question-7").val();
+            phone1 = $("#question-8").val();
+            companyName = $("#question-9").val();
+            contactEmail = $("#question-10").val();
             numApartments = $("#question-1").val();
             numFloors = $("#question-2").val();
             numBasements = $("#question-3").val();
@@ -179,7 +191,10 @@ $(document).ready(function(){
             to be deployed is specified and the estimated number of cages is equal to 
             the number required.
             */
-            
+            contactFullName = $("#question-7").val();
+            phone1 = $("#question-8").val();
+            companyName = $("#question-9").val();
+            contactEmail = $("#question-10").val();
             numApartments = null;
             numFloors = $("#question-2").val();
             numBasements = $("#question-3").val();
@@ -204,7 +219,10 @@ $(document).ready(function(){
             number of elevators per column. The total number of elevators is determined by 
             the number of elevators per column multiplied by the number of columns.
             */
-            
+            contactFullName = $("#question-7").val();
+            phone1 = $("#question-8").val();
+            companyName = $("#question-9").val();
+            contactEmail = $("#question-10").val();
             numApartments = null;
             numFloors = $("#question-2").val();
             numBasements = $("#question-3").val();
@@ -236,7 +254,10 @@ $(document).ready(function(){
             number of elevators per column. The total number of elevators is determined by 
             the number of elevators per column multiplied by the number of columns.
             */
-            
+            contactFullName = $("#question-7").val();
+            phone1 = $("#question-8").val();
+            companyName = $("#question-9").val();
+            contactEmail = $("#question-10").val();
             numApartments = null;
             numFloors = $("#question-2").val();
             numBasements = $("#question-3").val();
@@ -290,6 +311,10 @@ $(document).ready(function(){
 
         // Save Quote object for AJAX
         quote = {
+            contact_full_name: contactFullName,
+            phone: phone1,
+            company_name: companyName,
+            contact_email: contactEmail,
             building_type: buildingType, 
             no_of_appartments: numApartments,
             no_of_floors: numFloors,
@@ -327,6 +352,22 @@ $(document).ready(function(){
 
         console.log("AJAX SENT");
         console.log(quote);
+
+    // Cleaning the fields after the form is sent
+        $("#question-1").val(" ")
+        $("#question-2").val(" ")
+        $("#question-3").val(" ")
+        $("#question-4").val(" ")
+        $("#question-5").val(" ")
+        $("#question-6").val(" ")
+        $("#question-7").val(" ")
+        $("#question-8").val(" ")
+        $("#question-9").val(" ")
+        $("#question-10").val(" ")
+        $("#num-shafts").val(0);
+        $("#elevator-price").val("$0.00");
+        $("#installation-price").val("$0.00");
+        $("#total-estimate").val(" ");
         e.preventDefault();
     })
 })
