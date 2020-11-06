@@ -94,7 +94,6 @@ Rails.application.configure do
 
   # Host
   # routes.default_url_options[:host] = 'rocket-elevators-trevor.tk'
-  config.force_ssl = true
   config.action_mailer.default_url_options = { host: "https://vndaos.com/" }
 end
 
