@@ -6,6 +6,7 @@ include SendGrid
 
 class LeadsController < InheritedResources::Base
   skip_before_action :verify_authenticity_token
+  
   #before_action :set_lead, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -15,6 +16,7 @@ class LeadsController < InheritedResources::Base
         format.json {render json: @lead}
     end
   end
+
 
   def index
     @leads = Lead.all

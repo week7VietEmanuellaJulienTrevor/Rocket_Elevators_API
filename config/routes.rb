@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   
+  
   resources :elevators
   resources :batteries
   resources :customers
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
   get 'admin_root' => 'elevators#index'
   get 'admin' => 'sessions#new'
  
+  get 'admin_root' => 'map#index'
+  
 
   # POST routes
 

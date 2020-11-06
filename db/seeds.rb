@@ -12121,7 +12121,7 @@ add = [
 ]
 
 #seed the address table
-100.times do
+500.times do
     index = rand(0..add.length-1)
     addresses = Address.new(
         type_of_address: addressType[rand(0..3)],
@@ -12213,15 +12213,17 @@ j=1
         addressID = rand(1..Address.last[:id])
         companyName = Faker::Company.name
         customerDate = Faker::Date.between(from: '1976-01-01', to: '2020-10-20')
+        companyContact = Faker::Name.name
+        companyPhone = Faker::PhoneNumber.cell_phone
         customers = Customer.new(
             #user_id: userID[i],
             customer_creation_date: customerDate,
             company_name: companyName,
             company_headquarter_address: Address.find(addressID)[:number_and_street].to_s + " " + Address.find(addressID)[:suite_or_apartment].to_s + " " + Address.find(addressID)[:city].to_s + " " + Address.find(addressID)[:postal_code].to_s + " " + Address.find(addressID)[:country].to_s,
             
-            full_name_company_contact: Faker::Name.name,
+            full_name_company_contact: companyContact,
             address_id: addressID,
-            company_contact_phone: Faker::PhoneNumber.cell_phone,
+            company_contact_phone: companyPhone,
             email_company_contact: eMail,
             admin_user_id: i,
             company_description: Faker::Company.industry,
@@ -12329,7 +12331,8 @@ j=1
                     installation_cost: inst * cost * elevators,
                     total_cost: "$" + '%.2f' % ((elevators * inst * cost) + (elevators * cost)),
                     no_of_daily_hours_of_activity: activity,       
-
+                    contact_full_name: companyContact,
+                    phone:companyPhone, 
                 )
                 quotes.save
                 print "total quote cost : "
