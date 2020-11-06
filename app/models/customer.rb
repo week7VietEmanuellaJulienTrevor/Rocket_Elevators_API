@@ -35,13 +35,7 @@ class Customer < ApplicationRecord
     end
 
     def dropbox
-<<<<<<< HEAD
-        cus_leads = Lead.where(contact_full_name: self.id)
 
-        client = DropboxApi::Client.new ENV["access_token"]
-        
-         cus_leads.each do |l|
-=======
         customer_leads = Lead.where(company_name: self.company_name)
         puts "-------------------------------------------------------"
         pp customer_leads
@@ -57,7 +51,6 @@ class Customer < ApplicationRecord
 
           puts "-------------------------------------------------------"
 
->>>>>>> downgraded
           begin
             client.get_metadata("/#{l.company_name}") 
             puts "-------------------------------------------------------"
@@ -85,13 +78,15 @@ class Customer < ApplicationRecord
               puts "-------------------------------------------------------"   
               
               
-              file_content = IO.read l.attached_file_path
+              # file_content = IO.read l.attached_file_path
 
-              puts "-------------------------------------------------------"
-              pp file_content
-              puts "-------------------------------------------------------"  
+              # puts "-------------------------------------------------------"
+              # pp file_content
+              # puts "-------------------------------------------------------"  
 
-              client.upload("/#{l.company_name}/file.png",file_content)
+              client.upload("/#{l.company_name}/file","hi")
+              # client.upload("/" + self.company_name + "/"+  l.attached_file_path, lead.attached_file )
+
 
 
           end

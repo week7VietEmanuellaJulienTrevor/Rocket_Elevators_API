@@ -34,6 +34,9 @@ class LeadsController < InheritedResources::Base
     p lead_params
     @lead = Lead.new(lead_params)
     sendgrid_email = (@lead.email).to_s
+    file_received = params[:attached_file]
+   # @lead.attached_file = file_received.read
+    #@lead.attached_file_path = file_received.original_filename
     
     respond_to do |format|
 
@@ -61,7 +64,7 @@ class LeadsController < InheritedResources::Base
 
   private
     def lead_params
-      params.require(:leads).permit(:contact_full_name, :company_name, :email, :phone, :project_name, :project_description, :department, :message, :attached_file, :created_at)
+      params.require(:leads).permit(:contact_full_name, :company_name, :email, :phone, :project_name, :project_description, :department, :message, :attached_file, :created_at, :attached_file,)
     end
 
 end
