@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   
+  
   resources :elevators
   resources :batteries
   resources :customers
@@ -27,7 +28,8 @@ Rails.application.routes.draw do
   get 'corporate' => 'pages#corporate'
   get 'residential' => 'pages#residential'
   get 'index' => 'pages#index'
-  get 'admin_root' => 'elevators#index'
+  get 'admin_root' => 'map#index'
+  
 
   # POST routes
 

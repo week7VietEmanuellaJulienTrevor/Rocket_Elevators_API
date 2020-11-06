@@ -57,7 +57,7 @@ group :development do
   gem 'capistrano3-puma'
 
   gem 'ed25519', '>= 1.2', '< 2.0'
-  gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
+  gem 'bcrypt_pbkdf'
 
 end
 
@@ -123,3 +123,4 @@ gem 'slack-notifier'
 
 # Zendesk API
 gem "zendesk_api", git: 'https://github.com/zendesk/zendesk_api_client_rb'
+gem 'ibm_watson'
