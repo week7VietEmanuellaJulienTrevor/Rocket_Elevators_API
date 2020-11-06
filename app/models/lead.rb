@@ -20,6 +20,7 @@ class Lead < ApplicationRecord
             end
         end
     end
+   
 
     private
     def sanitize_filename(filename)
