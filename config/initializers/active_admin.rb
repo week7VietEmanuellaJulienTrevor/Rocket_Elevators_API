@@ -1,4 +1,5 @@
 ActiveAdmin.setup do |config|
+  
   # == Site Title
   #
   # Set the title that is displayed on the main layout
@@ -117,7 +118,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  config.root_to = 'elevators#index'
+  config.root_to = 'map#index'
 
   # == Admin Comments
   #
