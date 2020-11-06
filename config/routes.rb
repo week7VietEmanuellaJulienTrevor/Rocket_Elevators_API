@@ -29,8 +29,8 @@ Rails.application.routes.draw do
   get 'residential' => 'pages#residential'
   get 'index' => 'pages#index'
   get 'admin_root' => 'elevators#index'
-  get 'admin' => 'sessions#new'
- 
+  get 'admin_root' => 'sessions#new'
+ #/admin/login
   get 'admin_root' => 'map#index'
   
 
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   post 'quote/create' => 'quotes#create'
   post 'contact/create' => 'leads#create'
-  post 'admin' => 'sessions#create'
+  post 'admin_root' => 'sessions#create'
   # post 'pages/twilio' => 'pages#twilio'
   
 end

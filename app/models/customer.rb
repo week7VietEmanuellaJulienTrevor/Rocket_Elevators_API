@@ -34,37 +34,32 @@ class Customer < ApplicationRecord
     end
 
     def dropbox
-        customer_leads = Lead.where(company_name: self.company_name)
-        #validate token from dropbox
+        cus_leads = Lead.where(contact_full_name: self.id)
+
         client = DropboxApi::Client.new ENV["access_token"]
         
-         customer_leads.each do |l|
+         cus_leads.each do |l|
           begin
             client.get_metadata("/#{l.company_name}") 
-         # rescue => exception
+          rescue => exception
             client.create_folder("/#{l.company_name}")
           end
           #Transfer the binary file to Dropbox
           if l.attached_file != nil
-            
-            #   client.get_metadata("/#{l.company_name}") 
-            # rescue => exception
-             # client.upload("/#{l.company_name}",l.attached_file)
-              file = @client.upload("#{l.company_name/file_io.txt", content)
-
-             
+            begin
+              client.get_metadata("/#{l.company_name}/#{l.file_name}") 
+            rescue => exception
+              client.upload_by_chunks("/#{l.company_name}/#{l.file_name}",l.attached_file)
           end
           #Remove the attached file from lead table after success transfert to dropbox
-      #     removed = ""
-      #     l.update_attribute(:attached_file, removed)
-      #     l.update_attribute(:attached_file, removed)
-      # end
+          removed = ""
+          l.update_attribute(:file_name, removed)
+          l.update_attribute(:attached_file, removed)
+      end
     end
   end
    
 
-
 end
-
 
 
