@@ -59,6 +59,8 @@ GEM
       actionpack (= 5.2.4.4)
       activerecord (= 5.2.4.4)
       marcel (~> 0.3.1)
+    activestorage-dropbox (1.0.0)
+      dropbox_api (~> 0.1.16)
     activesupport (5.2.4.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
@@ -421,6 +423,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  activestorage-dropbox
   async-websocket (~> 0.8.0)
   bcrypt_pbkdf
   bootsnap (>= 1.1.0)

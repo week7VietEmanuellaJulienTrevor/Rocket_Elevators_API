@@ -119,7 +119,7 @@ gem 'figaro'
 gem 'twilio-ruby', '~> 5.41.0'
 gem 'slack-notifier'
 gem 'dropbox_api'
-
+gem 'activestorage-dropbox'
 
 
 # Zendesk API
