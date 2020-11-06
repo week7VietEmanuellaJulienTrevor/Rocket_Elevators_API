@@ -1,6 +1,7 @@
 class Customer < ApplicationRecord
     belongs_to :admin_user
     after_create :dropbox
+    after_update :dropbox
 
    # belongs_to :user, optional:true
 
@@ -35,26 +36,61 @@ class Customer < ApplicationRecord
 
     def dropbox
         customer_leads = Lead.where(company_name: self.company_name)
+        puts "-------------------------------------------------------"
+        pp customer_leads
+        puts customer_leads.count
+        puts "-------------------------------------------------------"
+
 
         client = DropboxApi::Client.new ENV["access_token"]
         
          customer_leads.each do |l|
+          puts "-------------------------------------------------------"
+          puts l.attached_file
+
+          puts "-------------------------------------------------------"
+
           begin
             client.get_metadata("/#{l.company_name}") 
+            puts "-------------------------------------------------------"
+            puts "get metadata"
+            puts "-------------------------------------------------------"
+
           rescue => exception
+          
             client.create_folder("/#{l.company_name}")
-          end
+            puts "-------------------------------------------------------"
+            puts "create folder."
+            puts "-------------------------------------------------------"
+        end
           #Transfer the binary file to Dropbox
           if l.attached_file != nil
             begin
-              client.get_metadata("/#{l.company_name}") 
-            rescue => exception
-              client.upload_by_chunks("/#{l.company_name}",l.attached_file)
+
+              client.get_metadata("/#{l.company_name}")
+              puts "-------------------------------------------------------"
+              puts "before exception"
+              puts "-------------------------------------------------------"
+            #rescue => exception
+              puts "-------------------------------------------------------"
+              puts "uploading"
+              puts "-------------------------------------------------------"   
+              
+              
+              file_content = IO.read l.attached_file_path
+
+              puts "-------------------------------------------------------"
+              pp file_content
+              puts "-------------------------------------------------------"  
+
+              client.upload("/#{l.company_name}/file.png",file_content)
+
+
           end
           #Remove the attached file from lead table after success transfert to dropbox
           removed = ""
-          l.update_attribute(:attached_file, removed)
-          l.update_attribute(:attached_file, removed)
+          # l.update_attribute(:attached_file, removed)
+          # l.update_attribute(:attached_file, removed)
       end
     end
   end
