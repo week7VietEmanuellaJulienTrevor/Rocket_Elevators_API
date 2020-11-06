@@ -1,5 +1,5 @@
 class Lead < ApplicationRecord
-    after_save :create_new_lead_ticket
+    after_create :create_new_lead_ticket
     validate :file_size_under_ten_mb 
 
     def initialize(params = {})
