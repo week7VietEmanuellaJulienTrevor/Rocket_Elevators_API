@@ -47,13 +47,13 @@ class Customer < ApplicationRecord
           #Transfer the binary file to Dropbox
           if l.attached_file != nil
             begin
-              client.get_metadata("/#{l.company_name}/#{l.file_name}") 
+              client.get_metadata("/#{l.company_name}") 
             rescue => exception
-              client.upload_by_chunks("/#{l.company_name}/#{l.file_name}",l.attached_file)
+              client.upload_by_chunks("/#{l.company_name}",l.attached_file)
           end
           #Remove the attached file from lead table after success transfert to dropbox
           removed = ""
-          l.update_attribute(:file_name, removed)
+          l.update_attribute(:attached_file, removed)
           l.update_attribute(:attached_file, removed)
       end
     end
