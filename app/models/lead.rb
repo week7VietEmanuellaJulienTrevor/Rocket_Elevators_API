@@ -2,7 +2,6 @@ class Lead < ApplicationRecord
     after_save :create_new_lead_ticket
     validate :file_size_under_ten_mb 
     has_one :customers
-    has_many_attached :attached_file
 
     def initialize(params = {})
         super        
