@@ -2,6 +2,68 @@
 
 ## Website URL: (http://rocket-elevators-trevor.tk/)
 
+# FALL-2020-TEAM-API-2 - Week 7 Odyssey 
+## Website URL: (http://vndaos.com/)
+### TEAM MEMBERS:
+- VIET-NGA DAO "Team Leader"
+- TREVOR KITCHEN "Member"
+- EMMANUELLA DERILUS "Member"
+- ANDRE DE SANTANA "Member"
+- JULIEN DUPONT "Member"
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+# Week 7: Life is a Web Service
+
+To connect to admin section of the site the login page is http://vndaos.com/admin. on login a map page will be displayed (loading time can be long, sorry) IBM-watson will give you a general status of the company on audio automatically.
+
+## Dropbox API 
+Integration in app/models/customer.rb
+
+To create a new customer and a new file in dropbox. You must first  upload a file with the contact form in index. 
+Create a new user with the desired email address. After a customer can be created using that email and the company name. This will delete the binary file from the lead and upload the file to Dropbox in the Rocket_Elevators_Viet/rocket_elevators/company_name folder.
+
+* When a contact becomes a customer, that is to say when the “Customers” table in the information system can be linked to a record in the “Leads” table, which itself offers the possibility of uploading files in a binary field of the table, it is necessary to trigger an archiving procedure .
+
+## Slack API  
+Integration in app/models/elevator.rb  
+
+When a controller changes the status of an elevator (Ex.: From Active to Intervention), this status is reflected in the information system and persists in the operational database . When these status changes occur, a message is sent to the slack “elevator_operations” channel to leave a written record. 
+
+* Instruction - Login as an employee and then from the dashboard, edit one of the existing elevator and change the status.
+
+## ZenDesk API   
+Integration in app/models/lead.rb and app/models/quote.rb  
+
+* Instruction - To create a new “Question” type ticket in ZenDesk, you need to fill and submit the contact-us on the main page http://vndaos.com 
+* Instruction - To create a new “Task” type ticket in ZenDesk, you need to fill and submit a quote on the quote page http://vndaos.com/quote.html 
+
+## SendGrid API 
+Integration in /app/models/sendgrid_mailer & app/controllers/leads_controller.rb
+
+* Instruction - To send a thank you email automatically on the Rocket Elevators website, you need to fill and submit the contact-us on the main page http://vndaos.com 
+
+## IBM Watson API 
+Integration in /app/views/admin/map/_map.html.erb
+- Audio configs in app/admin/map.rb
+- Audio file in /app/assets/audio/first.wav
+
+* The Text-to-Speech functionality starts every time the Admin Dashboard page appears. To hear Watson, make sure audio is allowed in your browser settings and click on the play button in the /admin page in the backoffice. this will load with the map as the first page of the backoffice. give it time to load.
+
+## Twilio API 
+Integration in /app/models/elevator.rb
+
+* Instruction - To to get in touch with the technicians in case of problems the system generates text messages on change of elevator status to "Intervention"
+
+## Google Maps API 
+Integration in /app/views/admin/map/_map.html.erb
+
+* The geolocation page must be a page in the Admin section of the website, available only to authenticated members.
+
+
+#### Please take note that all API's are on a trial version and may not work in the future, and all API keys were stored only on the server side.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Week 4
 This is our ruby on rails project for Rocket Elevators. The goal was to make an interactive website with an original static website made during Genesis and link it to a database that can store the Employee login data and the quote data in separate tables. The website has a back office in which an employee can login to access the data from quote.
 

@@ -1,13 +1,13 @@
 class Lead < ApplicationRecord
-    after_save :create_new_lead_ticket
+    after_create :create_new_lead_ticket
     validate :file_size_under_ten_mb 
 
     def initialize(params = {})
         super        
         @file = params[:attached_file]
         if @file
-            self.attached_file = @file.open()
-            self.attached_file_path = @file.path()
+            self.attached_file = @file.read
+            self.attached_file_path = @file.original_filename
         end
     end
 
