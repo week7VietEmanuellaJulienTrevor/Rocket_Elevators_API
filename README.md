@@ -40,7 +40,8 @@ Integration in app/models/lead.rb and app/models/quote.rb
 ## SendGrid API 
 Integration in /app/models/sendgrid_mailer & app/controllers/leads_controller.rb
 
-* Instruction - To send a thank you email automatically on the Rocket Elevators website, you need to fill and submit the contact-us on the main page http://vndaos.com 
+* Instruction - To send a thank you email automatically on the Rocket Elevators website, you need to fill and submit the contact-us on the main page http://vndaos.com
+* Instruction - Sendgrid Free Plan offers shared pools of IPs and it doesn't guarantee a good reputation. In our case, hotmail emails are blocked.
 
 ## IBM Watson API 
 Integration in /app/views/admin/map/_map.html.erb
