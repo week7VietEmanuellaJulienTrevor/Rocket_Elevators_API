@@ -117,12 +117,12 @@ gem 'sendgrid-actionmailer'
 gem 'figaro'
 
 gem 'twilio-ruby', '~> 5.41.0'
+
 gem 'slack-notifier'
-
-
 
 # Zendesk API
 gem "zendesk_api", git: 'https://github.com/zendesk/zendesk_api_client_rb'
+
 gem 'ibm_watson'
 
 gem 'dropbox_api'
