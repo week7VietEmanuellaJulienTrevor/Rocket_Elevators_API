@@ -3,6 +3,8 @@ class Customer < ApplicationRecord
     after_create :dropbox
     after_update :dropbox
 
+   # belongs_to :user, optional:true
+
     has_many :buildings
     def display_name
         "#{company_name}"
@@ -38,21 +40,21 @@ class Customer < ApplicationRecord
         pp customer_leads
         puts customer_leads.count
         puts "-------------------------------------------------------"
-​
-​
+
+
         client = DropboxApi::Client.new ENV["access_token"]
         
          customer_leads.each do |l|
           puts "-------------------------------------------------------"
           puts l.attached_file
           puts "-------------------------------------------------------"
-​
+
           begin
             client.get_metadata("/rocket-elevators/#{l.company_name}") 
             puts "-------------------------------------------------------"
             puts "get metadata"
             puts "-------------------------------------------------------"
-​
+
           rescue => exception
           
             client.create_folder("/rocket-elevators/#{l.company_name}")
@@ -63,7 +65,7 @@ class Customer < ApplicationRecord
           #Transfer the binary file to Dropbox
           if l.attached_file != nil
             begin
-​
+
               client.get_metadata("/rocket-elevators/#{l.company_name}")
               puts "-------------------------------------------------------"
               puts "before exception"
@@ -75,24 +77,24 @@ class Customer < ApplicationRecord
               
               
               file_content = l.attached_file
-​
+
               puts "-------------------------------------------------------"
               pp file_content
               puts "-------------------------------------------------------"  
-​
+
               file_name = l.attached_file_path
               # ActiveStorage::Blob.find(ActiveStorage::Attachment.where(record_id: l.id).take[:blob_id])[:filename]
               puts "-------------------------------------------------------"
               puts "filename : " + file_name.to_s
               puts "-------------------------------------------------------"
-​
-​
-​
+
+
+
               client.upload("/rocket-elevators/#{l.company_name}/#{file_name}", file_content)
               
               
               
-​
+
           end
           #Remove the attached file from lead table after success transfert to dropbox
           removed = ""
@@ -101,6 +103,10 @@ class Customer < ApplicationRecord
       end
     end
   end
+   
+
 
 end
+
+
 
