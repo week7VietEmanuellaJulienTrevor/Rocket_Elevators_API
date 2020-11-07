@@ -14,8 +14,13 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------
 # Week 7: Life is a Web Service
 
+To connect to admin section of the site the login page is http://vndaos.com/admin. on login a map page will be displayed (loading time can be long, sorry) IBM-watson will give you a general status of the company on audio automatically.
+
 ## Dropbox API 
-Integration in app/models/user.rb  
+Integration in app/models/customer.rb
+
+To create a new customer and a new file in dropbox. You must first  upload a file with the contact form in index. 
+Create a new user with the desired email address. After a customer can be created using that email and the company name. This will delete the binary file from the lead and upload the file to Dropbox in the Rocket_Elevators_Viet/rocket_elevators/company_name folder.
 
 * When a contact becomes a customer, that is to say when the “Customers” table in the information system can be linked to a record in the “Leads” table, which itself offers the possibility of uploading files in a binary field of the table, it is necessary to trigger an archiving procedure .
 
@@ -40,9 +45,9 @@ Integration in /app/models/sendgrid_mailer & app/controllers/leads_controller.rb
 ## IBM Watson API 
 Integration in /app/views/admin/map/_map.html.erb
 - Audio configs in app/admin/map.rb
-- Audio file in /app/assets/audios/watson.mp3
+- Audio file in /app/assets/audio/first.wav
 
-* The Text-to-Speech functionality starts the every time the Admin Dashboard page appears. To hear Watson, make sure audio is allowed in your browser settings and click on the play button in the /admin page in the backoffice.
+* The Text-to-Speech functionality starts every time the Admin Dashboard page appears. To hear Watson, make sure audio is allowed in your browser settings and click on the play button in the /admin page in the backoffice. this will load with the map as the first page of the backoffice. give it time to load.
 
 ## Twilio API 
 Integration in /app/models/elevator.rb
