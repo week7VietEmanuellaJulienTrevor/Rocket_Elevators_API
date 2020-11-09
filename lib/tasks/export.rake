@@ -8,6 +8,7 @@ namespace :export do
         Rake::Task["export:factcontact"].invoke
         Rake::Task["export:factelevator"].invoke
         Rake::Task["export:dimcustomers"].invoke
+        Rake::Task["export:factintervention"].invoke
         
     end
 
@@ -115,6 +116,33 @@ namespace :export do
         end
         conn.finish()
     end
+
+     # FactIntervention
+     desc "export data from mysql database to postgresql table FactIntervention"
+     task factintervention: :environment do
+         #table = Employee.all
+         conn = PG::Connection.open(dbname: "datawarehouse_development")
+         #conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "pg_Trevor_Kitchen_team2")
+ 
+         conn.exec("TRUNCATE \"factintervention\" RESTART IDENTITY")
+ 
+        #  table.each do |row|
+ 
+        #      date = row.commissioning_date.strftime("%F")
+        #      city = row.column.battery.building.address.city.gsub("'", "''")
+            
+        #      conn.exec("INSERT INTO \"factintervention\" (\"id\",\"serial_number\", \"date_of_commissioning\", \"building_id\", \"customer_id\", \"building_city\") VALUES ('#{row.id}', \'#{row.serial_number.gsub("'", "''")}\', '#{date}', \'#{row.column.battery.building_id}\', \'#{row.column.battery.building.customer_id}\', '#{city}')")
+          
+        #  end
+
+        ######################TEST START#####################################
+        number_test = Building.count
+        puts "---------------------------------------------------------------------"
+        puts number_test
+        puts "---------------------------------------------------------------------"
+        ######################TEST END#######################################
+        conn.finish()
+     end
 
 end
 
