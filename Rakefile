@@ -5,6 +5,7 @@ require_relative 'config/application'
 
 Rails.application.load_tasks
 
+require "faker"
 desc 'exporttest'
 task :exporttest => :environment do
 
@@ -19,23 +20,129 @@ task :exporttest => :environment do
     battery_count = Battery.count
 
     table = Battery.all
-
+    
 
     10.times do
         battery_id_rand = rand(1..battery_count)
         battery = table.where(id: battery_id_rand)
         building_id = table.find(battery_id_rand).building_id
         employee_id = table.find(battery_id_rand).employee_id
+        fake_date1 = Faker::Date.between(from: '2020-10-01', to: '2020-11-30')
+        fake_date1_string = fake_date1.to_s
+        puts fake_date1_string
+        fake_date2 = nil
+        fake_date2_existing = rand(0..1)
+        if fake_date2_existing == 1
+            fake_date2 = Faker::Date.between(from: fake_date1_string, to: '2020-11-13')
+        end
+        puts fake_date2
         
 
-        puts battery_id_rand
-        puts "---------------------------------------------------------------------"
-        puts building_id
-        puts "---------------------------------------------------------------------"
-        puts employee_id
-        puts "\n--------rake task end--------\n"
-        conn.exec("INSERT INTO \"factinterventions\" (\"employee_id\", \"building_id\", \"battery_id\" ) VALUES ('#{employee_id}', '#{building_id}', '#{battery_id_rand}')")
+        # puts battery_id_rand
+        # puts "---------------------------------------------------------------------"
+        # puts building_id
+        # puts "---------------------------------------------------------------------"
+        # puts employee_id
+        intervention_item = rand(0..2) #0=elevator, 1=column, 2=battery
+        #intervention_item = 0 #a effacer
+        battery_mysql = Battery.find(battery_id_rand)
+        if intervention_item == 0 #ELEVATOR
+            columns_mysql = Column.where(battery_id: battery_id_rand)
+            columns_count = columns_mysql.count
+            #puts columns_count
+            selected_column = rand(1..columns_count)
+            the_count = 1
+            column_id_selected = 0
+            columns_mysql.each do |c|
+                if the_count == selected_column
+                    column_id_selected = c.id    
+                end
+                the_count += 1
+            end
+            
+            elevators_mysql = Elevator.where(column_id: column_id_selected)
+            elevators_count = elevators_mysql.count
+            
+            selected_elevator = rand(1..elevators_count)
+            the_count2 = 1
+            elevator_id_selected = 0
+            elevators_mysql.each do |c|
+                if the_count2 == selected_elevator
+                    elevator_id_selected = c.id
+                    c.status = "Intervention"
+                    c.save   
+                    if fake_date2_existing == 0
+                        result = "Incomplete"
+                        status_array = ["Pending","InProgress","Interrupted", "Resumed"]
+                        status = status_array[rand(0..3)]
+                        puts status
+                        conn.exec("INSERT INTO \"factinterventions\" (\"employee_id\", \"building_id\", \"elevator_id\", \"start_date_intervention\", \"result\", \"status\" ) VALUES ('#{employee_id}', '#{building_id}', '#{elevator_id_selected}','#{fake_date1}','#{result}','#{status}')")
+                    elsif fake_date2_existing == 1
+                        result_rand = rand(0..6)
+                        if result_rand > 0
+                            result = "Success"
+                        else
+                            result = "Failure"
+                        end
+                        status = "Complete"
+                        conn.exec("INSERT INTO \"factinterventions\" (\"employee_id\", \"building_id\", \"elevator_id\", \"start_date_intervention\", \"end_date_intervention\", \"result\", \"status\" ) VALUES ('#{employee_id}', '#{building_id}', '#{elevator_id_selected}','#{fake_date1}', '#{fake_date2}','#{result}','#{status}')")
+                    end
+                end
+                the_count2 += 1
+            end
+            
+        elsif intervention_item == 1 #COLUMN
+            columns_mysql = Column.where(battery_id: battery_id_rand)
+            columns_count = columns_mysql.count
+            #puts columns_count
+            selected_column = rand(1..columns_count)
+            the_count = 1
+            column_id_selected = 0
+            columns_mysql.each do |c|
+                if the_count == selected_column
+                    column_id_selected = c.id
+                    c.status = "Intervention"
+                    c.save
+                    if fake_date2_existing == 0
+                        result = "Incomplete"
+                        status_array = ["Pending","InProgress","Interrupted", "Resumed"]
+                        status = status_array[rand(0..3)]
+                        puts status
+                        conn.exec("INSERT INTO \"factinterventions\" (\"employee_id\", \"building_id\", \"column_id\", \"start_date_intervention\", \"result\", \"status\" ) VALUES ('#{employee_id}', '#{building_id}', '#{column_id_selected}','#{fake_date1}','#{result}','#{status}')")
+                    elsif fake_date2_existing == 1
+                        result_rand = rand(0..6)
+                        if result_rand > 0
+                            result = "Success"
+                        else
+                            result = "Failure"
+                        end
+                        status = "Complete"
+                        conn.exec("INSERT INTO \"factinterventions\" (\"employee_id\", \"building_id\", \"column_id\", \"start_date_intervention\", \"end_date_intervention\", \"result\", \"status\" ) VALUES ('#{employee_id}', '#{building_id}', '#{column_id_selected}','#{fake_date1}', '#{fake_date2}','#{result}','#{status}')")
+                    end
+                end
+                the_count += 1
+            end
+        elsif intervention_item == 2 #BATTERY
+            battery_mysql.status = "Intervention"
+            battery_mysql.save
+            if fake_date2_existing == 0
+                result = "Incomplete"
+                status_array = ["Pending","InProgress","Interrupted", "Resumed"]
+                status = status_array[rand(0..3)]
+                puts status
+                conn.exec("INSERT INTO \"factinterventions\" (\"employee_id\", \"building_id\", \"battery_id\", \"start_date_intervention\", \"result\", \"status\") VALUES ('#{employee_id}', '#{building_id}', '#{battery_id_rand}','#{fake_date1}','#{result}','#{status}')")
+            elsif fake_date2_existing == 1
+                result_rand = rand(0..6)
+                if result_rand > 0
+                    result = "Success"
+                else
+                    result = "Failure"
+                end
+                status = "Complete"
+                conn.exec("INSERT INTO \"factinterventions\" (\"employee_id\", \"building_id\", \"battery_id\", \"start_date_intervention\", \"end_date_intervention\", \"result\", \"status\") VALUES ('#{employee_id}', '#{building_id}', '#{battery_id_rand}','#{fake_date1}', '#{fake_date2}','#{result}','#{status}')")
+            end
+        end
     end
     conn.finish()
-    
+    puts "\n--------rake task end--------\n"
 end
