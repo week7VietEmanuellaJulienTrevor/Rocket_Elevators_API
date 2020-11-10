@@ -58,6 +58,7 @@ group :development do
 
   gem 'ed25519', '>= 1.2', '< 2.0'
   gem 'bcrypt_pbkdf'
+  gem 'graphiql-rails'
 
 end
 
@@ -126,3 +127,5 @@ gem "zendesk_api", git: 'https://github.com/zendesk/zendesk_api_client_rb'
 gem 'ibm_watson'
 
 gem 'dropbox_api'
+gem 'graphql', '1.9.18'
+gem 'graphiql-rails', group: :development
