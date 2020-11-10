@@ -126,4 +126,5 @@ gem "zendesk_api", git: 'https://github.com/zendesk/zendesk_api_client_rb'
 gem 'ibm_watson'
 
 gem 'dropbox_api'
-gem 'graphiql-rails','1.7.0', group: :development
+
+gem 'rubocop-faker'
