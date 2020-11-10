@@ -118,7 +118,7 @@ gem 'figaro'
 
 gem 'twilio-ruby', '~> 5.41.0'
 gem 'slack-notifier'
-
+gem 'graphql', '1.9.17'
 
 
 # Zendesk API
@@ -126,3 +126,4 @@ gem "zendesk_api", git: 'https://github.com/zendesk/zendesk_api_client_rb'
 gem 'ibm_watson'
 
 gem 'dropbox_api'
+gem 'graphiql-rails','1.7.0', group: :development
