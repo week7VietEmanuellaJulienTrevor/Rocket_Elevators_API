@@ -1,5 +1,7 @@
 # save stats database settings in global var
-DB_SECOND = YAML::load(ERB.new(File.read(Rails.root.join("config","database_second.yml"))).result)[Rails.env]
+file = File.read(Rails.root.join("config","database_second.yml"))
+p YAML::load(file)
+DB_SECOND = YAML::load(file)[Rails.env]
 
 #cd d( ERB.new( File.read("#{ Rails.root }/config/database_second.yml") ).result )[Rails.env.to_s]
 

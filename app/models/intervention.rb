@@ -7,6 +7,6 @@ class Intervention < ApplicationRecord
     
 
     # Connect to FactIntervention table in PostgreSQL
-    establish_connection "#{Rails.env}_pg".to_sym
-    self.table_name = 'factintervention'
+    # establish_connection "#{Rails.env}_pg".to_sym
+    # self.table_name = 'factintervention'
 end
