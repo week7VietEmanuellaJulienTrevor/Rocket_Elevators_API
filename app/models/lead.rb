@@ -35,26 +35,26 @@ class Lead < ApplicationRecord
     #         config.token = ENV['ZENDESK_TOKEN']
     #     end
 
-        # Creating a new lead ticket on Zendesk
-        # ZendeskAPI::Ticket.create!(client, 
-        #     :subject => "#{self.contact_full_name} from #{self.company_name}", 
-        #     :comment => { 
-        #         :value => "The contact #{self.contact_full_name} 
-        #             from company #{self.company_name} 
-        #             can be reached at email  #{self.email} 
-        #             and at phone number #{self.phone}. 
-        #             #{self.department} has a project named #{self.project_name} which would require contribution from Rocket Elevators. 
-        #             \n\n
-        #             Project Description
-        #             #{self.project_description}\n\n
-        #             Attached Message: #{self.message}"
-        #     }, 
-        #     :requester => { 
-        #         "name": self.contact_full_name, 
-        #         "email": self.email 
-        #     },
-        #     :priority => "normal",
-        #     :type => "question"
-        #     )
+    #     # Creating a new lead ticket on Zendesk
+    #     ZendeskAPI::Ticket.create!(client, 
+    #         :subject => "#{self.contact_full_name} from #{self.company_name}", 
+    #         :comment => { 
+    #             :value => "The contact #{self.contact_full_name} 
+    #                 from company #{self.company_name} 
+    #                 can be reached at email  #{self.email} 
+    #                 and at phone number #{self.phone}. 
+    #                 #{self.department} has a project named #{self.project_name} which would require contribution from Rocket Elevators. 
+    #                 \n\n
+    #                 Project Description
+    #                 #{self.project_description}\n\n
+    #                 Attached Message: #{self.message}"
+    #         }, 
+    #         :requester => { 
+    #             "name": self.contact_full_name, 
+    #             "email": self.email 
+    #         },
+    #         :priority => "normal",
+    #         :type => "question"
+    #         )
     # end
 end

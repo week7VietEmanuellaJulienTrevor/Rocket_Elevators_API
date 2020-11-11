@@ -469,7 +469,7 @@ DEPENDENCIES
   figaro
   font-awesome-rails (~> 4.7, >= 4.7.0.5)
   font-awesome-sass (~> 4.3.0)
-  graphiql-rails (= 1.7.0)
+  graphiql-rails
   graphql (= 1.9.17)
   http
   ibm_watson
