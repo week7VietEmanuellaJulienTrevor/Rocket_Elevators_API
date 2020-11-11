@@ -1,6 +1,6 @@
 module Types
   class BuildingType < Types::BaseObject
-      # field :building_details, [BuildingDetailType], null: false
+      field :building_details, [BuildingDetailType], null: false
       field :customer, CustomerType, null: false
       field :address, AddressType, null: false
       field :building_administrator_full_name, String, null: false
