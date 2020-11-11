@@ -12481,5 +12481,7 @@ end
     leads.save
 end
 
-
+1.times do |i|
+    FactIntervention.create(employee_id: 1, building_id: 2, battery_id:3, column_id: 4, elevator_id: 5)
+end
 

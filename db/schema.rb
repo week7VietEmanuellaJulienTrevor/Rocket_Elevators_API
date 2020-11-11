@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_205613) do
+ActiveRecord::Schema.define(version: 2020_11_11_160607) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -162,6 +162,21 @@ ActiveRecord::Schema.define(version: 2020_11_03_205613) do
     t.index ["admin_user_id"], name: "index_employees_on_admin_user_id"
   end
 
+  create_table "fact_interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "employee_id"
+    t.integer "building_id"
+    t.integer "battery_id"
+    t.integer "column_id"
+    t.integer "elevator_id"
+    t.date "start_date_intervention"
+    t.date "end_date_intervention"
+    t.string "result"
+    t.string "report"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "contact_full_name"
     t.string "company_name"
@@ -175,6 +190,13 @@ ActiveRecord::Schema.define(version: 2020_11_03_205613) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "attached_file_path"
+  end
+
+  create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "url"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
