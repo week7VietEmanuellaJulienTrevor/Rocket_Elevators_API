@@ -2794,6 +2794,7 @@ add = [
         {
             "address1": "3 Southerberry Drive",
             "address2": "",
+            "city": "unknown",
             "state": "VT",
             "postalCode": "05468",
             "coordinates": {
