@@ -14,13 +14,9 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------
 # Week 7: Life is a Web Service
 
-<<<<<<< HEAD
-To connect to admin section of the site the login page is http://vndaos.com/admin. on login a map page will be displayed (loading time can be long, sorry) IBM-watson will give you a general status of the company on audio automatically.
-=======
 To connect to admin section of the site the login page is https://vndaos.com/admin. on login a map page will be displayed (loading time can be long, sorry) IBM-watson will give you a general status of the company on audio automatically.
 
 This week we were able to secure our website to https by adding the command "skip_before_action :verify_authenticity_token" in the app/controllers/application_controller.rb. 
->>>>>>> 87871056d1a630fa48645576560bccf0eb12d477
 
 ## Dropbox API 
 Integration in app/models/customer.rb
