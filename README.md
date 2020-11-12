@@ -3,7 +3,7 @@
 ## Website URL: (http://rocket-elevators-trevor.tk/)
 
 # FALL-2020-TEAM-API-2 - Week 7 Odyssey 
-## Website URL: (http://vndaos.com/)
+## Website URL: (https://vndaos.com/)
 ### TEAM MEMBERS:
 - VIET-NGA DAO "Team Leader"
 - TREVOR KITCHEN "Member"
@@ -14,7 +14,13 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------
 # Week 7: Life is a Web Service
 
+<<<<<<< HEAD
 To connect to admin section of the site the login page is http://vndaos.com/admin. on login a map page will be displayed (loading time can be long, sorry) IBM-watson will give you a general status of the company on audio automatically.
+=======
+To connect to admin section of the site the login page is https://vndaos.com/admin. on login a map page will be displayed (loading time can be long, sorry) IBM-watson will give you a general status of the company on audio automatically.
+
+This week we were able to secure our website to https by adding the command "skip_before_action :verify_authenticity_token" in the app/controllers/application_controller.rb. 
+>>>>>>> 87871056d1a630fa48645576560bccf0eb12d477
 
 ## Dropbox API 
 Integration in app/models/customer.rb
@@ -34,13 +40,14 @@ When a controller changes the status of an elevator (Ex.: From Active to Interve
 ## ZenDesk API   
 Integration in app/models/lead.rb and app/models/quote.rb  
 
-* Instruction - To create a new “Question” type ticket in ZenDesk, you need to fill and submit the contact-us on the main page http://vndaos.com 
-* Instruction - To create a new “Task” type ticket in ZenDesk, you need to fill and submit a quote on the quote page http://vndaos.com/quote.html 
+* Instruction - To create a new “Question” type ticket in ZenDesk, you need to fill and submit the contact-us on the main page https://vndaos.com 
+* Instruction - To create a new “Task” type ticket in ZenDesk, you need to fill and submit a quote on the quote page https://vndaos.com/quote.html 
 
 ## SendGrid API 
 Integration in /app/models/sendgrid_mailer & app/controllers/leads_controller.rb
 
-* Instruction - To send a thank you email automatically on the Rocket Elevators website, you need to fill and submit the contact-us on the main page http://vndaos.com 
+* Instruction - To send a thank you email automatically on the Rocket Elevators website, you need to fill and submit the contact-us on the main page https://vndaos.com
+* Instruction - Sendgrid Free Plan offers shared pools of IPs and it doesn't guarantee a good reputation. In our case, hotmail emails are blocked.
 
 ## IBM Watson API 
 Integration in /app/views/admin/map/_map.html.erb

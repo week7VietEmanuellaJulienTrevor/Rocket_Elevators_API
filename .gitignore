@@ -26,6 +26,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# ignore first.wav for watson
+/app/assets/audio/first.wav
+
 
 
 # Ignore all logfiles and tempfiles.

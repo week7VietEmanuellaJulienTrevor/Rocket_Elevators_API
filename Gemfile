@@ -126,3 +126,5 @@ gem "zendesk_api", git: 'https://github.com/zendesk/zendesk_api_client_rb'
 gem 'ibm_watson'
 
 gem 'dropbox_api'
+
+gem 'rubocop-faker'
