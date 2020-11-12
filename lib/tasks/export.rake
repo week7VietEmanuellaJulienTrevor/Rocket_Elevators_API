@@ -4,11 +4,15 @@ require 'date'
 namespace :export do
     desc "launch all export task"
     task datawarehouse: :environment do
+        p "export factquote"
         Rake::Task["export:factquote"].invoke
+        p "export factcontact"
         Rake::Task["export:factcontact"].invoke
+        p "export factelevator"
         Rake::Task["export:factelevator"].invoke
+        p "export dimcustomers"
         Rake::Task["export:dimcustomers"].invoke
-        
+        p "end tasks"
     end
 
      # DimCustomers
