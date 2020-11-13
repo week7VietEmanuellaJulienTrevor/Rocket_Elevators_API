@@ -12,6 +12,11 @@
 - JULIEN DUPONT "Member"
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
+# Week 8: Offering and Exposing a Service on the Internet
+
+This week we needed to add a new factinterventions table to the postgres database. A new migration was made to create the table at this link https://github.com/week7VietEmanuellaJulienTrevor/Rocket_Elevators_API/blob/master/db_second/migrate/20201109185400_fact_intervention.rb and a rake task in the Rakefile called 'rake exporttest' https://github.com/week7VietEmanuellaJulienTrevor/Rocket_Elevators_API/blob/master/Rakefile was made to transfer the data between the relational database to the new table of the datawarehouse "vnpostgres".
+
+------------------------------------------------------------------------------------------------------------------------------------------------
 # Week 7: Life is a Web Service
 
 To connect to admin section of the site the login page is https://vndaos.com/admin. on login a map page will be displayed (loading time can be long, sorry) IBM-watson will give you a general status of the company on audio automatically.
