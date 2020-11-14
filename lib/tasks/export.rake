@@ -20,7 +20,8 @@ namespace :export do
      task dimcustomers: :environment do
          table = Customer.all
          elevators = Elevator.all
-         
+         addresses  = Address.all
+
         conn = PG::Connection.open(dbname: "datawarehouse_development")
         # conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "vnpostgres")
  
@@ -50,8 +51,21 @@ namespace :export do
              else
                  date = row.customer_creation_date.strftime("%F")
              end
-             
-             city = "#{row.company_name.gsub("'", "''")} City"
+
+             city = ""
+            # addresses.each do |address|
+            #     if address.id == row.address_id
+            #         if city == nil
+            #             city = ""
+            #         else
+            #         city = address.city.gsub("'", "''")
+            #         end
+            #     end
+            # end
+
+            city = row.address.city.gsub("'", "''")
+
+            
 
              conn.exec("INSERT INTO \"dimcustomers\" (\"creation_date\", \"company_name\", \"full_name_of_company_main_contact\", \"email_of_company_main_contact\", \"nb_elevator\", \"contact_city\") VALUES ('#{date}', '#{row.company_name.gsub("'", "''")}', '#{row.full_name_company_contact.gsub("'", "''")}', '#{row.email_company_contact.gsub("'", "''")}', #{nb_elevator}, \'#{city}\')")
          end
