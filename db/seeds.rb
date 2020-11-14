@@ -12540,8 +12540,16 @@ end
             technical_manager_email: Employee.find(technicalAthorityID)[:email]
         )
         customers.save
+        p "___________________________________"
+        p "customer save"
+        p "___________________________________"
+
 
     end
+
+    p "___________________________________"
+    p "END SEED"
+    p "___________________________________"
 
 end
 
