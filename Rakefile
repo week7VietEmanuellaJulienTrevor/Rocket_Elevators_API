@@ -11,8 +11,9 @@ desc 'exporttest'
 task :exporttest => :environment do
 
     puts "\n--------rake task start--------\n"
-    # conn = PG::Connection.open(dbname: "datawarehouse_development")
-    conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "vnpostgres")
+    # conn = PG::Connection.open(dbname: ENV["second_db"] )
+    conn = PG::Connection.open(host: ENV["DB2_Host"], user: ENV["DB2_USERNAME"], password: ENV["DB2_PASSWORD"], dbname: ENV["second_db"])
+
     conn.exec("TRUNCATE \"factinterventions\" RESTART IDENTITY")
     
     building_count = Building.count
