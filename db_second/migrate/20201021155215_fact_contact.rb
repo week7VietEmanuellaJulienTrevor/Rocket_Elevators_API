@@ -1,6 +1,6 @@
 class FactContact < ActiveRecord::Migration[5.2]
   def change
-    create_table :factcontact do |t|
+    create_table :factcontacts do |t|
       t.date :creation_date
       t.string :company_name
       t.string :email

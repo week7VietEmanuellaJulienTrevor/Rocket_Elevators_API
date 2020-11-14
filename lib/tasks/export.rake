@@ -21,8 +21,8 @@ namespace :export do
          table = Customer.all
          elevators = Elevator.all
          
-        #conn = PG::Connection.open(dbname: "datawarehouse_development")
-        conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "vnpostgres")
+        conn = PG::Connection.open(dbname: "datawarehouse_development")
+        # conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "vnpostgres")
  
          conn.exec("TRUNCATE \"dimcustomers\" RESTART IDENTITY")
  
@@ -50,7 +50,9 @@ namespace :export do
              else
                  date = row.customer_creation_date.strftime("%F")
              end
+             
              city = "#{row.company_name.gsub("'", "''")} City"
+
              conn.exec("INSERT INTO \"dimcustomers\" (\"creation_date\", \"company_name\", \"full_name_of_company_main_contact\", \"email_of_company_main_contact\", \"nb_elevator\", \"contact_city\") VALUES ('#{date}', '#{row.company_name.gsub("'", "''")}', '#{row.full_name_company_contact.gsub("'", "''")}', '#{row.email_company_contact.gsub("'", "''")}', #{nb_elevator}, \'#{city}\')")
          end
          conn.finish()
@@ -61,16 +63,16 @@ namespace :export do
     task factcontact: :environment do
         table = Lead.all
         
-        # conn = PG::Connection.open(dbname: "datawarehouse_development")
-        conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "vnpostgres")
+        conn = PG::Connection.open(dbname: "datawarehouse_development")
+        # conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "vnpostgres")
 
-        conn.exec("TRUNCATE \"factcontact\" RESTART IDENTITY")
+        conn.exec("TRUNCATE \"factcontacts\" RESTART IDENTITY")
 
         table.each do |row|
 
             date = row.created_at.strftime("%F")
            
-            conn.exec("INSERT INTO \"factcontact\" (\"id\", \"creation_date\", \"company_name\", \"email\", \"project_name\") VALUES (#{row.id}, '#{date}', '#{row.company_name.gsub("'", "''")}', \'#{row.email}\', \'#{row.project_name.gsub("'", "''")}\')")
+            conn.exec("INSERT INTO \"factcontacts\" (\"id\", \"creation_date\", \"company_name\", \"email\", \"project_name\") VALUES (#{row.id}, '#{date}', '#{row.company_name.gsub("'", "''")}', \'#{row.email}\', \'#{row.project_name.gsub("'", "''")}\')")
         end
   
         conn.finish()
@@ -81,10 +83,10 @@ namespace :export do
     task factquote: :environment do
         table = Quote.all
 
-        # conn = PG::Connection.open(dbname: "datawarehouse_development")
-        conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "vnpostgres")
+        conn = PG::Connection.open(dbname: "datawarehouse_development")
+        # conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "vnpostgres")
 
-        conn.exec("TRUNCATE \"factquote\" RESTART IDENTITY")
+        conn.exec("TRUNCATE \"factquotes\" RESTART IDENTITY")
 
         table.each do |row|
 
@@ -95,7 +97,7 @@ namespace :export do
 
             date = row.created_at.strftime("%F")
 
-            conn.exec("INSERT INTO \"factquote\" (\"id\", \"creation\", \"company_name\", \"email\", \"nb_elevator\") VALUES (#{row.id},' #{date}', '#{row.company_name.gsub("'", "''")}', \'#{row.contact_email}\', \'#{row.no_of_elevators}\')")
+            conn.exec("INSERT INTO \"factquotes\" (\"id\", \"creation\", \"company_name\", \"email\", \"nb_elevator\") VALUES (#{row.id},' #{date}', '#{row.company_name.gsub("'", "''")}', \'#{row.contact_email}\', \'#{row.no_of_elevators}\')")
         end
         conn.finish()
     end
@@ -104,17 +106,17 @@ namespace :export do
     desc "export data from mysql database to postgresql table FactElevator"
     task factelevator: :environment do
         table = Elevator.all
-        # conn = PG::Connection.open(dbname: "datawarehouse_development")
-        conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "vnpostgres")
+        conn = PG::Connection.open(dbname: "datawarehouse_development")
+        # conn = PG::Connection.open(host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com", user: "codeboxx", password: "Codeboxx1!", dbname: "vnpostgres")
 
-        conn.exec("TRUNCATE \"factelevator\" RESTART IDENTITY")
+        conn.exec("TRUNCATE \"factelevators\" RESTART IDENTITY")
 
         table.each do |row|
 
             date = row.commissioning_date.strftime("%F")
             city = row.column.battery.building.address.city.gsub("'", "''")
            
-            conn.exec("INSERT INTO \"factelevator\" (\"id\",\"serial_number\", \"date_of_commissioning\", \"building_id\", \"customer_id\", \"building_city\") VALUES ('#{row.id}', \'#{row.serial_number.gsub("'", "''")}\', '#{date}', \'#{row.column.battery.building_id}\', \'#{row.column.battery.building.customer_id}\', '#{city}')")
+            conn.exec("INSERT INTO \"factelevators\" (\"id\",\"serial_number\", \"date_of_commissioning\", \"building_id\", \"customer_id\", \"building_city\") VALUES ('#{row.id}', \'#{row.serial_number.gsub("'", "''")}\', '#{date}', \'#{row.column.battery.building_id}\', \'#{row.column.battery.building.customer_id}\', '#{city}')")
          
         end
         conn.finish()

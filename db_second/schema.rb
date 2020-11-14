@@ -24,14 +24,14 @@ ActiveRecord::Schema.define(version: 2020_11_09_185400) do
     t.string "contact_city"
   end
 
-  create_table "factcontact", force: :cascade do |t|
+  create_table "factcontacts", force: :cascade do |t|
     t.date "creation_date"
     t.string "company_name"
     t.string "email"
     t.string "project_name"
   end
 
-  create_table "factelevator", force: :cascade do |t|
+  create_table "factelevators", force: :cascade do |t|
     t.string "serial_number"
     t.string "date_of_commissioning"
     t.integer "building_id"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_185400) do
     t.string "status"
   end
 
-  create_table "factquote", force: :cascade do |t|
+  create_table "factquotes", force: :cascade do |t|
     t.date "creation"
     t.string "company_name"
     t.string "email"
