@@ -12487,6 +12487,7 @@ end
     random = rand(0..5)
     contactName = Faker::Company.name
     contact_email = Faker::Internet.email
+    leadDate = Faker::Date.between(from: '2020-10-15', to: '2020-11-11')
 
     leads = Lead.new(
         contact_full_name: Faker::Name.name ,
@@ -12497,7 +12498,7 @@ end
         project_description: Faker::Lorem.sentence,
         department: typeBuilding[rand(0..3)],
         message: Faker::Lorem.paragraphs,
-        created_at: Faker::Date.between(from: '2020-10-15', to: '2020-11-11')
+        created_at: leadDate
         # attached_file:Faker::Types.rb_string 
 
 
@@ -12516,7 +12517,7 @@ end
         technicalAthorityID = Employee.where(title: "technician").last[:id]
         addressID = rand(1..Address.last[:id])
         companyName = contactName
-        customerDate = Faker::Date.between(from: '1976-01-01', to: '2020-10-20')
+        customerDate = Faker::Date.between(from: leadDate, to: Date.today)
         companyContact = Faker::Name.name
         companyPhone = Faker::PhoneNumber.cell_phone
         # companyPhone = "test"
