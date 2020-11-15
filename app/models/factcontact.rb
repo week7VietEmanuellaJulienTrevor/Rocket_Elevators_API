@@ -1,0 +1,4 @@
+class Factcontact < DbsecondBase 
+    
+
+end

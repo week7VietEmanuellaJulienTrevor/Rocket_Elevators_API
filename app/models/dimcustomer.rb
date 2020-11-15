@@ -1,0 +1,2 @@
+class Dimcustomer < DbsecondBase 
+end

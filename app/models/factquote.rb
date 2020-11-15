@@ -1,0 +1,2 @@
+class Factquote < DbsecondBase 
+end
