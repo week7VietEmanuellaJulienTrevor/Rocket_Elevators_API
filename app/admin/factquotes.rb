@@ -5,7 +5,7 @@ ActiveAdmin.register Factquote do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :creation, :company_name, :email, :nb_elevator
+  permit_params :creation, :company_name, :email, :nb_elevator
   #
   # or
   #
