@@ -1,0 +1,4 @@
+class Factintervention < DbsecondBase 
+    
+
+end
